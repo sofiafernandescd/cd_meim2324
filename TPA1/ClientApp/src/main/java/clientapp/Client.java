@@ -1,7 +1,9 @@
 package clientapp;
 
-import calcstubs.*;
-import calcstubs.Number;
+import clientregisterstubs.*;
+import clientserverstubs.*;
+// Importar as classes do pacote clientserverstubs e clientregisterstubs
+// import calcstubs.Number;
 import com.google.protobuf.Message;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -15,25 +17,13 @@ public class Client {
     //private static String svcIP = "35.246.73.129";
     private static int svcPort = 8500;
     private static ManagedChannel channel;
-    private static CalcServiceGrpc.CalcServiceBlockingStub blockingStub;
-    private static CalcServiceGrpc.CalcServiceStub noBlockStub;
-
+    private static ClientRegisterServiceGrpc.ClientRegisterServiceBlockingStub blockingStub1;
+    private static ClientRegisterServiceGrpc.ClientRegisterServiceStub noBlockStub1;
+    private static ClientServerServiceGrpc.ClientServerServiceBlockingStub blockingStub2;
+    private static ClientServerServiceGrpc.ClientServerServiceStub noBlockStub2;
 
     public static void main(String[] args) {
-        Number[] numbers = new Number[]{
-                Number.newBuilder().setNum(3).build(),
-                Number.newBuilder().setNum(4).build(),
-                Number.newBuilder().setNum(7).build(),
-                Number.newBuilder().setNum(9).build()
-        };
-
-        AddOperands[] addOperands = new AddOperands[]{
-                AddOperands.newBuilder().setOp1(2).setOp2(3).build(),
-                AddOperands.newBuilder().setOp1(5).setOp2(6).build(),
-                AddOperands.newBuilder().setOp1(8).setOp2(9).build(),
-                AddOperands.newBuilder().setOp1(3).setOp2(1).build(),
-                AddOperands.newBuilder().setOp1(6).setOp2(7).build(),
-        };
+       
 
         try {
             if (args.length == 2) {
@@ -46,84 +36,26 @@ public class Client {
                 // needing certificates.
                 .usePlaintext()
                 .build();
-            blockingStub = CalcServiceGrpc.newBlockingStub(channel);
-            noBlockStub = CalcServiceGrpc.newStub(channel);
+            blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel);
+            noBlockStub1 = ClientRegisterServiceGrpc.newStub(channel);
+            blockingStub2 = ClientServerServiceGrpc.newBlockingStub(channel);
+            noBlockStub2 = ClientServerServiceGrpc.newStub(channel);
+
+
 
             while (true) {
                 switch (Menu()) {
                     case 1:  // adicionar dois numeros
-                        Result res = blockingStub.add(AddOperands.newBuilder()
-                                .setId("50+25")
-                                .setOp1(50).setOp2(25)
-                                .build());
-                        System.out.println("add " + res.getId() + "= " + res.getRes());
+                        
                         break;
                     case 2: // calcular as  potencias de x^y
-                        ClientStreamObserver resultStreamObs = new ClientStreamObserver();
-                        noBlockStub.generatePowers(NumberAndMaxExponent.newBuilder()
-                                .setId("2^5").setBaseNumber(2).setMaxExponent(5).build(), resultStreamObs);
-
-                        while (!resultStreamObs.isCompleted()) {
-                            System.out.println("Active and waiting for Case2 completed ");
-                            Thread.sleep(1 * 1000);
-                        }
+                        
                         break;
                     case 3: //somar a sequencia dos numeros de x a y
-                        StreamObserver<Number> requestObserver = noBlockStub.addSeqOfNumbers(new StreamObserver<Result>() {
-                            @Override
-                            public void onNext(Result result) {
-                                System.out.println("addSeqOfNumbers" + result.getId() + " = " + result.getRes());
-                            }
-
-                            @Override
-                            public void onError(Throwable throwable) {
-                                System.out.println("addSeqOfNumbers error: " + throwable.getMessage());
-                            }
-
-                            @Override
-                            public void onCompleted() {
-                                System.out.println("AddSeqOfNumbers completed");
-                            }
-                        });
-                        try {
-                            for (Number number : numbers) {
-                                System.out.println("Sequence of numbers: " + number.getNum());
-                                requestObserver.onNext(number);
-                            }
-                        } catch (RuntimeException e) {
-                            requestObserver.onError(e);
-                            throw e;
-                        }
-                        requestObserver.onCompleted();
+                        
                         break;
                     case 4: //sequencia de operacões de soma x + y
-                        StreamObserver<AddOperands> requestObserver1 = noBlockStub.multipleAdd(new StreamObserver<Result>() {
-                            @Override
-                            public void onNext(Result result) {
-                                System.out.println("multipleAdd" + result.getId() + "=" + result.getRes());
-                            }
-
-                            @Override
-                            public void onError(Throwable throwable) {
-                                System.out.println("multipleAdd error: " + throwable.getMessage());
-                            }
-
-                            @Override
-                            public void onCompleted() {
-                                System.out.println("multipleAdd completed");
-                            }
-                        });
-                        try {
-                            for (AddOperands operand : addOperands) {
-                                System.out.println("Sequence of numbers: " + operand.getOp1() + "+" + operand.getOp2());
-                                requestObserver1.onNext(operand);
-                                Thread.sleep(1000);
-                            }
-                        } catch (RuntimeException e) {
-                            requestObserver1.onError(e);
-                            throw e;
-                        }
-                        requestObserver1.onCompleted();
+                        
                         break;
                     case 99:
                         System.exit(0);

@@ -1,6 +1,6 @@
 package clientapp;
 
-import calcstubs.Result;
+import clientregisterstubs.Result;
 import io.grpc.stub.StreamObserver;
 
 import java.util.ArrayList;
