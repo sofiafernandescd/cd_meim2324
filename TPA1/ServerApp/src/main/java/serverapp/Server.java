@@ -8,7 +8,7 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 
-public class Server extends RegisterServerGrpc.RegisterServerImplBase {
+public class Server extends RegisterServerServiceGrpc.RegisterServerServiceImplBase {
 
     private static int svcPort = 8500;
 

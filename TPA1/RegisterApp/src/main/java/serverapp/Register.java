@@ -1,11 +1,12 @@
 package serverapp;
 
+import clientregisterstubs.RegisterServiceGrpc;
 import registerserverstubs.*;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 
-public class Register extends RegisterServerGrpc.RegisterServerImplBase{
+public class Register extends RegisterServiceGrpc.RegisterServiceImplBase{
 
     private static int svcPort = 8500;
 

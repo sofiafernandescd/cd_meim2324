@@ -1,4 +1,17 @@
-package main.java.serverapp;
+package serverapp;
+
+import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.model.Bind;
+import com.github.dockerjava.api.model.HostConfig;
+import com.github.dockerjava.api.model.Volume;
+import com.github.dockerjava.core.DockerClientBuilder;
+import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DockerAPI {
     public static void main(String[] args) {

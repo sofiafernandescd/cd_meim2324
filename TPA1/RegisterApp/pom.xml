@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>exgrpc</groupId>
-    <artifactId>CalcServerApp</artifactId>
+    <artifactId>RegisterApp</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -19,7 +19,12 @@
 
         <dependency>
             <groupId>exgrpc</groupId>
-            <artifactId>CalcContract</artifactId>
+            <artifactId>ContractClientRegister</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>exgrpc</groupId>
+            <artifactId>ContractRegisterServer</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
@@ -42,7 +47,7 @@
                     </descriptors>
                     <archive>
                         <manifest>
-                            <mainClass>serverapp.Server</mainClass>
+                            <mainClass>serverapp.Register</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

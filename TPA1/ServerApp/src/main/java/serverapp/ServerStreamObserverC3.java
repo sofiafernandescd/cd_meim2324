@@ -1,21 +1,24 @@
 package serverapp;
 
-import calcstubs.Number;
-import calcstubs.Result;
+import com.google.protobuf.ByteString;
+import registerserverstubs.*;
+import clientserverstubs.*;
 import io.grpc.stub.StreamObserver;
 
-public class ServerStreamObserverC3 implements StreamObserver<Number> {
-    StreamObserver<Result> sFinalResult;
-    int finalResult;
+import java.awt.*;
 
-    public ServerStreamObserverC3(StreamObserver<Result> sresults) {
+public class ServerStreamObserverC3 implements StreamObserver<ImageBlock> {
+    StreamObserver<ImageBlock> sFinalResult;
+    ImageBlock finalResult;
+
+    public ServerStreamObserverC3(StreamObserver<ImageBlock> sresults) {
         this.sFinalResult = sresults;
     }
 
 
     @Override
-    public void onNext(Number number) {
-        finalResult += number.getNum();
+    public void onNext(ImageBlock number) {
+        finalResult = number;
     }
 
     @Override
@@ -25,7 +28,7 @@ public class ServerStreamObserverC3 implements StreamObserver<Number> {
 
     @Override
     public void onCompleted() {
-        Result result = Result.newBuilder().setId("Soma").setRes(finalResult).build();
+        ImageBlock result = ImageBlock.newBuilder().setData(finalResult.getData()).build();
         sFinalResult.onNext(result);
         sFinalResult.onCompleted();
     }
