@@ -15,20 +15,25 @@ public final class RegisterServerServiceOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_registerserverservice_AddOperands_descriptor;
+    internal_static_registerserverservice_ServerInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_registerserverservice_AddOperands_fieldAccessorTable;
+      internal_static_registerserverservice_ServerInfo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_registerserverservice_NumberAndMaxExponent_descriptor;
+    internal_static_registerserverservice_ServerList_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_registerserverservice_NumberAndMaxExponent_fieldAccessorTable;
+      internal_static_registerserverservice_ServerList_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_registerserverservice_Number_descriptor;
+    internal_static_registerserverservice_Empty_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_registerserverservice_Number_fieldAccessorTable;
+      internal_static_registerserverservice_Empty_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_registerserverservice_ServerResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_registerserverservice_ServerResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_registerserverservice_Result_descriptor;
   static final 
@@ -44,50 +49,53 @@ public final class RegisterServerServiceOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\033RegisterServerService.proto\022\025registers" +
-      "erverservice\"3\n\013AddOperands\022\n\n\002Id\030\001 \001(\t\022" +
-      "\013\n\003op1\030\002 \001(\005\022\013\n\003op2\030\003 \001(\005\"K\n\024NumberAndMa" +
-      "xExponent\022\n\n\002Id\030\001 \001(\t\022\022\n\nbaseNumber\030\002 \001(" +
-      "\005\022\023\n\013maxExponent\030\003 \001(\005\"\025\n\006Number\022\013\n\003num\030" +
-      "\001 \001(\005\"!\n\006Result\022\n\n\002Id\030\001 \001(\t\022\013\n\003res\030\002 \001(\005" +
-      "2\352\002\n\025RegisterServerService\022H\n\003add\022\".regi" +
-      "sterserverservice.AddOperands\032\035.register" +
-      "serverservice.Result\022^\n\016generatePowers\022+" +
-      ".registerserverservice.NumberAndMaxExpon" +
-      "ent\032\035.registerserverservice.Result0\001\022Q\n\017" +
-      "addSeqOfNumbers\022\035.registerserverservice." +
-      "Number\032\035.registerserverservice.Result(\001\022" +
-      "T\n\013multipleAdd\022\".registerserverservice.A" +
-      "ddOperands\032\035.registerserverservice.Resul" +
-      "t(\0010\001B\027\n\023registerserverstubsP\001b\006proto3"
+      "erverservice\"9\n\nServerInfo\022\021\n\tserver_id\030" +
+      "\001 \001(\t\022\n\n\002ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\005\"@\n\nServe" +
+      "rList\0222\n\007servers\030\001 \003(\0132!.registerservers" +
+      "ervice.ServerInfo\"\007\n\005Empty\"\"\n\016ServerResp" +
+      "onse\022\020\n\010response\030\001 \001(\t\"\030\n\006Result\022\016\n\006resu" +
+      "lt\030\001 \001(\t2\314\001\n\025RegisterServerService\022Z\n\016Re" +
+      "gisterServer\022!.registerserverservice.Ser" +
+      "verInfo\032%.registerserverservice.ServerRe" +
+      "sponse\022W\n\024GetRegisteredServers\022\034.registe" +
+      "rserverservice.Empty\032!.registerserverser" +
+      "vice.ServerListB\027\n\023registerserverstubsP\001" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_registerserverservice_AddOperands_descriptor =
+    internal_static_registerserverservice_ServerInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_registerserverservice_AddOperands_fieldAccessorTable = new
+    internal_static_registerserverservice_ServerInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_registerserverservice_AddOperands_descriptor,
-        new java.lang.String[] { "Id", "Op1", "Op2", });
-    internal_static_registerserverservice_NumberAndMaxExponent_descriptor =
+        internal_static_registerserverservice_ServerInfo_descriptor,
+        new java.lang.String[] { "ServerId", "Ip", "Port", });
+    internal_static_registerserverservice_ServerList_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_registerserverservice_NumberAndMaxExponent_fieldAccessorTable = new
+    internal_static_registerserverservice_ServerList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_registerserverservice_NumberAndMaxExponent_descriptor,
-        new java.lang.String[] { "Id", "BaseNumber", "MaxExponent", });
-    internal_static_registerserverservice_Number_descriptor =
+        internal_static_registerserverservice_ServerList_descriptor,
+        new java.lang.String[] { "Servers", });
+    internal_static_registerserverservice_Empty_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_registerserverservice_Number_fieldAccessorTable = new
+    internal_static_registerserverservice_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_registerserverservice_Number_descriptor,
-        new java.lang.String[] { "Num", });
-    internal_static_registerserverservice_Result_descriptor =
+        internal_static_registerserverservice_Empty_descriptor,
+        new java.lang.String[] { });
+    internal_static_registerserverservice_ServerResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_registerserverservice_ServerResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_registerserverservice_ServerResponse_descriptor,
+        new java.lang.String[] { "Response", });
+    internal_static_registerserverservice_Result_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_registerserverservice_Result_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_registerserverservice_Result_descriptor,
-        new java.lang.String[] { "Id", "Res", });
+        new java.lang.String[] { "Result", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

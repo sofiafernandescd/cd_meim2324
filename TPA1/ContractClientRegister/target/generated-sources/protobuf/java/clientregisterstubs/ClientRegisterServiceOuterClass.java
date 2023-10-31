@@ -15,20 +15,15 @@ public final class ClientRegisterServiceOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientregisterservice_AddOperands_descriptor;
+    internal_static_clientregisterservice_ClientRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientregisterservice_AddOperands_fieldAccessorTable;
+      internal_static_clientregisterservice_ClientRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientregisterservice_NumberAndMaxExponent_descriptor;
+    internal_static_clientregisterservice_ServerInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientregisterservice_NumberAndMaxExponent_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientregisterservice_Number_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientregisterservice_Number_fieldAccessorTable;
+      internal_static_clientregisterservice_ServerInfo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_clientregisterservice_Result_descriptor;
   static final 
@@ -44,50 +39,40 @@ public final class ClientRegisterServiceOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\033ClientRegisterService.proto\022\025clientreg" +
-      "isterservice\"3\n\013AddOperands\022\n\n\002Id\030\001 \001(\t\022" +
-      "\013\n\003op1\030\002 \001(\005\022\013\n\003op2\030\003 \001(\005\"K\n\024NumberAndMa" +
-      "xExponent\022\n\n\002Id\030\001 \001(\t\022\022\n\nbaseNumber\030\002 \001(" +
-      "\005\022\023\n\013maxExponent\030\003 \001(\005\"\025\n\006Number\022\013\n\003num\030" +
-      "\001 \001(\005\"!\n\006Result\022\n\n\002Id\030\001 \001(\t\022\013\n\003res\030\002 \001(\005" +
-      "2\352\002\n\025ClientRegisterService\022H\n\003add\022\".clie" +
-      "ntregisterservice.AddOperands\032\035.clientre" +
-      "gisterservice.Result\022^\n\016generatePowers\022+" +
-      ".clientregisterservice.NumberAndMaxExpon" +
-      "ent\032\035.clientregisterservice.Result0\001\022Q\n\017" +
-      "addSeqOfNumbers\022\035.clientregisterservice." +
-      "Number\032\035.clientregisterservice.Result(\001\022" +
-      "T\n\013multipleAdd\022\".clientregisterservice.A" +
-      "ddOperands\032\035.clientregisterservice.Resul" +
-      "t(\0010\001B\027\n\023clientregisterstubsP\001b\006proto3"
+      "isterservice\"4\n\rClientRequest\022\021\n\tclient_" +
+      "id\030\001 \001(\t\022\020\n\010image_id\030\002 \001(\t\"9\n\nServerInfo" +
+      "\022\021\n\tserver_id\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\022\014\n\004port\030" +
+      "\003 \001(\005\"\030\n\006Result\022\016\n\006result\030\001 \001(\t2u\n\025Clien" +
+      "tRegisterService\022\\\n\021GetServerEndpoint\022$." +
+      "clientregisterservice.ClientRequest\032!.cl" +
+      "ientregisterservice.ServerInfo2o\n\017Regist" +
+      "erService\022\\\n\021GetServerEndpoint\022$.clientr" +
+      "egisterservice.ClientRequest\032!.clientreg" +
+      "isterservice.ServerInfoB\027\n\023clientregiste" +
+      "rstubsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_clientregisterservice_AddOperands_descriptor =
+    internal_static_clientregisterservice_ClientRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_clientregisterservice_AddOperands_fieldAccessorTable = new
+    internal_static_clientregisterservice_ClientRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientregisterservice_AddOperands_descriptor,
-        new java.lang.String[] { "Id", "Op1", "Op2", });
-    internal_static_clientregisterservice_NumberAndMaxExponent_descriptor =
+        internal_static_clientregisterservice_ClientRequest_descriptor,
+        new java.lang.String[] { "ClientId", "ImageId", });
+    internal_static_clientregisterservice_ServerInfo_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_clientregisterservice_NumberAndMaxExponent_fieldAccessorTable = new
+    internal_static_clientregisterservice_ServerInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientregisterservice_NumberAndMaxExponent_descriptor,
-        new java.lang.String[] { "Id", "BaseNumber", "MaxExponent", });
-    internal_static_clientregisterservice_Number_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_clientregisterservice_Number_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientregisterservice_Number_descriptor,
-        new java.lang.String[] { "Num", });
+        internal_static_clientregisterservice_ServerInfo_descriptor,
+        new java.lang.String[] { "ServerId", "Ip", "Port", });
     internal_static_clientregisterservice_Result_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_clientregisterservice_Result_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_clientregisterservice_Result_descriptor,
-        new java.lang.String[] { "Id", "Res", });
+        new java.lang.String[] { "Result", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

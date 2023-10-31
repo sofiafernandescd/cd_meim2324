@@ -1,10 +1,9 @@
-/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/NumberOrBuilder.java
-/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/NumberAndMaxExponent.java
 /Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ClientRegisterServiceOuterClass.java
-/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/AddOperandsOrBuilder.java
+/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ClientRequestOrBuilder.java
 /Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/Result.java
 /Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/grpc-java/clientregisterstubs/ClientRegisterServiceGrpc.java
-/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/Number.java
 /Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ResultOrBuilder.java
-/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/NumberAndMaxExponentOrBuilder.java
-/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/AddOperands.java
+/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ServerInfoOrBuilder.java
+/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ServerInfo.java
+/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ClientRequest.java
+/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/TPA1/ContractClientRegister/target/generated-sources/protobuf/grpc-java/clientregisterstubs/RegisterServiceGrpc.java

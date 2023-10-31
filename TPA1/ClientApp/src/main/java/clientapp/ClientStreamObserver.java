@@ -17,7 +17,7 @@ public class ClientStreamObserver implements StreamObserver<Result> {
 
     @Override
     public void onNext(Result result) {
-        System.out.println("Result ("+ result.getId() +"):"+ result.getRes());
+        System.out.println("Result");
         results.add(result);
     }
 

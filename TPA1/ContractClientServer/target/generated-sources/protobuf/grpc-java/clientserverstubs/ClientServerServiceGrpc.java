@@ -18,128 +18,97 @@ public final class ClientServerServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "clientserverservice.ClientServerService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<clientserverstubs.AddOperands,
-      clientserverstubs.Result> getAddMethod;
+  private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageBlock,
+      clientserverstubs.ImageProcessResponse> getProcessImageToServerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "add",
-      requestType = clientserverstubs.AddOperands.class,
-      responseType = clientserverstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<clientserverstubs.AddOperands,
-      clientserverstubs.Result> getAddMethod() {
-    io.grpc.MethodDescriptor<clientserverstubs.AddOperands, clientserverstubs.Result> getAddMethod;
-    if ((getAddMethod = ClientServerServiceGrpc.getAddMethod) == null) {
-      synchronized (ClientServerServiceGrpc.class) {
-        if ((getAddMethod = ClientServerServiceGrpc.getAddMethod) == null) {
-          ClientServerServiceGrpc.getAddMethod = getAddMethod =
-              io.grpc.MethodDescriptor.<clientserverstubs.AddOperands, clientserverstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "add"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.AddOperands.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("add"))
-              .build();
-        }
-      }
-    }
-    return getAddMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<clientserverstubs.NumberAndMaxExponent,
-      clientserverstubs.Result> getGeneratePowersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "generatePowers",
-      requestType = clientserverstubs.NumberAndMaxExponent.class,
-      responseType = clientserverstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<clientserverstubs.NumberAndMaxExponent,
-      clientserverstubs.Result> getGeneratePowersMethod() {
-    io.grpc.MethodDescriptor<clientserverstubs.NumberAndMaxExponent, clientserverstubs.Result> getGeneratePowersMethod;
-    if ((getGeneratePowersMethod = ClientServerServiceGrpc.getGeneratePowersMethod) == null) {
-      synchronized (ClientServerServiceGrpc.class) {
-        if ((getGeneratePowersMethod = ClientServerServiceGrpc.getGeneratePowersMethod) == null) {
-          ClientServerServiceGrpc.getGeneratePowersMethod = getGeneratePowersMethod =
-              io.grpc.MethodDescriptor.<clientserverstubs.NumberAndMaxExponent, clientserverstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "generatePowers"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.NumberAndMaxExponent.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("generatePowers"))
-              .build();
-        }
-      }
-    }
-    return getGeneratePowersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<clientserverstubs.Number,
-      clientserverstubs.Result> getAddSeqOfNumbersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "addSeqOfNumbers",
-      requestType = clientserverstubs.Number.class,
-      responseType = clientserverstubs.Result.class,
+      fullMethodName = SERVICE_NAME + '/' + "ProcessImageToServer",
+      requestType = clientserverstubs.ImageBlock.class,
+      responseType = clientserverstubs.ImageProcessResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<clientserverstubs.Number,
-      clientserverstubs.Result> getAddSeqOfNumbersMethod() {
-    io.grpc.MethodDescriptor<clientserverstubs.Number, clientserverstubs.Result> getAddSeqOfNumbersMethod;
-    if ((getAddSeqOfNumbersMethod = ClientServerServiceGrpc.getAddSeqOfNumbersMethod) == null) {
+  public static io.grpc.MethodDescriptor<clientserverstubs.ImageBlock,
+      clientserverstubs.ImageProcessResponse> getProcessImageToServerMethod() {
+    io.grpc.MethodDescriptor<clientserverstubs.ImageBlock, clientserverstubs.ImageProcessResponse> getProcessImageToServerMethod;
+    if ((getProcessImageToServerMethod = ClientServerServiceGrpc.getProcessImageToServerMethod) == null) {
       synchronized (ClientServerServiceGrpc.class) {
-        if ((getAddSeqOfNumbersMethod = ClientServerServiceGrpc.getAddSeqOfNumbersMethod) == null) {
-          ClientServerServiceGrpc.getAddSeqOfNumbersMethod = getAddSeqOfNumbersMethod =
-              io.grpc.MethodDescriptor.<clientserverstubs.Number, clientserverstubs.Result>newBuilder()
+        if ((getProcessImageToServerMethod = ClientServerServiceGrpc.getProcessImageToServerMethod) == null) {
+          ClientServerServiceGrpc.getProcessImageToServerMethod = getProcessImageToServerMethod =
+              io.grpc.MethodDescriptor.<clientserverstubs.ImageBlock, clientserverstubs.ImageProcessResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "addSeqOfNumbers"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessImageToServer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.Number.getDefaultInstance()))
+                  clientserverstubs.ImageBlock.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("addSeqOfNumbers"))
+                  clientserverstubs.ImageProcessResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("ProcessImageToServer"))
               .build();
         }
       }
     }
-    return getAddSeqOfNumbersMethod;
+    return getProcessImageToServerMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<clientserverstubs.AddOperands,
-      clientserverstubs.Result> getMultipleAddMethod;
+  private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageStatusRequest,
+      clientserverstubs.ImageStatusResponse> getCheckImageStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "multipleAdd",
-      requestType = clientserverstubs.AddOperands.class,
-      responseType = clientserverstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<clientserverstubs.AddOperands,
-      clientserverstubs.Result> getMultipleAddMethod() {
-    io.grpc.MethodDescriptor<clientserverstubs.AddOperands, clientserverstubs.Result> getMultipleAddMethod;
-    if ((getMultipleAddMethod = ClientServerServiceGrpc.getMultipleAddMethod) == null) {
+      fullMethodName = SERVICE_NAME + '/' + "CheckImageStatus",
+      requestType = clientserverstubs.ImageStatusRequest.class,
+      responseType = clientserverstubs.ImageStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<clientserverstubs.ImageStatusRequest,
+      clientserverstubs.ImageStatusResponse> getCheckImageStatusMethod() {
+    io.grpc.MethodDescriptor<clientserverstubs.ImageStatusRequest, clientserverstubs.ImageStatusResponse> getCheckImageStatusMethod;
+    if ((getCheckImageStatusMethod = ClientServerServiceGrpc.getCheckImageStatusMethod) == null) {
       synchronized (ClientServerServiceGrpc.class) {
-        if ((getMultipleAddMethod = ClientServerServiceGrpc.getMultipleAddMethod) == null) {
-          ClientServerServiceGrpc.getMultipleAddMethod = getMultipleAddMethod =
-              io.grpc.MethodDescriptor.<clientserverstubs.AddOperands, clientserverstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "multipleAdd"))
+        if ((getCheckImageStatusMethod = ClientServerServiceGrpc.getCheckImageStatusMethod) == null) {
+          ClientServerServiceGrpc.getCheckImageStatusMethod = getCheckImageStatusMethod =
+              io.grpc.MethodDescriptor.<clientserverstubs.ImageStatusRequest, clientserverstubs.ImageStatusResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckImageStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.AddOperands.getDefaultInstance()))
+                  clientserverstubs.ImageStatusRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("multipleAdd"))
+                  clientserverstubs.ImageStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("CheckImageStatus"))
               .build();
         }
       }
     }
-    return getMultipleAddMethod;
+    return getCheckImageStatusMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequest,
+      clientserverstubs.ImageBlock> getDownloadMarkedImageMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DownloadMarkedImage",
+      requestType = clientserverstubs.ImageDownloadRequest.class,
+      responseType = clientserverstubs.ImageBlock.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequest,
+      clientserverstubs.ImageBlock> getDownloadMarkedImageMethod() {
+    io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequest, clientserverstubs.ImageBlock> getDownloadMarkedImageMethod;
+    if ((getDownloadMarkedImageMethod = ClientServerServiceGrpc.getDownloadMarkedImageMethod) == null) {
+      synchronized (ClientServerServiceGrpc.class) {
+        if ((getDownloadMarkedImageMethod = ClientServerServiceGrpc.getDownloadMarkedImageMethod) == null) {
+          ClientServerServiceGrpc.getDownloadMarkedImageMethod = getDownloadMarkedImageMethod =
+              io.grpc.MethodDescriptor.<clientserverstubs.ImageDownloadRequest, clientserverstubs.ImageBlock>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadMarkedImage"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientserverstubs.ImageDownloadRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientserverstubs.ImageBlock.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("DownloadMarkedImage"))
+              .build();
+        }
+      }
+    }
+    return getDownloadMarkedImageMethod;
   }
 
   /**
@@ -195,42 +164,32 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Enviar uma imagem para processamento a um servidor específico
      * </pre>
      */
-    default void add(clientserverstubs.AddOperands request,
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddMethod(), responseObserver);
+    default io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> processImageToServer(
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageProcessResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getProcessImageToServerMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
+     * Verificar o status de processamento de uma imagem
      * </pre>
      */
-    default void generatePowers(clientserverstubs.NumberAndMaxExponent request,
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneratePowersMethod(), responseObserver);
+    default void checkImageStatus(clientserverstubs.ImageStatusRequest request,
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckImageStatusMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     * add a sequence of numbers, ex: 1,2, 10, 5 = 18
+     * Fazer o download de uma imagem marcada
      * </pre>
      */
-    default io.grpc.stub.StreamObserver<clientserverstubs.Number> addSeqOfNumbers(
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getAddSeqOfNumbersMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Multiple add operations using a bidirecional stream
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<clientserverstubs.AddOperands> multipleAdd(
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getMultipleAddMethod(), responseObserver);
+    default void downloadMarkedImage(clientserverstubs.ImageDownloadRequest request,
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadMarkedImageMethod(), responseObserver);
     }
   }
 
@@ -269,46 +228,35 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Enviar uma imagem para processamento a um servidor específico
      * </pre>
      */
-    public void add(clientserverstubs.AddOperands request,
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAddMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
-     * </pre>
-     */
-    public void generatePowers(clientserverstubs.NumberAndMaxExponent request,
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getGeneratePowersMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * add a sequence of numbers, ex: 1,2, 10, 5 = 18
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<clientserverstubs.Number> addSeqOfNumbers(
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
+    public io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> processImageToServer(
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageProcessResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getAddSeqOfNumbersMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getProcessImageToServerMethod(), getCallOptions()), responseObserver);
     }
 
     /**
      * <pre>
-     * Multiple add operations using a bidirecional stream
+     * Verificar o status de processamento de uma imagem
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<clientserverstubs.AddOperands> multipleAdd(
-        io.grpc.stub.StreamObserver<clientserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getMultipleAddMethod(), getCallOptions()), responseObserver);
+    public void checkImageStatus(clientserverstubs.ImageStatusRequest request,
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCheckImageStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Fazer o download de uma imagem marcada
+     * </pre>
+     */
+    public void downloadMarkedImage(clientserverstubs.ImageDownloadRequest request,
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getDownloadMarkedImageMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -333,23 +281,23 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Verificar o status de processamento de uma imagem
      * </pre>
      */
-    public clientserverstubs.Result add(clientserverstubs.AddOperands request) {
+    public clientserverstubs.ImageStatusResponse checkImageStatus(clientserverstubs.ImageStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAddMethod(), getCallOptions(), request);
+          getChannel(), getCheckImageStatusMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
+     * Fazer o download de uma imagem marcada
      * </pre>
      */
-    public java.util.Iterator<clientserverstubs.Result> generatePowers(
-        clientserverstubs.NumberAndMaxExponent request) {
+    public java.util.Iterator<clientserverstubs.ImageBlock> downloadMarkedImage(
+        clientserverstubs.ImageDownloadRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getGeneratePowersMethod(), getCallOptions(), request);
+          getChannel(), getDownloadMarkedImageMethod(), getCallOptions(), request);
     }
   }
 
@@ -374,20 +322,19 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Verificar o status de processamento de uma imagem
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<clientserverstubs.Result> add(
-        clientserverstubs.AddOperands request) {
+    public com.google.common.util.concurrent.ListenableFuture<clientserverstubs.ImageStatusResponse> checkImageStatus(
+        clientserverstubs.ImageStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAddMethod(), getCallOptions()), request);
+          getChannel().newCall(getCheckImageStatusMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_ADD = 0;
-  private static final int METHODID_GENERATE_POWERS = 1;
-  private static final int METHODID_ADD_SEQ_OF_NUMBERS = 2;
-  private static final int METHODID_MULTIPLE_ADD = 3;
+  private static final int METHODID_CHECK_IMAGE_STATUS = 0;
+  private static final int METHODID_DOWNLOAD_MARKED_IMAGE = 1;
+  private static final int METHODID_PROCESS_IMAGE_TO_SERVER = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -406,13 +353,13 @@ public final class ClientServerServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ADD:
-          serviceImpl.add((clientserverstubs.AddOperands) request,
-              (io.grpc.stub.StreamObserver<clientserverstubs.Result>) responseObserver);
+        case METHODID_CHECK_IMAGE_STATUS:
+          serviceImpl.checkImageStatus((clientserverstubs.ImageStatusRequest) request,
+              (io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse>) responseObserver);
           break;
-        case METHODID_GENERATE_POWERS:
-          serviceImpl.generatePowers((clientserverstubs.NumberAndMaxExponent) request,
-              (io.grpc.stub.StreamObserver<clientserverstubs.Result>) responseObserver);
+        case METHODID_DOWNLOAD_MARKED_IMAGE:
+          serviceImpl.downloadMarkedImage((clientserverstubs.ImageDownloadRequest) request,
+              (io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -424,12 +371,9 @@ public final class ClientServerServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ADD_SEQ_OF_NUMBERS:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.addSeqOfNumbers(
-              (io.grpc.stub.StreamObserver<clientserverstubs.Result>) responseObserver);
-        case METHODID_MULTIPLE_ADD:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.multipleAdd(
-              (io.grpc.stub.StreamObserver<clientserverstubs.Result>) responseObserver);
+        case METHODID_PROCESS_IMAGE_TO_SERVER:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.processImageToServer(
+              (io.grpc.stub.StreamObserver<clientserverstubs.ImageProcessResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -439,33 +383,26 @@ public final class ClientServerServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getAddMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              clientserverstubs.AddOperands,
-              clientserverstubs.Result>(
-                service, METHODID_ADD)))
-        .addMethod(
-          getGeneratePowersMethod(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-            new MethodHandlers<
-              clientserverstubs.NumberAndMaxExponent,
-              clientserverstubs.Result>(
-                service, METHODID_GENERATE_POWERS)))
-        .addMethod(
-          getAddSeqOfNumbersMethod(),
+          getProcessImageToServerMethod(),
           io.grpc.stub.ServerCalls.asyncClientStreamingCall(
             new MethodHandlers<
-              clientserverstubs.Number,
-              clientserverstubs.Result>(
-                service, METHODID_ADD_SEQ_OF_NUMBERS)))
+              clientserverstubs.ImageBlock,
+              clientserverstubs.ImageProcessResponse>(
+                service, METHODID_PROCESS_IMAGE_TO_SERVER)))
         .addMethod(
-          getMultipleAddMethod(),
-          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+          getCheckImageStatusMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              clientserverstubs.AddOperands,
-              clientserverstubs.Result>(
-                service, METHODID_MULTIPLE_ADD)))
+              clientserverstubs.ImageStatusRequest,
+              clientserverstubs.ImageStatusResponse>(
+                service, METHODID_CHECK_IMAGE_STATUS)))
+        .addMethod(
+          getDownloadMarkedImageMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              clientserverstubs.ImageDownloadRequest,
+              clientserverstubs.ImageBlock>(
+                service, METHODID_DOWNLOAD_MARKED_IMAGE)))
         .build();
   }
 
@@ -514,10 +451,9 @@ public final class ClientServerServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ClientServerServiceFileDescriptorSupplier())
-              .addMethod(getAddMethod())
-              .addMethod(getGeneratePowersMethod())
-              .addMethod(getAddSeqOfNumbersMethod())
-              .addMethod(getMultipleAddMethod())
+              .addMethod(getProcessImageToServerMethod())
+              .addMethod(getCheckImageStatusMethod())
+              .addMethod(getDownloadMarkedImageMethod())
               .build();
         }
       }

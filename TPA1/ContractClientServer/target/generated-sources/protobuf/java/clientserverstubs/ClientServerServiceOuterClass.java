@@ -15,25 +15,30 @@ public final class ClientServerServiceOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientserverservice_AddOperands_descriptor;
+    internal_static_clientserverservice_ImageBlock_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientserverservice_AddOperands_fieldAccessorTable;
+      internal_static_clientserverservice_ImageBlock_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientserverservice_NumberAndMaxExponent_descriptor;
+    internal_static_clientserverservice_ImageProcessResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientserverservice_NumberAndMaxExponent_fieldAccessorTable;
+      internal_static_clientserverservice_ImageProcessResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientserverservice_Number_descriptor;
+    internal_static_clientserverservice_ImageStatusRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientserverservice_Number_fieldAccessorTable;
+      internal_static_clientserverservice_ImageStatusRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientserverservice_Result_descriptor;
+    internal_static_clientserverservice_ImageStatusResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientserverservice_Result_fieldAccessorTable;
+      internal_static_clientserverservice_ImageStatusResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_clientserverservice_ImageDownloadRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_clientserverservice_ImageDownloadRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -44,50 +49,56 @@ public final class ClientServerServiceOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\031ClientServerService.proto\022\023clientserve" +
-      "rservice\"3\n\013AddOperands\022\n\n\002Id\030\001 \001(\t\022\013\n\003o" +
-      "p1\030\002 \001(\005\022\013\n\003op2\030\003 \001(\005\"K\n\024NumberAndMaxExp" +
-      "onent\022\n\n\002Id\030\001 \001(\t\022\022\n\nbaseNumber\030\002 \001(\005\022\023\n" +
-      "\013maxExponent\030\003 \001(\005\"\025\n\006Number\022\013\n\003num\030\001 \001(" +
-      "\005\"!\n\006Result\022\n\n\002Id\030\001 \001(\t\022\013\n\003res\030\002 \001(\0052\330\002\n" +
-      "\023ClientServerService\022D\n\003add\022 .clientserv" +
-      "erservice.AddOperands\032\033.clientserverserv" +
-      "ice.Result\022Z\n\016generatePowers\022).clientser" +
-      "verservice.NumberAndMaxExponent\032\033.client" +
-      "serverservice.Result0\001\022M\n\017addSeqOfNumber" +
-      "s\022\033.clientserverservice.Number\032\033.clients" +
-      "erverservice.Result(\001\022P\n\013multipleAdd\022 .c" +
-      "lientserverservice.AddOperands\032\033.clients" +
-      "erverservice.Result(\0010\001B\025\n\021clientservers" +
-      "tubsP\001b\006proto3"
+      "rservice\"\032\n\nImageBlock\022\014\n\004data\030\001 \001(\014\"8\n\024" +
+      "ImageProcessResponse\022\020\n\010image_id\030\001 \001(\t\022\016" +
+      "\n\006status\030\002 \001(\t\"&\n\022ImageStatusRequest\022\020\n\010" +
+      "image_id\030\001 \001(\t\"7\n\023ImageStatusResponse\022\020\n" +
+      "\010image_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"(\n\024Image" +
+      "DownloadRequest\022\020\n\010image_id\030\001 \001(\t2\307\002\n\023Cl" +
+      "ientServerService\022d\n\024ProcessImageToServe" +
+      "r\022\037.clientserverservice.ImageBlock\032).cli" +
+      "entserverservice.ImageProcessResponse(\001\022" +
+      "e\n\020CheckImageStatus\022\'.clientserverservic" +
+      "e.ImageStatusRequest\032(.clientserverservi" +
+      "ce.ImageStatusResponse\022c\n\023DownloadMarked" +
+      "Image\022).clientserverservice.ImageDownloa" +
+      "dRequest\032\037.clientserverservice.ImageBloc" +
+      "k0\001B\025\n\021clientserverstubsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_clientserverservice_AddOperands_descriptor =
+    internal_static_clientserverservice_ImageBlock_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_clientserverservice_AddOperands_fieldAccessorTable = new
+    internal_static_clientserverservice_ImageBlock_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientserverservice_AddOperands_descriptor,
-        new java.lang.String[] { "Id", "Op1", "Op2", });
-    internal_static_clientserverservice_NumberAndMaxExponent_descriptor =
+        internal_static_clientserverservice_ImageBlock_descriptor,
+        new java.lang.String[] { "Data", });
+    internal_static_clientserverservice_ImageProcessResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_clientserverservice_NumberAndMaxExponent_fieldAccessorTable = new
+    internal_static_clientserverservice_ImageProcessResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientserverservice_NumberAndMaxExponent_descriptor,
-        new java.lang.String[] { "Id", "BaseNumber", "MaxExponent", });
-    internal_static_clientserverservice_Number_descriptor =
+        internal_static_clientserverservice_ImageProcessResponse_descriptor,
+        new java.lang.String[] { "ImageId", "Status", });
+    internal_static_clientserverservice_ImageStatusRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_clientserverservice_Number_fieldAccessorTable = new
+    internal_static_clientserverservice_ImageStatusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientserverservice_Number_descriptor,
-        new java.lang.String[] { "Num", });
-    internal_static_clientserverservice_Result_descriptor =
+        internal_static_clientserverservice_ImageStatusRequest_descriptor,
+        new java.lang.String[] { "ImageId", });
+    internal_static_clientserverservice_ImageStatusResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_clientserverservice_Result_fieldAccessorTable = new
+    internal_static_clientserverservice_ImageStatusResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientserverservice_Result_descriptor,
-        new java.lang.String[] { "Id", "Res", });
+        internal_static_clientserverservice_ImageStatusResponse_descriptor,
+        new java.lang.String[] { "ImageId", "Status", });
+    internal_static_clientserverservice_ImageDownloadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_clientserverservice_ImageDownloadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_clientserverservice_ImageDownloadRequest_descriptor,
+        new java.lang.String[] { "ImageId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

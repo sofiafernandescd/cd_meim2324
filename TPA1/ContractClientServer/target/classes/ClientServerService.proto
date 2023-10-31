@@ -7,32 +7,50 @@ package clientserverservice; // package do proto
 
 // serviço com operações sobre números
 service ClientServerService {
-    // add two numbers
-    rpc add(AddOperands) returns (Result);
-	// generate the number powers with exponents betwwen 1 and maximum 
-	  rpc generatePowers (NumberAndMaxExponent) returns (stream Result);
-	// add a sequence of numbers, ex: 1,2, 10, 5 = 18
-    rpc addSeqOfNumbers (stream Number) returns (Result);
-	// Multiple add operations using a bidirecional stream
-    rpc multipleAdd(stream AddOperands) returns (stream Result);
+
+  // 2. Uma aplicação Cliente usa dois contratos: 
+  // i) operação de acesso ao servidor Register para obter a localização de um dos servidores registados; 
+  // ii) (este) operações que permitem realizar upload de imagens para um servidor, uma lista de keywords 
+  // a serem marcadas na imagem inicial e a obtenção posterior da correspondente imagem marcada;
+ 
+  // 4. A transferência dos ficheiros imagem (upload e download) entre os clientes e os servidores deve ser
+  // realizada por streaming de blocos, por exemplo, de 32 Kbyte;
+
+  // Enviar uma imagem para processamento a um servidor específico
+  rpc ProcessImageToServer(stream ImageBlock) returns (ImageProcessResponse);
+
+  // 3. Um Cliente pode submeter um conjunto de imagens e só posteriormente pedir ao servidor para obter
+  // (download) uma imagem marcada específica. Assim o servidor após receber uma imagem a processar
+  // deve retornar um identificador único que identifique a imagem. Através desse identificador o Cliente
+  // pode também interrogar o servidor se a imagem correspondente já foi processada, isto é, se já pode
+  // fazer o download da imagem marcada;
+
+  // Verificar o status de processamento de uma imagem
+  rpc CheckImageStatus(ImageStatusRequest) returns (ImageStatusResponse);
+
+  // Fazer o download de uma imagem marcada
+  rpc DownloadMarkedImage(ImageDownloadRequest) returns (stream ImageBlock);
 }
 
-message AddOperands {
-    string Id = 1;
-    int32 op1 = 2;
-    int32 op2 = 3;
+
+message ImageBlock {
+  bytes data = 1;
 }
 
-message NumberAndMaxExponent {
-  string Id = 1;
-  int32 baseNumber= 2;
-  int32 maxExponent = 3;
-}
-message Number {
-    int32 num = 1;
+message ImageProcessResponse {
+  string image_id = 1;
+  string status = 2;
 }
 
-message Result {
-  string Id = 1;
-  int32 res = 2;
+message ImageStatusRequest {
+  string image_id = 1;
+}
+
+message ImageStatusResponse {
+  string image_id = 1;
+  string status = 2;
+}
+
+message ImageDownloadRequest {
+  string image_id = 1;
 }

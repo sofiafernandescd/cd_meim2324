@@ -4,7 +4,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  * <pre>
- * serviço com operações sobre números
+ * Serviço de registo de servidores
  * </pre>
  */
 @javax.annotation.Generated(
@@ -18,128 +18,66 @@ public final class RegisterServerServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "registerserverservice.RegisterServerService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<registerserverstubs.AddOperands,
-      registerserverstubs.Result> getAddMethod;
+  private static volatile io.grpc.MethodDescriptor<registerserverstubs.ServerInfo,
+      registerserverstubs.ServerResponse> getRegisterServerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "add",
-      requestType = registerserverstubs.AddOperands.class,
-      responseType = registerserverstubs.Result.class,
+      fullMethodName = SERVICE_NAME + '/' + "RegisterServer",
+      requestType = registerserverstubs.ServerInfo.class,
+      responseType = registerserverstubs.ServerResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<registerserverstubs.AddOperands,
-      registerserverstubs.Result> getAddMethod() {
-    io.grpc.MethodDescriptor<registerserverstubs.AddOperands, registerserverstubs.Result> getAddMethod;
-    if ((getAddMethod = RegisterServerServiceGrpc.getAddMethod) == null) {
+  public static io.grpc.MethodDescriptor<registerserverstubs.ServerInfo,
+      registerserverstubs.ServerResponse> getRegisterServerMethod() {
+    io.grpc.MethodDescriptor<registerserverstubs.ServerInfo, registerserverstubs.ServerResponse> getRegisterServerMethod;
+    if ((getRegisterServerMethod = RegisterServerServiceGrpc.getRegisterServerMethod) == null) {
       synchronized (RegisterServerServiceGrpc.class) {
-        if ((getAddMethod = RegisterServerServiceGrpc.getAddMethod) == null) {
-          RegisterServerServiceGrpc.getAddMethod = getAddMethod =
-              io.grpc.MethodDescriptor.<registerserverstubs.AddOperands, registerserverstubs.Result>newBuilder()
+        if ((getRegisterServerMethod = RegisterServerServiceGrpc.getRegisterServerMethod) == null) {
+          RegisterServerServiceGrpc.getRegisterServerMethod = getRegisterServerMethod =
+              io.grpc.MethodDescriptor.<registerserverstubs.ServerInfo, registerserverstubs.ServerResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "add"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterServer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.AddOperands.getDefaultInstance()))
+                  registerserverstubs.ServerInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("add"))
+                  registerserverstubs.ServerResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("RegisterServer"))
               .build();
         }
       }
     }
-    return getAddMethod;
+    return getRegisterServerMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<registerserverstubs.NumberAndMaxExponent,
-      registerserverstubs.Result> getGeneratePowersMethod;
+  private static volatile io.grpc.MethodDescriptor<registerserverstubs.Empty,
+      registerserverstubs.ServerList> getGetRegisteredServersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "generatePowers",
-      requestType = registerserverstubs.NumberAndMaxExponent.class,
-      responseType = registerserverstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<registerserverstubs.NumberAndMaxExponent,
-      registerserverstubs.Result> getGeneratePowersMethod() {
-    io.grpc.MethodDescriptor<registerserverstubs.NumberAndMaxExponent, registerserverstubs.Result> getGeneratePowersMethod;
-    if ((getGeneratePowersMethod = RegisterServerServiceGrpc.getGeneratePowersMethod) == null) {
+      fullMethodName = SERVICE_NAME + '/' + "GetRegisteredServers",
+      requestType = registerserverstubs.Empty.class,
+      responseType = registerserverstubs.ServerList.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<registerserverstubs.Empty,
+      registerserverstubs.ServerList> getGetRegisteredServersMethod() {
+    io.grpc.MethodDescriptor<registerserverstubs.Empty, registerserverstubs.ServerList> getGetRegisteredServersMethod;
+    if ((getGetRegisteredServersMethod = RegisterServerServiceGrpc.getGetRegisteredServersMethod) == null) {
       synchronized (RegisterServerServiceGrpc.class) {
-        if ((getGeneratePowersMethod = RegisterServerServiceGrpc.getGeneratePowersMethod) == null) {
-          RegisterServerServiceGrpc.getGeneratePowersMethod = getGeneratePowersMethod =
-              io.grpc.MethodDescriptor.<registerserverstubs.NumberAndMaxExponent, registerserverstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "generatePowers"))
+        if ((getGetRegisteredServersMethod = RegisterServerServiceGrpc.getGetRegisteredServersMethod) == null) {
+          RegisterServerServiceGrpc.getGetRegisteredServersMethod = getGetRegisteredServersMethod =
+              io.grpc.MethodDescriptor.<registerserverstubs.Empty, registerserverstubs.ServerList>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetRegisteredServers"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.NumberAndMaxExponent.getDefaultInstance()))
+                  registerserverstubs.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("generatePowers"))
+                  registerserverstubs.ServerList.getDefaultInstance()))
+              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("GetRegisteredServers"))
               .build();
         }
       }
     }
-    return getGeneratePowersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<registerserverstubs.Number,
-      registerserverstubs.Result> getAddSeqOfNumbersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "addSeqOfNumbers",
-      requestType = registerserverstubs.Number.class,
-      responseType = registerserverstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<registerserverstubs.Number,
-      registerserverstubs.Result> getAddSeqOfNumbersMethod() {
-    io.grpc.MethodDescriptor<registerserverstubs.Number, registerserverstubs.Result> getAddSeqOfNumbersMethod;
-    if ((getAddSeqOfNumbersMethod = RegisterServerServiceGrpc.getAddSeqOfNumbersMethod) == null) {
-      synchronized (RegisterServerServiceGrpc.class) {
-        if ((getAddSeqOfNumbersMethod = RegisterServerServiceGrpc.getAddSeqOfNumbersMethod) == null) {
-          RegisterServerServiceGrpc.getAddSeqOfNumbersMethod = getAddSeqOfNumbersMethod =
-              io.grpc.MethodDescriptor.<registerserverstubs.Number, registerserverstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "addSeqOfNumbers"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.Number.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("addSeqOfNumbers"))
-              .build();
-        }
-      }
-    }
-    return getAddSeqOfNumbersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<registerserverstubs.AddOperands,
-      registerserverstubs.Result> getMultipleAddMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "multipleAdd",
-      requestType = registerserverstubs.AddOperands.class,
-      responseType = registerserverstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<registerserverstubs.AddOperands,
-      registerserverstubs.Result> getMultipleAddMethod() {
-    io.grpc.MethodDescriptor<registerserverstubs.AddOperands, registerserverstubs.Result> getMultipleAddMethod;
-    if ((getMultipleAddMethod = RegisterServerServiceGrpc.getMultipleAddMethod) == null) {
-      synchronized (RegisterServerServiceGrpc.class) {
-        if ((getMultipleAddMethod = RegisterServerServiceGrpc.getMultipleAddMethod) == null) {
-          RegisterServerServiceGrpc.getMultipleAddMethod = getMultipleAddMethod =
-              io.grpc.MethodDescriptor.<registerserverstubs.AddOperands, registerserverstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "multipleAdd"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.AddOperands.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("multipleAdd"))
-              .build();
-        }
-      }
-    }
-    return getMultipleAddMethod;
+    return getGetRegisteredServersMethod;
   }
 
   /**
@@ -188,56 +126,36 @@ public final class RegisterServerServiceGrpc {
 
   /**
    * <pre>
-   * serviço com operações sobre números
+   * Serviço de registo de servidores
    * </pre>
    */
   public interface AsyncService {
 
     /**
      * <pre>
-     * add two numbers
+     * Registar um servidor Server com o servidor Register
      * </pre>
      */
-    default void add(registerserverstubs.AddOperands request,
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddMethod(), responseObserver);
+    default void registerServer(registerserverstubs.ServerInfo request,
+        io.grpc.stub.StreamObserver<registerserverstubs.ServerResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterServerMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
+     * Obter a lista de servidores Server registrados
      * </pre>
      */
-    default void generatePowers(registerserverstubs.NumberAndMaxExponent request,
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneratePowersMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * add a sequence of numbers, ex: 1,2, 10, 5 = 18
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<registerserverstubs.Number> addSeqOfNumbers(
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getAddSeqOfNumbersMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Multiple add operations using a bidirecional stream
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<registerserverstubs.AddOperands> multipleAdd(
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getMultipleAddMethod(), responseObserver);
+    default void getRegisteredServers(registerserverstubs.Empty request,
+        io.grpc.stub.StreamObserver<registerserverstubs.ServerList> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRegisteredServersMethod(), responseObserver);
     }
   }
 
   /**
    * Base class for the server implementation of the service RegisterServerService.
    * <pre>
-   * serviço com operações sobre números
+   * Serviço de registo de servidores
    * </pre>
    */
   public static abstract class RegisterServerServiceImplBase
@@ -251,7 +169,7 @@ public final class RegisterServerServiceGrpc {
   /**
    * A stub to allow clients to do asynchronous rpc calls to service RegisterServerService.
    * <pre>
-   * serviço com operações sobre números
+   * Serviço de registo de servidores
    * </pre>
    */
   public static final class RegisterServerServiceStub
@@ -269,53 +187,31 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Registar um servidor Server com o servidor Register
      * </pre>
      */
-    public void add(registerserverstubs.AddOperands request,
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
+    public void registerServer(registerserverstubs.ServerInfo request,
+        io.grpc.stub.StreamObserver<registerserverstubs.ServerResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAddMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getRegisterServerMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
+     * Obter a lista de servidores Server registrados
      * </pre>
      */
-    public void generatePowers(registerserverstubs.NumberAndMaxExponent request,
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getGeneratePowersMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * add a sequence of numbers, ex: 1,2, 10, 5 = 18
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<registerserverstubs.Number> addSeqOfNumbers(
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getAddSeqOfNumbersMethod(), getCallOptions()), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Multiple add operations using a bidirecional stream
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<registerserverstubs.AddOperands> multipleAdd(
-        io.grpc.stub.StreamObserver<registerserverstubs.Result> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getMultipleAddMethod(), getCallOptions()), responseObserver);
+    public void getRegisteredServers(registerserverstubs.Empty request,
+        io.grpc.stub.StreamObserver<registerserverstubs.ServerList> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetRegisteredServersMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service RegisterServerService.
    * <pre>
-   * serviço com operações sobre números
+   * Serviço de registo de servidores
    * </pre>
    */
   public static final class RegisterServerServiceBlockingStub
@@ -333,30 +229,29 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Registar um servidor Server com o servidor Register
      * </pre>
      */
-    public registerserverstubs.Result add(registerserverstubs.AddOperands request) {
+    public registerserverstubs.ServerResponse registerServer(registerserverstubs.ServerInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAddMethod(), getCallOptions(), request);
+          getChannel(), getRegisterServerMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
+     * Obter a lista de servidores Server registrados
      * </pre>
      */
-    public java.util.Iterator<registerserverstubs.Result> generatePowers(
-        registerserverstubs.NumberAndMaxExponent request) {
-      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getGeneratePowersMethod(), getCallOptions(), request);
+    public registerserverstubs.ServerList getRegisteredServers(registerserverstubs.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetRegisteredServersMethod(), getCallOptions(), request);
     }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service RegisterServerService.
    * <pre>
-   * serviço com operações sobre números
+   * Serviço de registo de servidores
    * </pre>
    */
   public static final class RegisterServerServiceFutureStub
@@ -374,20 +269,29 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Registar um servidor Server com o servidor Register
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<registerserverstubs.Result> add(
-        registerserverstubs.AddOperands request) {
+    public com.google.common.util.concurrent.ListenableFuture<registerserverstubs.ServerResponse> registerServer(
+        registerserverstubs.ServerInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAddMethod(), getCallOptions()), request);
+          getChannel().newCall(getRegisterServerMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Obter a lista de servidores Server registrados
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<registerserverstubs.ServerList> getRegisteredServers(
+        registerserverstubs.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetRegisteredServersMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_ADD = 0;
-  private static final int METHODID_GENERATE_POWERS = 1;
-  private static final int METHODID_ADD_SEQ_OF_NUMBERS = 2;
-  private static final int METHODID_MULTIPLE_ADD = 3;
+  private static final int METHODID_REGISTER_SERVER = 0;
+  private static final int METHODID_GET_REGISTERED_SERVERS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -406,13 +310,13 @@ public final class RegisterServerServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ADD:
-          serviceImpl.add((registerserverstubs.AddOperands) request,
-              (io.grpc.stub.StreamObserver<registerserverstubs.Result>) responseObserver);
+        case METHODID_REGISTER_SERVER:
+          serviceImpl.registerServer((registerserverstubs.ServerInfo) request,
+              (io.grpc.stub.StreamObserver<registerserverstubs.ServerResponse>) responseObserver);
           break;
-        case METHODID_GENERATE_POWERS:
-          serviceImpl.generatePowers((registerserverstubs.NumberAndMaxExponent) request,
-              (io.grpc.stub.StreamObserver<registerserverstubs.Result>) responseObserver);
+        case METHODID_GET_REGISTERED_SERVERS:
+          serviceImpl.getRegisteredServers((registerserverstubs.Empty) request,
+              (io.grpc.stub.StreamObserver<registerserverstubs.ServerList>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -424,12 +328,6 @@ public final class RegisterServerServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ADD_SEQ_OF_NUMBERS:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.addSeqOfNumbers(
-              (io.grpc.stub.StreamObserver<registerserverstubs.Result>) responseObserver);
-        case METHODID_MULTIPLE_ADD:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.multipleAdd(
-              (io.grpc.stub.StreamObserver<registerserverstubs.Result>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -439,33 +337,19 @@ public final class RegisterServerServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getAddMethod(),
+          getRegisterServerMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              registerserverstubs.AddOperands,
-              registerserverstubs.Result>(
-                service, METHODID_ADD)))
+              registerserverstubs.ServerInfo,
+              registerserverstubs.ServerResponse>(
+                service, METHODID_REGISTER_SERVER)))
         .addMethod(
-          getGeneratePowersMethod(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+          getGetRegisteredServersMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              registerserverstubs.NumberAndMaxExponent,
-              registerserverstubs.Result>(
-                service, METHODID_GENERATE_POWERS)))
-        .addMethod(
-          getAddSeqOfNumbersMethod(),
-          io.grpc.stub.ServerCalls.asyncClientStreamingCall(
-            new MethodHandlers<
-              registerserverstubs.Number,
-              registerserverstubs.Result>(
-                service, METHODID_ADD_SEQ_OF_NUMBERS)))
-        .addMethod(
-          getMultipleAddMethod(),
-          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
-            new MethodHandlers<
-              registerserverstubs.AddOperands,
-              registerserverstubs.Result>(
-                service, METHODID_MULTIPLE_ADD)))
+              registerserverstubs.Empty,
+              registerserverstubs.ServerList>(
+                service, METHODID_GET_REGISTERED_SERVERS)))
         .build();
   }
 
@@ -514,10 +398,8 @@ public final class RegisterServerServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RegisterServerServiceFileDescriptorSupplier())
-              .addMethod(getAddMethod())
-              .addMethod(getGeneratePowersMethod())
-              .addMethod(getAddSeqOfNumbersMethod())
-              .addMethod(getMultipleAddMethod())
+              .addMethod(getRegisterServerMethod())
+              .addMethod(getGetRegisteredServersMethod())
               .build();
         }
       }

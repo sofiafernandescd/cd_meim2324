@@ -8,20 +8,14 @@ public interface ResultOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string Id = 1;</code>
-   * @return The id.
+   * <code>string result = 1;</code>
+   * @return The result.
    */
-  java.lang.String getId();
+  java.lang.String getResult();
   /**
-   * <code>string Id = 1;</code>
-   * @return The bytes for id.
+   * <code>string result = 1;</code>
+   * @return The bytes for result.
    */
   com.google.protobuf.ByteString
-      getIdBytes();
-
-  /**
-   * <code>int32 res = 2;</code>
-   * @return The res.
-   */
-  int getRes();
+      getResultBytes();
 }

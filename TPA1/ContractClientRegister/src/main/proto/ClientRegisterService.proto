@@ -5,34 +5,37 @@ option java_package = "clientregisterstubs";
 
 package clientregisterservice; // package do proto
 
-// serviço com operações sobre números
+
 service ClientRegisterService {
-    // add two numbers
-    rpc add(AddOperands) returns (Result);
-	// generate the number powers with exponents betwwen 1 and maximum 
-	  rpc generatePowers (NumberAndMaxExponent) returns (stream Result);
-	// add a sequence of numbers, ex: 1,2, 10, 5 = 18
-    rpc addSeqOfNumbers (stream Number) returns (Result);
-	// Multiple add operations using a bidirecional stream
-    rpc multipleAdd(stream AddOperands) returns (stream Result);
+  // 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+  // como serviço de registo dos N servidores de processamento de imagens. 
+  // Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+  // de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
+
+  // 2. Uma aplicação Cliente usa dois contratos: 
+  // i) (este) operação de acesso ao servidor Register para obter a localização de um dos servidores registados; 
+  // ii) operações que permitem realizar upload de imagens para um servidor, uma lista de keywords a serem marcadas na imagem inicial e a obtenção posterior da correspondente imagem marcada;
+
+  // Obter o EndPoint de um servidor Server
+  rpc GetServerEndpoint(ClientRequest) returns (ServerInfo);
 }
 
-message AddOperands {
-    string Id = 1;
-    int32 op1 = 2;
-    int32 op2 = 3;
+service RegisterService {
+  // Obter o EndPoint de um servidor Server
+  rpc GetServerEndpoint(ClientRequest) returns (ServerInfo);
 }
 
-message NumberAndMaxExponent {
-  string Id = 1;
-  int32 baseNumber= 2;
-  int32 maxExponent = 3;
-}
-message Number1 {
-    int32 num = 1;
+message ClientRequest {
+  string client_id = 1;
+  string image_id = 2;
 }
 
-message Result1 {
-  string Id = 1;
-  int32 res = 2;
+message ServerInfo {
+  string server_id = 1;
+  string ip = 2;
+  int32 port = 3;
+}
+
+message Result {
+  string result = 1;
 }

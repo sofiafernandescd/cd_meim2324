@@ -4,7 +4,10 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  * <pre>
- * serviço com operações sobre números
+ * 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+ * como serviço de registo dos N servidores de processamento de imagens. 
+ * Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+ * de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
  * </pre>
  */
 @javax.annotation.Generated(
@@ -18,128 +21,35 @@ public final class ClientRegisterServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "clientregisterservice.ClientRegisterService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.AddOperands,
-      clientregisterstubs.Result> getAddMethod;
+  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.ClientRequest,
+      clientregisterstubs.ServerInfo> getGetServerEndpointMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "add",
-      requestType = clientregisterstubs.AddOperands.class,
-      responseType = clientregisterstubs.Result.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetServerEndpoint",
+      requestType = clientregisterstubs.ClientRequest.class,
+      responseType = clientregisterstubs.ServerInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<clientregisterstubs.AddOperands,
-      clientregisterstubs.Result> getAddMethod() {
-    io.grpc.MethodDescriptor<clientregisterstubs.AddOperands, clientregisterstubs.Result> getAddMethod;
-    if ((getAddMethod = ClientRegisterServiceGrpc.getAddMethod) == null) {
+  public static io.grpc.MethodDescriptor<clientregisterstubs.ClientRequest,
+      clientregisterstubs.ServerInfo> getGetServerEndpointMethod() {
+    io.grpc.MethodDescriptor<clientregisterstubs.ClientRequest, clientregisterstubs.ServerInfo> getGetServerEndpointMethod;
+    if ((getGetServerEndpointMethod = ClientRegisterServiceGrpc.getGetServerEndpointMethod) == null) {
       synchronized (ClientRegisterServiceGrpc.class) {
-        if ((getAddMethod = ClientRegisterServiceGrpc.getAddMethod) == null) {
-          ClientRegisterServiceGrpc.getAddMethod = getAddMethod =
-              io.grpc.MethodDescriptor.<clientregisterstubs.AddOperands, clientregisterstubs.Result>newBuilder()
+        if ((getGetServerEndpointMethod = ClientRegisterServiceGrpc.getGetServerEndpointMethod) == null) {
+          ClientRegisterServiceGrpc.getGetServerEndpointMethod = getGetServerEndpointMethod =
+              io.grpc.MethodDescriptor.<clientregisterstubs.ClientRequest, clientregisterstubs.ServerInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "add"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetServerEndpoint"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.AddOperands.getDefaultInstance()))
+                  clientregisterstubs.ClientRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("add"))
+                  clientregisterstubs.ServerInfo.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("GetServerEndpoint"))
               .build();
         }
       }
     }
-    return getAddMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.NumberAndMaxExponent,
-      clientregisterstubs.Result> getGeneratePowersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "generatePowers",
-      requestType = clientregisterstubs.NumberAndMaxExponent.class,
-      responseType = clientregisterstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<clientregisterstubs.NumberAndMaxExponent,
-      clientregisterstubs.Result> getGeneratePowersMethod() {
-    io.grpc.MethodDescriptor<clientregisterstubs.NumberAndMaxExponent, clientregisterstubs.Result> getGeneratePowersMethod;
-    if ((getGeneratePowersMethod = ClientRegisterServiceGrpc.getGeneratePowersMethod) == null) {
-      synchronized (ClientRegisterServiceGrpc.class) {
-        if ((getGeneratePowersMethod = ClientRegisterServiceGrpc.getGeneratePowersMethod) == null) {
-          ClientRegisterServiceGrpc.getGeneratePowersMethod = getGeneratePowersMethod =
-              io.grpc.MethodDescriptor.<clientregisterstubs.NumberAndMaxExponent, clientregisterstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "generatePowers"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.NumberAndMaxExponent.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("generatePowers"))
-              .build();
-        }
-      }
-    }
-    return getGeneratePowersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.Number,
-      clientregisterstubs.Result> getAddSeqOfNumbersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "addSeqOfNumbers",
-      requestType = clientregisterstubs.Number.class,
-      responseType = clientregisterstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<clientregisterstubs.Number,
-      clientregisterstubs.Result> getAddSeqOfNumbersMethod() {
-    io.grpc.MethodDescriptor<clientregisterstubs.Number, clientregisterstubs.Result> getAddSeqOfNumbersMethod;
-    if ((getAddSeqOfNumbersMethod = ClientRegisterServiceGrpc.getAddSeqOfNumbersMethod) == null) {
-      synchronized (ClientRegisterServiceGrpc.class) {
-        if ((getAddSeqOfNumbersMethod = ClientRegisterServiceGrpc.getAddSeqOfNumbersMethod) == null) {
-          ClientRegisterServiceGrpc.getAddSeqOfNumbersMethod = getAddSeqOfNumbersMethod =
-              io.grpc.MethodDescriptor.<clientregisterstubs.Number, clientregisterstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "addSeqOfNumbers"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.Number.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("addSeqOfNumbers"))
-              .build();
-        }
-      }
-    }
-    return getAddSeqOfNumbersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.AddOperands,
-      clientregisterstubs.Result> getMultipleAddMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "multipleAdd",
-      requestType = clientregisterstubs.AddOperands.class,
-      responseType = clientregisterstubs.Result.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<clientregisterstubs.AddOperands,
-      clientregisterstubs.Result> getMultipleAddMethod() {
-    io.grpc.MethodDescriptor<clientregisterstubs.AddOperands, clientregisterstubs.Result> getMultipleAddMethod;
-    if ((getMultipleAddMethod = ClientRegisterServiceGrpc.getMultipleAddMethod) == null) {
-      synchronized (ClientRegisterServiceGrpc.class) {
-        if ((getMultipleAddMethod = ClientRegisterServiceGrpc.getMultipleAddMethod) == null) {
-          ClientRegisterServiceGrpc.getMultipleAddMethod = getMultipleAddMethod =
-              io.grpc.MethodDescriptor.<clientregisterstubs.AddOperands, clientregisterstubs.Result>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "multipleAdd"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.AddOperands.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.Result.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("multipleAdd"))
-              .build();
-        }
-      }
-    }
-    return getMultipleAddMethod;
+    return getGetServerEndpointMethod;
   }
 
   /**
@@ -188,56 +98,32 @@ public final class ClientRegisterServiceGrpc {
 
   /**
    * <pre>
-   * serviço com operações sobre números
+   * 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+   * como serviço de registo dos N servidores de processamento de imagens. 
+   * Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+   * de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
    * </pre>
    */
   public interface AsyncService {
 
     /**
      * <pre>
-     * add two numbers
+     * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    default void add(clientregisterstubs.AddOperands request,
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
-     * </pre>
-     */
-    default void generatePowers(clientregisterstubs.NumberAndMaxExponent request,
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneratePowersMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * add a sequence of numbers, ex: 1,2, 10, 5 = 18
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<clientregisterstubs.Number> addSeqOfNumbers(
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getAddSeqOfNumbersMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Multiple add operations using a bidirecional stream
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<clientregisterstubs.AddOperands> multipleAdd(
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getMultipleAddMethod(), responseObserver);
+    default void getServerEndpoint(clientregisterstubs.ClientRequest request,
+        io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetServerEndpointMethod(), responseObserver);
     }
   }
 
   /**
    * Base class for the server implementation of the service ClientRegisterService.
    * <pre>
-   * serviço com operações sobre números
+   * 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+   * como serviço de registo dos N servidores de processamento de imagens. 
+   * Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+   * de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
    * </pre>
    */
   public static abstract class ClientRegisterServiceImplBase
@@ -251,7 +137,10 @@ public final class ClientRegisterServiceGrpc {
   /**
    * A stub to allow clients to do asynchronous rpc calls to service ClientRegisterService.
    * <pre>
-   * serviço com operações sobre números
+   * 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+   * como serviço de registo dos N servidores de processamento de imagens. 
+   * Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+   * de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
    * </pre>
    */
   public static final class ClientRegisterServiceStub
@@ -269,53 +158,23 @@ public final class ClientRegisterServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    public void add(clientregisterstubs.AddOperands request,
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
+    public void getServerEndpoint(clientregisterstubs.ClientRequest request,
+        io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAddMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
-     * </pre>
-     */
-    public void generatePowers(clientregisterstubs.NumberAndMaxExponent request,
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getGeneratePowersMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * add a sequence of numbers, ex: 1,2, 10, 5 = 18
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<clientregisterstubs.Number> addSeqOfNumbers(
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getAddSeqOfNumbersMethod(), getCallOptions()), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Multiple add operations using a bidirecional stream
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<clientregisterstubs.AddOperands> multipleAdd(
-        io.grpc.stub.StreamObserver<clientregisterstubs.Result> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getMultipleAddMethod(), getCallOptions()), responseObserver);
+          getChannel().newCall(getGetServerEndpointMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service ClientRegisterService.
    * <pre>
-   * serviço com operações sobre números
+   * 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+   * como serviço de registo dos N servidores de processamento de imagens. 
+   * Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+   * de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
    * </pre>
    */
   public static final class ClientRegisterServiceBlockingStub
@@ -333,30 +192,22 @@ public final class ClientRegisterServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    public clientregisterstubs.Result add(clientregisterstubs.AddOperands request) {
+    public clientregisterstubs.ServerInfo getServerEndpoint(clientregisterstubs.ClientRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAddMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * generate the number powers with exponents betwwen 1 and maximum 
-     * </pre>
-     */
-    public java.util.Iterator<clientregisterstubs.Result> generatePowers(
-        clientregisterstubs.NumberAndMaxExponent request) {
-      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getGeneratePowersMethod(), getCallOptions(), request);
+          getChannel(), getGetServerEndpointMethod(), getCallOptions(), request);
     }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service ClientRegisterService.
    * <pre>
-   * serviço com operações sobre números
+   * 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona 
+   * como serviço de registo dos N servidores de processamento de imagens. 
+   * Os clientes recorrem a este servidor para obterem a localização (IP, porto) 
+   * de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
    * </pre>
    */
   public static final class ClientRegisterServiceFutureStub
@@ -374,20 +225,17 @@ public final class ClientRegisterServiceGrpc {
 
     /**
      * <pre>
-     * add two numbers
+     * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<clientregisterstubs.Result> add(
-        clientregisterstubs.AddOperands request) {
+    public com.google.common.util.concurrent.ListenableFuture<clientregisterstubs.ServerInfo> getServerEndpoint(
+        clientregisterstubs.ClientRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAddMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetServerEndpointMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_ADD = 0;
-  private static final int METHODID_GENERATE_POWERS = 1;
-  private static final int METHODID_ADD_SEQ_OF_NUMBERS = 2;
-  private static final int METHODID_MULTIPLE_ADD = 3;
+  private static final int METHODID_GET_SERVER_ENDPOINT = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -406,13 +254,9 @@ public final class ClientRegisterServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ADD:
-          serviceImpl.add((clientregisterstubs.AddOperands) request,
-              (io.grpc.stub.StreamObserver<clientregisterstubs.Result>) responseObserver);
-          break;
-        case METHODID_GENERATE_POWERS:
-          serviceImpl.generatePowers((clientregisterstubs.NumberAndMaxExponent) request,
-              (io.grpc.stub.StreamObserver<clientregisterstubs.Result>) responseObserver);
+        case METHODID_GET_SERVER_ENDPOINT:
+          serviceImpl.getServerEndpoint((clientregisterstubs.ClientRequest) request,
+              (io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -424,12 +268,6 @@ public final class ClientRegisterServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ADD_SEQ_OF_NUMBERS:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.addSeqOfNumbers(
-              (io.grpc.stub.StreamObserver<clientregisterstubs.Result>) responseObserver);
-        case METHODID_MULTIPLE_ADD:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.multipleAdd(
-              (io.grpc.stub.StreamObserver<clientregisterstubs.Result>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -439,33 +277,12 @@ public final class ClientRegisterServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getAddMethod(),
+          getGetServerEndpointMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              clientregisterstubs.AddOperands,
-              clientregisterstubs.Result>(
-                service, METHODID_ADD)))
-        .addMethod(
-          getGeneratePowersMethod(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-            new MethodHandlers<
-              clientregisterstubs.NumberAndMaxExponent,
-              clientregisterstubs.Result>(
-                service, METHODID_GENERATE_POWERS)))
-        .addMethod(
-          getAddSeqOfNumbersMethod(),
-          io.grpc.stub.ServerCalls.asyncClientStreamingCall(
-            new MethodHandlers<
-              clientregisterstubs.Number,
-              clientregisterstubs.Result>(
-                service, METHODID_ADD_SEQ_OF_NUMBERS)))
-        .addMethod(
-          getMultipleAddMethod(),
-          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
-            new MethodHandlers<
-              clientregisterstubs.AddOperands,
-              clientregisterstubs.Result>(
-                service, METHODID_MULTIPLE_ADD)))
+              clientregisterstubs.ClientRequest,
+              clientregisterstubs.ServerInfo>(
+                service, METHODID_GET_SERVER_ENDPOINT)))
         .build();
   }
 
@@ -514,10 +331,7 @@ public final class ClientRegisterServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ClientRegisterServiceFileDescriptorSupplier())
-              .addMethod(getAddMethod())
-              .addMethod(getGeneratePowersMethod())
-              .addMethod(getAddSeqOfNumbersMethod())
-              .addMethod(getMultipleAddMethod())
+              .addMethod(getGetServerEndpointMethod())
               .build();
         }
       }
