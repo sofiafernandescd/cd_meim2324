@@ -39,17 +39,16 @@ public final class ClientRegisterServiceOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\033ClientRegisterService.proto\022\025clientreg" +
-      "isterservice\"4\n\rClientRequest\022\021\n\tclient_" +
-      "id\030\001 \001(\t\022\020\n\010image_id\030\002 \001(\t\"9\n\nServerInfo" +
-      "\022\021\n\tserver_id\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\022\014\n\004port\030" +
-      "\003 \001(\005\"\030\n\006Result\022\016\n\006result\030\001 \001(\t2u\n\025Clien" +
-      "tRegisterService\022\\\n\021GetServerEndpoint\022$." +
-      "clientregisterservice.ClientRequest\032!.cl" +
-      "ientregisterservice.ServerInfo2o\n\017Regist" +
-      "erService\022\\\n\021GetServerEndpoint\022$.clientr" +
-      "egisterservice.ClientRequest\032!.clientreg" +
-      "isterservice.ServerInfoB\027\n\023clientregiste" +
-      "rstubsP\001b\006proto3"
+      "isterservice\"\"\n\rClientRequest\022\021\n\tclient_" +
+      "id\030\001 \001(\t\"9\n\nServerInfo\022\021\n\tserver_id\030\001 \001(" +
+      "\t\022\n\n\002ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\005\"\030\n\006Result\022\016\n" +
+      "\006result\030\001 \001(\t2u\n\025ClientRegisterService\022\\" +
+      "\n\021GetServerEndpoint\022$.clientregisterserv" +
+      "ice.ClientRequest\032!.clientregisterservic" +
+      "e.ServerInfo2o\n\017RegisterService\022\\\n\021GetSe" +
+      "rverEndpoint\022$.clientregisterservice.Cli" +
+      "entRequest\032!.clientregisterservice.Serve" +
+      "rInfoB\027\n\023clientregisterstubsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -60,7 +59,7 @@ public final class ClientRegisterServiceOuterClass {
     internal_static_clientregisterservice_ClientRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_clientregisterservice_ClientRequest_descriptor,
-        new java.lang.String[] { "ClientId", "ImageId", });
+        new java.lang.String[] { "ClientId", });
     internal_static_clientregisterservice_ServerInfo_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_clientregisterservice_ServerInfo_fieldAccessorTable = new

@@ -18,16 +18,4 @@ public interface ClientRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getClientIdBytes();
-
-  /**
-   * <code>string image_id = 2;</code>
-   * @return The imageId.
-   */
-  java.lang.String getImageId();
-  /**
-   * <code>string image_id = 2;</code>
-   * @return The bytes for imageId.
-   */
-  com.google.protobuf.ByteString
-      getImageIdBytes();
 }

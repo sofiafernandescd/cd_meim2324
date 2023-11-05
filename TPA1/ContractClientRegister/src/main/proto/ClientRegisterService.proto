@@ -27,7 +27,7 @@ service RegisterService {
 
 message ClientRequest {
   string client_id = 1;
-  string image_id = 2;
+  
 }
 
 message ServerInfo {

@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private ClientRequest() {
     clientId_ = "";
-    imageId_ = "";
   }
 
   @java.lang.Override
@@ -83,44 +82,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int IMAGE_ID_FIELD_NUMBER = 2;
-  private volatile java.lang.Object imageId_;
-  /**
-   * <code>string image_id = 2;</code>
-   * @return The imageId.
-   */
-  @java.lang.Override
-  public java.lang.String getImageId() {
-    java.lang.Object ref = imageId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      imageId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string image_id = 2;</code>
-   * @return The bytes for imageId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getImageIdBytes() {
-    java.lang.Object ref = imageId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      imageId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -138,9 +99,6 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, clientId_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imageId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, imageId_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -152,9 +110,6 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, clientId_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imageId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, imageId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -173,8 +128,6 @@ private static final long serialVersionUID = 0L;
 
     if (!getClientId()
         .equals(other.getClientId())) return false;
-    if (!getImageId()
-        .equals(other.getImageId())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -188,8 +141,6 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + CLIENT_ID_FIELD_NUMBER;
     hash = (53 * hash) + getClientId().hashCode();
-    hash = (37 * hash) + IMAGE_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getImageId().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -320,8 +271,6 @@ private static final long serialVersionUID = 0L;
       super.clear();
       clientId_ = "";
 
-      imageId_ = "";
-
       return this;
     }
 
@@ -349,7 +298,6 @@ private static final long serialVersionUID = 0L;
     public clientregisterstubs.ClientRequest buildPartial() {
       clientregisterstubs.ClientRequest result = new clientregisterstubs.ClientRequest(this);
       result.clientId_ = clientId_;
-      result.imageId_ = imageId_;
       onBuilt();
       return result;
     }
@@ -402,10 +350,6 @@ private static final long serialVersionUID = 0L;
         clientId_ = other.clientId_;
         onChanged();
       }
-      if (!other.getImageId().isEmpty()) {
-        imageId_ = other.imageId_;
-        onChanged();
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -437,11 +381,6 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 10
-            case 18: {
-              imageId_ = input.readStringRequireUtf8();
-
-              break;
-            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -530,82 +469,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       clientId_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object imageId_ = "";
-    /**
-     * <code>string image_id = 2;</code>
-     * @return The imageId.
-     */
-    public java.lang.String getImageId() {
-      java.lang.Object ref = imageId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        imageId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string image_id = 2;</code>
-     * @return The bytes for imageId.
-     */
-    public com.google.protobuf.ByteString
-        getImageIdBytes() {
-      java.lang.Object ref = imageId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        imageId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string image_id = 2;</code>
-     * @param value The imageId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setImageId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      imageId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string image_id = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearImageId() {
-      
-      imageId_ = getDefaultInstance().getImageId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string image_id = 2;</code>
-     * @param value The bytes for imageId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setImageIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      imageId_ = value;
       onChanged();
       return this;
     }
