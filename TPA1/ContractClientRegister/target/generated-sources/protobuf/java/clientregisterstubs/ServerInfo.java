@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ServerInfo() {
-    serverId_ = "";
     ip_ = "";
   }
 
@@ -45,48 +44,10 @@ private static final long serialVersionUID = 0L;
             clientregisterstubs.ServerInfo.class, clientregisterstubs.ServerInfo.Builder.class);
   }
 
-  public static final int SERVER_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object serverId_;
-  /**
-   * <code>string server_id = 1;</code>
-   * @return The serverId.
-   */
-  @java.lang.Override
-  public java.lang.String getServerId() {
-    java.lang.Object ref = serverId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      serverId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string server_id = 1;</code>
-   * @return The bytes for serverId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getServerIdBytes() {
-    java.lang.Object ref = serverId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      serverId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int IP_FIELD_NUMBER = 2;
+  public static final int IP_FIELD_NUMBER = 1;
   private volatile java.lang.Object ip_;
   /**
-   * <code>string ip = 2;</code>
+   * <code>string ip = 1;</code>
    * @return The ip.
    */
   @java.lang.Override
@@ -103,7 +64,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string ip = 2;</code>
+   * <code>string ip = 1;</code>
    * @return The bytes for ip.
    */
   @java.lang.Override
@@ -121,10 +82,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PORT_FIELD_NUMBER = 3;
+  public static final int PORT_FIELD_NUMBER = 2;
   private int port_;
   /**
-   * <code>int32 port = 3;</code>
+   * <code>int32 port = 2;</code>
    * @return The port.
    */
   @java.lang.Override
@@ -146,14 +107,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serverId_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ip_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ip_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ip_);
     }
     if (port_ != 0) {
-      output.writeInt32(3, port_);
+      output.writeInt32(2, port_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -164,15 +122,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serverId_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ip_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ip_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ip_);
     }
     if (port_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, port_);
+        .computeInt32Size(2, port_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -189,8 +144,6 @@ private static final long serialVersionUID = 0L;
     }
     clientregisterstubs.ServerInfo other = (clientregisterstubs.ServerInfo) obj;
 
-    if (!getServerId()
-        .equals(other.getServerId())) return false;
     if (!getIp()
         .equals(other.getIp())) return false;
     if (getPort()
@@ -206,8 +159,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + SERVER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getServerId().hashCode();
     hash = (37 * hash) + IP_FIELD_NUMBER;
     hash = (53 * hash) + getIp().hashCode();
     hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -340,8 +291,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      serverId_ = "";
-
       ip_ = "";
 
       port_ = 0;
@@ -372,7 +321,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public clientregisterstubs.ServerInfo buildPartial() {
       clientregisterstubs.ServerInfo result = new clientregisterstubs.ServerInfo(this);
-      result.serverId_ = serverId_;
       result.ip_ = ip_;
       result.port_ = port_;
       onBuilt();
@@ -423,10 +371,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(clientregisterstubs.ServerInfo other) {
       if (other == clientregisterstubs.ServerInfo.getDefaultInstance()) return this;
-      if (!other.getServerId().isEmpty()) {
-        serverId_ = other.serverId_;
-        onChanged();
-      }
       if (!other.getIp().isEmpty()) {
         ip_ = other.ip_;
         onChanged();
@@ -461,20 +405,15 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              serverId_ = input.readStringRequireUtf8();
-
-              break;
-            } // case 10
-            case 18: {
               ip_ = input.readStringRequireUtf8();
 
               break;
-            } // case 18
-            case 24: {
+            } // case 10
+            case 16: {
               port_ = input.readInt32();
 
               break;
-            } // case 24
+            } // case 16
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -491,85 +430,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object serverId_ = "";
-    /**
-     * <code>string server_id = 1;</code>
-     * @return The serverId.
-     */
-    public java.lang.String getServerId() {
-      java.lang.Object ref = serverId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        serverId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string server_id = 1;</code>
-     * @return The bytes for serverId.
-     */
-    public com.google.protobuf.ByteString
-        getServerIdBytes() {
-      java.lang.Object ref = serverId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        serverId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string server_id = 1;</code>
-     * @param value The serverId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setServerId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      serverId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string server_id = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearServerId() {
-      
-      serverId_ = getDefaultInstance().getServerId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string server_id = 1;</code>
-     * @param value The bytes for serverId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setServerIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      serverId_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object ip_ = "";
     /**
-     * <code>string ip = 2;</code>
+     * <code>string ip = 1;</code>
      * @return The ip.
      */
     public java.lang.String getIp() {
@@ -585,7 +448,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ip = 2;</code>
+     * <code>string ip = 1;</code>
      * @return The bytes for ip.
      */
     public com.google.protobuf.ByteString
@@ -602,7 +465,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ip = 2;</code>
+     * <code>string ip = 1;</code>
      * @param value The ip to set.
      * @return This builder for chaining.
      */
@@ -617,7 +480,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ip = 2;</code>
+     * <code>string ip = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearIp() {
@@ -627,7 +490,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ip = 2;</code>
+     * <code>string ip = 1;</code>
      * @param value The bytes for ip to set.
      * @return This builder for chaining.
      */
@@ -645,7 +508,7 @@ private static final long serialVersionUID = 0L;
 
     private int port_ ;
     /**
-     * <code>int32 port = 3;</code>
+     * <code>int32 port = 2;</code>
      * @return The port.
      */
     @java.lang.Override
@@ -653,7 +516,7 @@ private static final long serialVersionUID = 0L;
       return port_;
     }
     /**
-     * <code>int32 port = 3;</code>
+     * <code>int32 port = 2;</code>
      * @param value The port to set.
      * @return This builder for chaining.
      */
@@ -664,7 +527,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 port = 3;</code>
+     * <code>int32 port = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearPort() {

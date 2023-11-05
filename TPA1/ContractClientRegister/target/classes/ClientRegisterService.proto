@@ -16,26 +16,36 @@ service ClientRegisterService {
   // i) (este) operação de acesso ao servidor Register para obter a localização de um dos servidores registados; 
   // ii) operações que permitem realizar upload de imagens para um servidor, uma lista de keywords a serem marcadas na imagem inicial e a obtenção posterior da correspondente imagem marcada;
 
+
   // Obter o EndPoint de um servidor Server
-  rpc GetServerEndpoint(ClientRequest) returns (ServerInfo);
+  rpc GetServerEndpoint(Empty) returns (ServerInfo);
+
+  // Informar o servidor Register que um servidor morreu
+  rpc failInform (ServerInfo) returns (NextServer);
 }
 
-service RegisterService {
-  // Obter o EndPoint de um servidor Server
-  rpc GetServerEndpoint(ClientRequest) returns (ServerInfo);
-}
 
 message ClientRequest {
   string client_id = 1;
   
 }
 
+
 message ServerInfo {
-  string server_id = 1;
-  string ip = 2;
-  int32 port = 3;
+  string ip = 1;
+  int32 port = 2;
 }
 
-message Result {
-  string result = 1;
+message NextServer {
+  int32 nextServerPort = 1;
+  string nextServerIP = 2;
 }
+
+
+message Empty {}
+
+// Mensagem de resposta do servidor Register
+message ServerResponse {
+  string response = 1;
+}
+

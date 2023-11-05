@@ -22,7 +22,7 @@ public final class RegisterServerServiceGrpc {
       registerserverstubs.ServerResponse> getRegisterServerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RegisterServer",
+      fullMethodName = SERVICE_NAME + '/' + "registerServer",
       requestType = registerserverstubs.ServerInfo.class,
       responseType = registerserverstubs.ServerResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
@@ -35,13 +35,13 @@ public final class RegisterServerServiceGrpc {
           RegisterServerServiceGrpc.getRegisterServerMethod = getRegisterServerMethod =
               io.grpc.MethodDescriptor.<registerserverstubs.ServerInfo, registerserverstubs.ServerResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterServer"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "registerServer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   registerserverstubs.ServerInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   registerserverstubs.ServerResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("RegisterServer"))
+              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("registerServer"))
               .build();
         }
       }
@@ -49,35 +49,35 @@ public final class RegisterServerServiceGrpc {
     return getRegisterServerMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<registerserverstubs.Empty,
-      registerserverstubs.ServerList> getGetRegisteredServersMethod;
+  private static volatile io.grpc.MethodDescriptor<registerserverstubs.ServerInfo,
+      registerserverstubs.NextServer> getGetNextServerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetRegisteredServers",
-      requestType = registerserverstubs.Empty.class,
-      responseType = registerserverstubs.ServerList.class,
+      fullMethodName = SERVICE_NAME + '/' + "getNextServer",
+      requestType = registerserverstubs.ServerInfo.class,
+      responseType = registerserverstubs.NextServer.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<registerserverstubs.Empty,
-      registerserverstubs.ServerList> getGetRegisteredServersMethod() {
-    io.grpc.MethodDescriptor<registerserverstubs.Empty, registerserverstubs.ServerList> getGetRegisteredServersMethod;
-    if ((getGetRegisteredServersMethod = RegisterServerServiceGrpc.getGetRegisteredServersMethod) == null) {
+  public static io.grpc.MethodDescriptor<registerserverstubs.ServerInfo,
+      registerserverstubs.NextServer> getGetNextServerMethod() {
+    io.grpc.MethodDescriptor<registerserverstubs.ServerInfo, registerserverstubs.NextServer> getGetNextServerMethod;
+    if ((getGetNextServerMethod = RegisterServerServiceGrpc.getGetNextServerMethod) == null) {
       synchronized (RegisterServerServiceGrpc.class) {
-        if ((getGetRegisteredServersMethod = RegisterServerServiceGrpc.getGetRegisteredServersMethod) == null) {
-          RegisterServerServiceGrpc.getGetRegisteredServersMethod = getGetRegisteredServersMethod =
-              io.grpc.MethodDescriptor.<registerserverstubs.Empty, registerserverstubs.ServerList>newBuilder()
+        if ((getGetNextServerMethod = RegisterServerServiceGrpc.getGetNextServerMethod) == null) {
+          RegisterServerServiceGrpc.getGetNextServerMethod = getGetNextServerMethod =
+              io.grpc.MethodDescriptor.<registerserverstubs.ServerInfo, registerserverstubs.NextServer>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetRegisteredServers"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getNextServer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.Empty.getDefaultInstance()))
+                  registerserverstubs.ServerInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  registerserverstubs.ServerList.getDefaultInstance()))
-              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("GetRegisteredServers"))
+                  registerserverstubs.NextServer.getDefaultInstance()))
+              .setSchemaDescriptor(new RegisterServerServiceMethodDescriptorSupplier("getNextServer"))
               .build();
         }
       }
     }
-    return getGetRegisteredServersMethod;
+    return getGetNextServerMethod;
   }
 
   /**
@@ -143,12 +143,12 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * Obter a lista de servidores Server registrados
+     * Obter o próximo servidor a ser contactado
      * </pre>
      */
-    default void getRegisteredServers(registerserverstubs.Empty request,
-        io.grpc.stub.StreamObserver<registerserverstubs.ServerList> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRegisteredServersMethod(), responseObserver);
+    default void getNextServer(registerserverstubs.ServerInfo request,
+        io.grpc.stub.StreamObserver<registerserverstubs.NextServer> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetNextServerMethod(), responseObserver);
     }
   }
 
@@ -198,13 +198,13 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * Obter a lista de servidores Server registrados
+     * Obter o próximo servidor a ser contactado
      * </pre>
      */
-    public void getRegisteredServers(registerserverstubs.Empty request,
-        io.grpc.stub.StreamObserver<registerserverstubs.ServerList> responseObserver) {
+    public void getNextServer(registerserverstubs.ServerInfo request,
+        io.grpc.stub.StreamObserver<registerserverstubs.NextServer> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetRegisteredServersMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetNextServerMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -239,12 +239,12 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * Obter a lista de servidores Server registrados
+     * Obter o próximo servidor a ser contactado
      * </pre>
      */
-    public registerserverstubs.ServerList getRegisteredServers(registerserverstubs.Empty request) {
+    public registerserverstubs.NextServer getNextServer(registerserverstubs.ServerInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetRegisteredServersMethod(), getCallOptions(), request);
+          getChannel(), getGetNextServerMethod(), getCallOptions(), request);
     }
   }
 
@@ -280,18 +280,18 @@ public final class RegisterServerServiceGrpc {
 
     /**
      * <pre>
-     * Obter a lista de servidores Server registrados
+     * Obter o próximo servidor a ser contactado
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<registerserverstubs.ServerList> getRegisteredServers(
-        registerserverstubs.Empty request) {
+    public com.google.common.util.concurrent.ListenableFuture<registerserverstubs.NextServer> getNextServer(
+        registerserverstubs.ServerInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetRegisteredServersMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetNextServerMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_REGISTER_SERVER = 0;
-  private static final int METHODID_GET_REGISTERED_SERVERS = 1;
+  private static final int METHODID_GET_NEXT_SERVER = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -314,9 +314,9 @@ public final class RegisterServerServiceGrpc {
           serviceImpl.registerServer((registerserverstubs.ServerInfo) request,
               (io.grpc.stub.StreamObserver<registerserverstubs.ServerResponse>) responseObserver);
           break;
-        case METHODID_GET_REGISTERED_SERVERS:
-          serviceImpl.getRegisteredServers((registerserverstubs.Empty) request,
-              (io.grpc.stub.StreamObserver<registerserverstubs.ServerList>) responseObserver);
+        case METHODID_GET_NEXT_SERVER:
+          serviceImpl.getNextServer((registerserverstubs.ServerInfo) request,
+              (io.grpc.stub.StreamObserver<registerserverstubs.NextServer>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -344,12 +344,12 @@ public final class RegisterServerServiceGrpc {
               registerserverstubs.ServerResponse>(
                 service, METHODID_REGISTER_SERVER)))
         .addMethod(
-          getGetRegisteredServersMethod(),
+          getGetNextServerMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              registerserverstubs.Empty,
-              registerserverstubs.ServerList>(
-                service, METHODID_GET_REGISTERED_SERVERS)))
+              registerserverstubs.ServerInfo,
+              registerserverstubs.NextServer>(
+                service, METHODID_GET_NEXT_SERVER)))
         .build();
   }
 
@@ -399,7 +399,7 @@ public final class RegisterServerServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RegisterServerServiceFileDescriptorSupplier())
               .addMethod(getRegisterServerMethod())
-              .addMethod(getGetRegisteredServersMethod())
+              .addMethod(getGetNextServerMethod())
               .build();
         }
       }

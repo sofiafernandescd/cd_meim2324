@@ -10,10 +10,11 @@ package registerserverservice; // package do proto
 // Serviço de registo de servidores
 service RegisterServerService {
   // Registar um servidor Server com o servidor Register
-  rpc RegisterServer(ServerInfo) returns (ServerResponse);
+  rpc registerServer(ServerInfo) returns (ServerResponse);
 
-  // Obter a lista de servidores Server registrados
-  rpc GetRegisteredServers(Empty) returns (ServerList);
+  // Obter o próximo servidor a ser contactado
+  rpc getNextServer (ServerInfo) returns (NextServer);
+
 }
 
 message ServerInfo {
@@ -22,9 +23,6 @@ message ServerInfo {
   int32 port = 3;
 }
 
-message ServerList {
-  repeated ServerInfo servers = 1;
-}
 
 message Empty {}
 
@@ -33,7 +31,13 @@ message ServerResponse {
   string response = 1;
 }
 
-message Result {
-  string result = 1;
+message NextServer {
+  int32 nextServerPort = 1;
+  string nextServerIP = 2;
 }
+
+
+
+
+
 

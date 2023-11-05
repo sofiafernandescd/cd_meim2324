@@ -21,27 +21,27 @@ public final class ClientRegisterServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "clientregisterservice.ClientRegisterService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.ClientRequest,
+  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.Empty,
       clientregisterstubs.ServerInfo> getGetServerEndpointMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetServerEndpoint",
-      requestType = clientregisterstubs.ClientRequest.class,
+      requestType = clientregisterstubs.Empty.class,
       responseType = clientregisterstubs.ServerInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<clientregisterstubs.ClientRequest,
+  public static io.grpc.MethodDescriptor<clientregisterstubs.Empty,
       clientregisterstubs.ServerInfo> getGetServerEndpointMethod() {
-    io.grpc.MethodDescriptor<clientregisterstubs.ClientRequest, clientregisterstubs.ServerInfo> getGetServerEndpointMethod;
+    io.grpc.MethodDescriptor<clientregisterstubs.Empty, clientregisterstubs.ServerInfo> getGetServerEndpointMethod;
     if ((getGetServerEndpointMethod = ClientRegisterServiceGrpc.getGetServerEndpointMethod) == null) {
       synchronized (ClientRegisterServiceGrpc.class) {
         if ((getGetServerEndpointMethod = ClientRegisterServiceGrpc.getGetServerEndpointMethod) == null) {
           ClientRegisterServiceGrpc.getGetServerEndpointMethod = getGetServerEndpointMethod =
-              io.grpc.MethodDescriptor.<clientregisterstubs.ClientRequest, clientregisterstubs.ServerInfo>newBuilder()
+              io.grpc.MethodDescriptor.<clientregisterstubs.Empty, clientregisterstubs.ServerInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetServerEndpoint"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.ClientRequest.getDefaultInstance()))
+                  clientregisterstubs.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientregisterstubs.ServerInfo.getDefaultInstance()))
               .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("GetServerEndpoint"))
@@ -50,6 +50,37 @@ public final class ClientRegisterServiceGrpc {
       }
     }
     return getGetServerEndpointMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo,
+      clientregisterstubs.NextServer> getFailInformMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "failInform",
+      requestType = clientregisterstubs.ServerInfo.class,
+      responseType = clientregisterstubs.NextServer.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo,
+      clientregisterstubs.NextServer> getFailInformMethod() {
+    io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo, clientregisterstubs.NextServer> getFailInformMethod;
+    if ((getFailInformMethod = ClientRegisterServiceGrpc.getFailInformMethod) == null) {
+      synchronized (ClientRegisterServiceGrpc.class) {
+        if ((getFailInformMethod = ClientRegisterServiceGrpc.getFailInformMethod) == null) {
+          ClientRegisterServiceGrpc.getFailInformMethod = getFailInformMethod =
+              io.grpc.MethodDescriptor.<clientregisterstubs.ServerInfo, clientregisterstubs.NextServer>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "failInform"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientregisterstubs.ServerInfo.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientregisterstubs.NextServer.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("failInform"))
+              .build();
+        }
+      }
+    }
+    return getFailInformMethod;
   }
 
   /**
@@ -111,9 +142,19 @@ public final class ClientRegisterServiceGrpc {
      * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    default void getServerEndpoint(clientregisterstubs.ClientRequest request,
+    default void getServerEndpoint(clientregisterstubs.Empty request,
         io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetServerEndpointMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Informar o servidor Register que um servidor morreu
+     * </pre>
+     */
+    default void failInform(clientregisterstubs.ServerInfo request,
+        io.grpc.stub.StreamObserver<clientregisterstubs.NextServer> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFailInformMethod(), responseObserver);
     }
   }
 
@@ -161,10 +202,21 @@ public final class ClientRegisterServiceGrpc {
      * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    public void getServerEndpoint(clientregisterstubs.ClientRequest request,
+    public void getServerEndpoint(clientregisterstubs.Empty request,
         io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetServerEndpointMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Informar o servidor Register que um servidor morreu
+     * </pre>
+     */
+    public void failInform(clientregisterstubs.ServerInfo request,
+        io.grpc.stub.StreamObserver<clientregisterstubs.NextServer> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getFailInformMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -195,9 +247,19 @@ public final class ClientRegisterServiceGrpc {
      * Obter o EndPoint de um servidor Server
      * </pre>
      */
-    public clientregisterstubs.ServerInfo getServerEndpoint(clientregisterstubs.ClientRequest request) {
+    public clientregisterstubs.ServerInfo getServerEndpoint(clientregisterstubs.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetServerEndpointMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Informar o servidor Register que um servidor morreu
+     * </pre>
+     */
+    public clientregisterstubs.NextServer failInform(clientregisterstubs.ServerInfo request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getFailInformMethod(), getCallOptions(), request);
     }
   }
 
@@ -229,13 +291,25 @@ public final class ClientRegisterServiceGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<clientregisterstubs.ServerInfo> getServerEndpoint(
-        clientregisterstubs.ClientRequest request) {
+        clientregisterstubs.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetServerEndpointMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Informar o servidor Register que um servidor morreu
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<clientregisterstubs.NextServer> failInform(
+        clientregisterstubs.ServerInfo request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getFailInformMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_GET_SERVER_ENDPOINT = 0;
+  private static final int METHODID_FAIL_INFORM = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -255,8 +329,12 @@ public final class ClientRegisterServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_SERVER_ENDPOINT:
-          serviceImpl.getServerEndpoint((clientregisterstubs.ClientRequest) request,
+          serviceImpl.getServerEndpoint((clientregisterstubs.Empty) request,
               (io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo>) responseObserver);
+          break;
+        case METHODID_FAIL_INFORM:
+          serviceImpl.failInform((clientregisterstubs.ServerInfo) request,
+              (io.grpc.stub.StreamObserver<clientregisterstubs.NextServer>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -280,9 +358,16 @@ public final class ClientRegisterServiceGrpc {
           getGetServerEndpointMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              clientregisterstubs.ClientRequest,
+              clientregisterstubs.Empty,
               clientregisterstubs.ServerInfo>(
                 service, METHODID_GET_SERVER_ENDPOINT)))
+        .addMethod(
+          getFailInformMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              clientregisterstubs.ServerInfo,
+              clientregisterstubs.NextServer>(
+                service, METHODID_FAIL_INFORM)))
         .build();
   }
 
@@ -332,6 +417,7 @@ public final class ClientRegisterServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ClientRegisterServiceFileDescriptorSupplier())
               .addMethod(getGetServerEndpointMethod())
+              .addMethod(getFailInformMethod())
               .build();
         }
       }

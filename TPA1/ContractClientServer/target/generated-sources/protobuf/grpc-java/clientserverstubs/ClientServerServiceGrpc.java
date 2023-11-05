@@ -19,28 +19,28 @@ public final class ClientServerServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageBlock,
-      clientserverstubs.ImageProcessResponse> getProcessImageToServerMethod;
+      clientserverstubs.ImageStatusResponse> getProcessImageToServerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ProcessImageToServer",
       requestType = clientserverstubs.ImageBlock.class,
-      responseType = clientserverstubs.ImageProcessResponse.class,
+      responseType = clientserverstubs.ImageStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
   public static io.grpc.MethodDescriptor<clientserverstubs.ImageBlock,
-      clientserverstubs.ImageProcessResponse> getProcessImageToServerMethod() {
-    io.grpc.MethodDescriptor<clientserverstubs.ImageBlock, clientserverstubs.ImageProcessResponse> getProcessImageToServerMethod;
+      clientserverstubs.ImageStatusResponse> getProcessImageToServerMethod() {
+    io.grpc.MethodDescriptor<clientserverstubs.ImageBlock, clientserverstubs.ImageStatusResponse> getProcessImageToServerMethod;
     if ((getProcessImageToServerMethod = ClientServerServiceGrpc.getProcessImageToServerMethod) == null) {
       synchronized (ClientServerServiceGrpc.class) {
         if ((getProcessImageToServerMethod = ClientServerServiceGrpc.getProcessImageToServerMethod) == null) {
           ClientServerServiceGrpc.getProcessImageToServerMethod = getProcessImageToServerMethod =
-              io.grpc.MethodDescriptor.<clientserverstubs.ImageBlock, clientserverstubs.ImageProcessResponse>newBuilder()
+              io.grpc.MethodDescriptor.<clientserverstubs.ImageBlock, clientserverstubs.ImageStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessImageToServer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientserverstubs.ImageBlock.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.ImageProcessResponse.getDefaultInstance()))
+                  clientserverstubs.ImageStatusResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("ProcessImageToServer"))
               .build();
         }
@@ -80,35 +80,66 @@ public final class ClientServerServiceGrpc {
     return getCheckImageStatusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequest,
-      clientserverstubs.ImageBlock> getDownloadMarkedImageMethod;
+  private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequestId,
+      clientserverstubs.ImageBlock> getDownloadMarkedImageByIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DownloadMarkedImage",
-      requestType = clientserverstubs.ImageDownloadRequest.class,
+      fullMethodName = SERVICE_NAME + '/' + "DownloadMarkedImageById",
+      requestType = clientserverstubs.ImageDownloadRequestId.class,
       responseType = clientserverstubs.ImageBlock.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequest,
-      clientserverstubs.ImageBlock> getDownloadMarkedImageMethod() {
-    io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequest, clientserverstubs.ImageBlock> getDownloadMarkedImageMethod;
-    if ((getDownloadMarkedImageMethod = ClientServerServiceGrpc.getDownloadMarkedImageMethod) == null) {
+  public static io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequestId,
+      clientserverstubs.ImageBlock> getDownloadMarkedImageByIdMethod() {
+    io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequestId, clientserverstubs.ImageBlock> getDownloadMarkedImageByIdMethod;
+    if ((getDownloadMarkedImageByIdMethod = ClientServerServiceGrpc.getDownloadMarkedImageByIdMethod) == null) {
       synchronized (ClientServerServiceGrpc.class) {
-        if ((getDownloadMarkedImageMethod = ClientServerServiceGrpc.getDownloadMarkedImageMethod) == null) {
-          ClientServerServiceGrpc.getDownloadMarkedImageMethod = getDownloadMarkedImageMethod =
-              io.grpc.MethodDescriptor.<clientserverstubs.ImageDownloadRequest, clientserverstubs.ImageBlock>newBuilder()
+        if ((getDownloadMarkedImageByIdMethod = ClientServerServiceGrpc.getDownloadMarkedImageByIdMethod) == null) {
+          ClientServerServiceGrpc.getDownloadMarkedImageByIdMethod = getDownloadMarkedImageByIdMethod =
+              io.grpc.MethodDescriptor.<clientserverstubs.ImageDownloadRequestId, clientserverstubs.ImageBlock>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadMarkedImage"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadMarkedImageById"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientserverstubs.ImageDownloadRequest.getDefaultInstance()))
+                  clientserverstubs.ImageDownloadRequestId.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientserverstubs.ImageBlock.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("DownloadMarkedImage"))
+              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("DownloadMarkedImageById"))
               .build();
         }
       }
     }
-    return getDownloadMarkedImageMethod;
+    return getDownloadMarkedImageByIdMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequestKeywords,
+      clientserverstubs.ImageBlock> getDownloadMarkedImageByKeywordsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DownloadMarkedImageByKeywords",
+      requestType = clientserverstubs.ImageDownloadRequestKeywords.class,
+      responseType = clientserverstubs.ImageBlock.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequestKeywords,
+      clientserverstubs.ImageBlock> getDownloadMarkedImageByKeywordsMethod() {
+    io.grpc.MethodDescriptor<clientserverstubs.ImageDownloadRequestKeywords, clientserverstubs.ImageBlock> getDownloadMarkedImageByKeywordsMethod;
+    if ((getDownloadMarkedImageByKeywordsMethod = ClientServerServiceGrpc.getDownloadMarkedImageByKeywordsMethod) == null) {
+      synchronized (ClientServerServiceGrpc.class) {
+        if ((getDownloadMarkedImageByKeywordsMethod = ClientServerServiceGrpc.getDownloadMarkedImageByKeywordsMethod) == null) {
+          ClientServerServiceGrpc.getDownloadMarkedImageByKeywordsMethod = getDownloadMarkedImageByKeywordsMethod =
+              io.grpc.MethodDescriptor.<clientserverstubs.ImageDownloadRequestKeywords, clientserverstubs.ImageBlock>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadMarkedImageByKeywords"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientserverstubs.ImageDownloadRequestKeywords.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  clientserverstubs.ImageBlock.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("DownloadMarkedImageByKeywords"))
+              .build();
+        }
+      }
+    }
+    return getDownloadMarkedImageByKeywordsMethod;
   }
 
   /**
@@ -168,7 +199,7 @@ public final class ClientServerServiceGrpc {
      * </pre>
      */
     default io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> processImageToServer(
-        io.grpc.stub.StreamObserver<clientserverstubs.ImageProcessResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getProcessImageToServerMethod(), responseObserver);
     }
 
@@ -184,12 +215,22 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
+     * Fazer o download de uma imagem marcada, pelo Id
+     * </pre>
+     */
+    default void downloadMarkedImageById(clientserverstubs.ImageDownloadRequestId request,
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadMarkedImageByIdMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Fazer o download de uma imagem marcada
      * </pre>
      */
-    default void downloadMarkedImage(clientserverstubs.ImageDownloadRequest request,
+    default io.grpc.stub.StreamObserver<clientserverstubs.ImageDownloadRequestKeywords> downloadMarkedImageByKeywords(
         io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadMarkedImageMethod(), responseObserver);
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getDownloadMarkedImageByKeywordsMethod(), responseObserver);
     }
   }
 
@@ -232,7 +273,7 @@ public final class ClientServerServiceGrpc {
      * </pre>
      */
     public io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> processImageToServer(
-        io.grpc.stub.StreamObserver<clientserverstubs.ImageProcessResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getProcessImageToServerMethod(), getCallOptions()), responseObserver);
     }
@@ -250,13 +291,24 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
+     * Fazer o download de uma imagem marcada, pelo Id
+     * </pre>
+     */
+    public void downloadMarkedImageById(clientserverstubs.ImageDownloadRequestId request,
+        io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getDownloadMarkedImageByIdMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
      * Fazer o download de uma imagem marcada
      * </pre>
      */
-    public void downloadMarkedImage(clientserverstubs.ImageDownloadRequest request,
+    public io.grpc.stub.StreamObserver<clientserverstubs.ImageDownloadRequestKeywords> downloadMarkedImageByKeywords(
         io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getDownloadMarkedImageMethod(), getCallOptions()), request, responseObserver);
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getDownloadMarkedImageByKeywordsMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -291,13 +343,13 @@ public final class ClientServerServiceGrpc {
 
     /**
      * <pre>
-     * Fazer o download de uma imagem marcada
+     * Fazer o download de uma imagem marcada, pelo Id
      * </pre>
      */
-    public java.util.Iterator<clientserverstubs.ImageBlock> downloadMarkedImage(
-        clientserverstubs.ImageDownloadRequest request) {
+    public java.util.Iterator<clientserverstubs.ImageBlock> downloadMarkedImageById(
+        clientserverstubs.ImageDownloadRequestId request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getDownloadMarkedImageMethod(), getCallOptions(), request);
+          getChannel(), getDownloadMarkedImageByIdMethod(), getCallOptions(), request);
     }
   }
 
@@ -333,8 +385,9 @@ public final class ClientServerServiceGrpc {
   }
 
   private static final int METHODID_CHECK_IMAGE_STATUS = 0;
-  private static final int METHODID_DOWNLOAD_MARKED_IMAGE = 1;
+  private static final int METHODID_DOWNLOAD_MARKED_IMAGE_BY_ID = 1;
   private static final int METHODID_PROCESS_IMAGE_TO_SERVER = 2;
+  private static final int METHODID_DOWNLOAD_MARKED_IMAGE_BY_KEYWORDS = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -357,8 +410,8 @@ public final class ClientServerServiceGrpc {
           serviceImpl.checkImageStatus((clientserverstubs.ImageStatusRequest) request,
               (io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse>) responseObserver);
           break;
-        case METHODID_DOWNLOAD_MARKED_IMAGE:
-          serviceImpl.downloadMarkedImage((clientserverstubs.ImageDownloadRequest) request,
+        case METHODID_DOWNLOAD_MARKED_IMAGE_BY_ID:
+          serviceImpl.downloadMarkedImageById((clientserverstubs.ImageDownloadRequestId) request,
               (io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock>) responseObserver);
           break;
         default:
@@ -373,7 +426,10 @@ public final class ClientServerServiceGrpc {
       switch (methodId) {
         case METHODID_PROCESS_IMAGE_TO_SERVER:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.processImageToServer(
-              (io.grpc.stub.StreamObserver<clientserverstubs.ImageProcessResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<clientserverstubs.ImageStatusResponse>) responseObserver);
+        case METHODID_DOWNLOAD_MARKED_IMAGE_BY_KEYWORDS:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.downloadMarkedImageByKeywords(
+              (io.grpc.stub.StreamObserver<clientserverstubs.ImageBlock>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -387,7 +443,7 @@ public final class ClientServerServiceGrpc {
           io.grpc.stub.ServerCalls.asyncClientStreamingCall(
             new MethodHandlers<
               clientserverstubs.ImageBlock,
-              clientserverstubs.ImageProcessResponse>(
+              clientserverstubs.ImageStatusResponse>(
                 service, METHODID_PROCESS_IMAGE_TO_SERVER)))
         .addMethod(
           getCheckImageStatusMethod(),
@@ -397,12 +453,19 @@ public final class ClientServerServiceGrpc {
               clientserverstubs.ImageStatusResponse>(
                 service, METHODID_CHECK_IMAGE_STATUS)))
         .addMethod(
-          getDownloadMarkedImageMethod(),
+          getDownloadMarkedImageByIdMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              clientserverstubs.ImageDownloadRequest,
+              clientserverstubs.ImageDownloadRequestId,
               clientserverstubs.ImageBlock>(
-                service, METHODID_DOWNLOAD_MARKED_IMAGE)))
+                service, METHODID_DOWNLOAD_MARKED_IMAGE_BY_ID)))
+        .addMethod(
+          getDownloadMarkedImageByKeywordsMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              clientserverstubs.ImageDownloadRequestKeywords,
+              clientserverstubs.ImageBlock>(
+                service, METHODID_DOWNLOAD_MARKED_IMAGE_BY_KEYWORDS)))
         .build();
   }
 
@@ -453,7 +516,8 @@ public final class ClientServerServiceGrpc {
               .setSchemaDescriptor(new ClientServerServiceFileDescriptorSupplier())
               .addMethod(getProcessImageToServerMethod())
               .addMethod(getCheckImageStatusMethod())
-              .addMethod(getDownloadMarkedImageMethod())
+              .addMethod(getDownloadMarkedImageByIdMethod())
+              .addMethod(getDownloadMarkedImageByKeywordsMethod())
               .build();
         }
       }

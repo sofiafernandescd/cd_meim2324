@@ -1,4 +1,4 @@
-package serverapp;
+package registerapp;
 
 import clientregisterstubs.RegisterServiceGrpc;
 import registerserverstubs.*;
@@ -9,6 +9,11 @@ import io.grpc.stub.StreamObserver;
 public class Register extends RegisterServiceGrpc.RegisterServiceImplBase{
 
     private static int svcPort = 8500;
+    
+    ServerList myServerList = ServerList.newBuilder()
+    .addServers(ServerInfo.newBuilder().setServerId("1").setIp("192.168.1.1").setPort(8080).build())
+    .addServers(ServerInfo.newBuilder().setServerId("2").setIp("192.168.1.2").setPort(8081).build())
+    .build();
 
     public static void main(String[] args) {
         try {

@@ -12,6 +12,8 @@ public class Server extends RegisterServerServiceGrpc.RegisterServerServiceImplB
 
     private static int svcPort = 8500;
 
+    private static RegisterServerServiceGrpc.RegisterServiceBlockingStub registerServiceBlockingStub;
+
     public static void main(String[] args) {
         try {
             if (args.length > 0) svcPort = Integer.parseInt(args[0]);

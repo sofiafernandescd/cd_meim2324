@@ -20,14 +20,8 @@ public interface ImageStatusResponseOrBuilder extends
       getImageIdBytes();
 
   /**
-   * <code>string status = 2;</code>
+   * <code>bool status = 2;</code>
    * @return The status.
    */
-  java.lang.String getStatus();
-  /**
-   * <code>string status = 2;</code>
-   * @return The bytes for status.
-   */
-  com.google.protobuf.ByteString
-      getStatusBytes();
+  boolean getStatus();
 }

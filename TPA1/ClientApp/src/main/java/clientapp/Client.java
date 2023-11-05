@@ -36,26 +36,34 @@ public class Client {
                 // needing certificates.
                 .usePlaintext()
                 .build();
-            blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel);
-            noBlockStub1 = ClientRegisterServiceGrpc.newStub(channel);
-            blockingStub2 = ClientServerServiceGrpc.newBlockingStub(channel);
-            noBlockStub2 = ClientServerServiceGrpc.newStub(channel);
+
+
+            blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel); // stub síncrono
+            noBlockStub1 = ClientRegisterServiceGrpc.newStub(channel); // stub assíncrono
+            blockingStub2 = ClientServerServiceGrpc.newBlockingStub(channel); // stub síncrono
+            noBlockStub2 = ClientServerServiceGrpc.newStub(channel); // stub assíncrono
 
 
 
             while (true) {
                 switch (Menu()) {
-                    case 1:  // adicionar dois numeros
+                    case 1:  // CR: Obter localização de um servidor (chamada unária - síncrona)
                         
                         break;
-                    case 2: // calcular as  potencias de x^y
+                    case 2: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
                         
                         break;
-                    case 3: //somar a sequencia dos numeros de x a y
+                    case 3: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
                         
                         break;
-                    case 4: //sequencia de operacões de soma x + y
+                    case 4: // CS: (ID) Fazer download de uma imagem marcada (stream de servidor)
                         
+                        break;
+                    case 5: // CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)
+                            
+                        break;
+                    case 6: // CR: Informar um servidor como inativo (chamada unária - síncrona)
+                                
                         break;
                     case 99:
                         System.exit(0);
@@ -74,10 +82,12 @@ public class Client {
         do {
             System.out.println();
             System.out.println("    MENU");
-            System.out.println(" 1 - Case1 - chamada unária: add two numbers");
-            System.out.println(" 2 - Case 2 - chamada com sream de servidor: generate powers");
-            System.out.println(" 3 - Case 3 - chamada com stream de cliente: add a sequence of numbers");
-            System.out.println(" 4 - stream de cliente e de servidor: Multiple add operations ");
+            System.out.println(" 1 - Case 1 - CR: Obter localização de um servidor (chamada unária - síncrona)");
+            System.out.println(" 2 - Case 2 - CS: Enviar uma imagem para processamento (chamada com stream de cliente)");
+            System.out.println(" 3 - Case 3 - CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)");
+            System.out.println(" 4 - Case 4 - CS: (ID) Fazer download de uma imagem marcada (stream de servidor)");
+            System.out.println(" 5 - Case 5 - CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)");
+            System.out.println(" 6 - Case 6 - CR: Informar um servidor como inativo (chamada unária - síncrona)");
             System.out.println("99 - Exit");
             System.out.println();
             System.out.println("Choose an Option?");

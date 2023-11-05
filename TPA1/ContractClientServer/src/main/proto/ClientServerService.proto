@@ -17,7 +17,7 @@ service ClientServerService {
   // realizada por streaming de blocos, por exemplo, de 32 Kbyte;
 
   // Enviar uma imagem para processamento a um servidor específico
-  rpc ProcessImageToServer(stream ImageBlock) returns (ImageProcessResponse);
+  rpc ProcessImageToServer(stream ImageBlock) returns (ImageStatusResponse);
 
   // 3. Um Cliente pode submeter um conjunto de imagens e só posteriormente pedir ao servidor para obter
   // (download) uma imagem marcada específica. Assim o servidor após receber uma imagem a processar
@@ -28,19 +28,13 @@ service ClientServerService {
   // Verificar o status de processamento de uma imagem
   rpc CheckImageStatus(ImageStatusRequest) returns (ImageStatusResponse);
 
+  // Fazer o download de uma imagem marcada, pelo Id
+  rpc DownloadMarkedImageById(ImageDownloadRequestId) returns (stream ImageBlock);
+
   // Fazer o download de uma imagem marcada
-  rpc DownloadMarkedImage(ImageDownloadRequest) returns (stream ImageBlock);
+  rpc DownloadMarkedImageByKeywords(stream ImageDownloadRequestKeywords) returns (stream ImageBlock);
 }
 
-
-message ImageBlock {
-  bytes data = 1;
-}
-
-message ImageProcessResponse {
-  string image_id = 1;
-  string status = 2;
-}
 
 message ImageStatusRequest {
   string image_id = 1;
@@ -48,9 +42,17 @@ message ImageStatusRequest {
 
 message ImageStatusResponse {
   string image_id = 1;
-  string status = 2;
+  bool status = 2;
 }
 
-message ImageDownloadRequest {
+message ImageBlock {
+  bytes data = 1;
+}
+
+message ImageDownloadRequestId {
   string image_id = 1;
+}
+
+message ImageDownloadRequestKeywords {
+  string keywords = 1;
 }

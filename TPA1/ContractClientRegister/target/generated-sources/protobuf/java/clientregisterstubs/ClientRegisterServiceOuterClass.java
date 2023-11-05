@@ -25,10 +25,20 @@ public final class ClientRegisterServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_clientregisterservice_ServerInfo_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_clientregisterservice_Result_descriptor;
+    internal_static_clientregisterservice_NextServer_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_clientregisterservice_Result_fieldAccessorTable;
+      internal_static_clientregisterservice_NextServer_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_clientregisterservice_Empty_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_clientregisterservice_Empty_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_clientregisterservice_ServerResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_clientregisterservice_ServerResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -40,15 +50,16 @@ public final class ClientRegisterServiceOuterClass {
     java.lang.String[] descriptorData = {
       "\n\033ClientRegisterService.proto\022\025clientreg" +
       "isterservice\"\"\n\rClientRequest\022\021\n\tclient_" +
-      "id\030\001 \001(\t\"9\n\nServerInfo\022\021\n\tserver_id\030\001 \001(" +
-      "\t\022\n\n\002ip\030\002 \001(\t\022\014\n\004port\030\003 \001(\005\"\030\n\006Result\022\016\n" +
-      "\006result\030\001 \001(\t2u\n\025ClientRegisterService\022\\" +
-      "\n\021GetServerEndpoint\022$.clientregisterserv" +
-      "ice.ClientRequest\032!.clientregisterservic" +
-      "e.ServerInfo2o\n\017RegisterService\022\\\n\021GetSe" +
-      "rverEndpoint\022$.clientregisterservice.Cli" +
-      "entRequest\032!.clientregisterservice.Serve" +
-      "rInfoB\027\n\023clientregisterstubsP\001b\006proto3"
+      "id\030\001 \001(\t\"&\n\nServerInfo\022\n\n\002ip\030\001 \001(\t\022\014\n\004po" +
+      "rt\030\002 \001(\005\":\n\nNextServer\022\026\n\016nextServerPort" +
+      "\030\001 \001(\005\022\024\n\014nextServerIP\030\002 \001(\t\"\007\n\005Empty\"\"\n" +
+      "\016ServerResponse\022\020\n\010response\030\001 \001(\t2\301\001\n\025Cl" +
+      "ientRegisterService\022T\n\021GetServerEndpoint" +
+      "\022\034.clientregisterservice.Empty\032!.clientr" +
+      "egisterservice.ServerInfo\022R\n\nfailInform\022" +
+      "!.clientregisterservice.ServerInfo\032!.cli" +
+      "entregisterservice.NextServerB\027\n\023clientr" +
+      "egisterstubsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -65,13 +76,25 @@ public final class ClientRegisterServiceOuterClass {
     internal_static_clientregisterservice_ServerInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_clientregisterservice_ServerInfo_descriptor,
-        new java.lang.String[] { "ServerId", "Ip", "Port", });
-    internal_static_clientregisterservice_Result_descriptor =
+        new java.lang.String[] { "Ip", "Port", });
+    internal_static_clientregisterservice_NextServer_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_clientregisterservice_Result_fieldAccessorTable = new
+    internal_static_clientregisterservice_NextServer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_clientregisterservice_Result_descriptor,
-        new java.lang.String[] { "Result", });
+        internal_static_clientregisterservice_NextServer_descriptor,
+        new java.lang.String[] { "NextServerPort", "NextServerIP", });
+    internal_static_clientregisterservice_Empty_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_clientregisterservice_Empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_clientregisterservice_Empty_descriptor,
+        new java.lang.String[] { });
+    internal_static_clientregisterservice_ServerResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_clientregisterservice_ServerResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_clientregisterservice_ServerResponse_descriptor,
+        new java.lang.String[] { "Response", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
