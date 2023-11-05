@@ -1,21 +1,20 @@
-package registerapp;
+package serverapp;
 
 import registerserverstubs.*;
-import clientserverstubs.*;
 import io.grpc.stub.StreamObserver;
 
-public class ServerStreamObserverC3 implements StreamObserver<ImageBlock> {
-    StreamObserver<ImageBlock> sFinalResult;
+public class ServerStreamObserverC3 implements StreamObserver<ServerInfo> {
+    StreamObserver<Result> sFinalResult;
     int finalResult;
 
-    public ServerStreamObserverC3(StreamObserver<ImageBlock> sresults) {
+    public ServerStreamObserverC3(StreamObserver<Result> sresults) {
         this.sFinalResult = sresults;
     }
 
 
     @Override
-    public void onNext(ImageBlock number) {
-        finalResult += number.getNum();
+        public void onNext(ServerInfo number) {
+        finalResult += number.getPort();
     }
 
     @Override
@@ -25,7 +24,7 @@ public class ServerStreamObserverC3 implements StreamObserver<ImageBlock> {
 
     @Override
     public void onCompleted() {
-        Result result = Result.newBuilder().setId("Soma").setRes(finalResult).build();
+        Result result = Result.newBuilder().setResult("Port").build();
         sFinalResult.onNext(result);
         sFinalResult.onCompleted();
     }
