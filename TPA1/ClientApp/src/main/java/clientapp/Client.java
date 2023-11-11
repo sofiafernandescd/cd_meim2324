@@ -12,7 +12,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import java.util.*;
-
+import java.util.Scanner;
 
 public class Client {
 
@@ -24,7 +24,7 @@ public class Client {
     private static ClientRegisterServiceGrpc.ClientRegisterServiceStub noBlockStub1;
     private static ClientServerServiceGrpc.ClientServerServiceBlockingStub blockingStub2;
     private static ClientServerServiceGrpc.ClientServerServiceStub noBlockStub2;
-
+    private static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
        
 
@@ -54,62 +54,74 @@ public class Client {
                         
                         break;
                     case 2: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
-
                         // Crie um objeto StreamObserver para receber as respostas do servidor.
-                        StreamObserver<ImageBlock> responseObserver = new StreamObserver<ImageBlock>() {
-                            @Override
-                            public void onNext(ImageBlock response) {
-                                // Trate a resposta do servidor (opcional).
-                            }
-
-                            @Override
-                            public void onError(Throwable t) {
-                                // Trate erros.
-                            }
-
-                            @Override
-                            public void onCompleted() {
-                                // Trate a conclusão do streaming.
-                            }
-                        };
-
-
                         StreamObserver<ImageBlock> imageStreamObserver = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
                         @Override
                         public void onNext(ImageStatusResponse response) {
-                            // Trate a resposta do servidor (opcional).
+                            System.out.println("Server response: " + response.toString());
                         }
 
                         @Override
                         public void onError(Throwable t) {
-                            // Trate erros.
+                            System.err.println("Erro no servidor: " + t.getMessage());
                         }
 
                         @Override
                         public void onCompleted() {
-                            // Trate a conclusão do streaming.
+                            System.out.println("Comunicação com o servidor concluída.");
                         }
                     });
-
-                    byte[] buffer = new byte[32 * 1024]; // 32 Kbytes buffer
-                    int bytesRead;
-                    while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                        ImagemChunk chunk = ImagemChunk.newBuilder()
-                            .setChunkData(ByteString.copyFrom(buffer, 0, bytesRead))
-                            .build();
-                        imagemStreamObserver.onNext(chunk);
-                    }
-
-                    imagemStreamObserver.onCompleted();
-
-                        
                   
                     case 3: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
-                        
+                        try {
+                            System.out.println("Enter the image ID to check status:");
+                            String imageId = scan.next();
+
+                            // Crie uma instância da mensagem de solicitação
+                            ImageStatusRequest imageStatusRequest = ImageStatusRequest.newBuilder()
+                                    .setImageId(imageId)
+                                    .build();
+
+                            // Faça a chamada síncrona para verificar o status
+                            ImageStatusResponse imageStatusResponse = blockingStub2.checkImageStatus(imageStatusRequest);
+
+                            // Exiba o resultado
+                            if (imageStatusResponse.getStatus()) {
+                                System.out.println("Image with ID " + imageId + " has been processed.");
+                            } else {
+                                System.out.println("Image with ID " + imageId + " is still pending processing.");
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         break;
+
                     case 4: // CS: (ID) Fazer download de uma imagem marcada (stream de servidor)
-                        
+                        try {
+                            System.out.println("Enter the image ID to download:");
+                            String imageId = scan.next();
+
+                            // Crie uma instância da mensagem de solicitação
+                            ImageDownloadRequestId downloadRequestId = ImageDownloadRequestId.newBuilder()
+                                    .setImageId(imageId)
+                                    .build();
+
+                            // Faça a chamada síncrona para obter o stream de imagem
+                            Iterator<ImageBlock> imageBlockIterator = blockingStub2.downloadMarkedImageById(downloadRequestId);
+
+                            // Itere sobre os blocos recebidos
+                            while (imageBlockIterator.hasNext()) {
+                                ImageBlock imageBlock = imageBlockIterator.next();
+                                // Faça o processamento necessário com o bloco da imagem
+                                System.out.println("Received Image Block for Image ID: " + imageBlock.getImageId());
+                            }
+
+                            System.out.println("Download completed for Image ID: " + imageId);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         break;
+
                     case 5: // CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)
                             
                         break;
@@ -130,7 +142,6 @@ public class Client {
 
     private static int Menu() {
         int op;
-        Scanner scan = new Scanner(System.in);
         do {
             System.out.println();
             System.out.println("    MENU");
@@ -140,11 +151,11 @@ public class Client {
             System.out.println(" 4 - Case 4 - CS: (ID) Fazer download de uma imagem marcada (stream de servidor)");
             System.out.println(" 5 - Case 5 - CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)");
             System.out.println(" 6 - Case 6 - CR: Informar um servidor como inativo (chamada unária - síncrona)");
-            System.out.println("99 - Exit");
+            System.out.println("0 - Exit");
             System.out.println();
             System.out.println("Choose an Option?");
             op = scan.nextInt();
-        } while (!((op >= 1 && op <= 4) || op == 99));
+        } while (!(op >= 0 && op <= 6));
         return op;
     }
 
