@@ -12,7 +12,7 @@ import io.grpc.stub.StreamObserver;
 import clientserverservice.ImageBlock;
 import clientserverservice.ImageProcessingServiceGrpc;
 import clientserverservice.ImageStatusResponse;
-import serverapp.DockerAPI;
+import serverapp.DockerAPI.*;
 
 import java.net.URI;
 import java.util.ArrayList;

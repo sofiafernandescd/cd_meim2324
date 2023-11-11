@@ -74,7 +74,7 @@ public class Client {
                         };
 
 
-                        StreamObserver<ImageBlock> imageStreamObserver = noBlockStub1.ProcessImageToServer(new StreamObserver<ImageStatusResponse>() {
+                        StreamObserver<ImageBlock> imageStreamObserver = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
                         @Override
                         public void onNext(ImageStatusResponse response) {
                             // Trate a resposta do servidor (opcional).
@@ -114,6 +114,7 @@ public class Client {
                             
                         break;
                     case 6: // CR: Informar um servidor como inativo (chamada unária - síncrona)
+
                                 
                         break;
                     case 99:

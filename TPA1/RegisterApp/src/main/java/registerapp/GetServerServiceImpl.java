@@ -18,13 +18,13 @@ public class GetServerServiceImpl extends GetServerServiceGrpc.GetServerServiceI
 
     public synchronized void getServerEndpoint(Empty request, StreamObserver<ServerInfo> result) {
         // se o anel ainda não estiver formado
-        if (registerInfo.getNumberOfServers() < registerInfo.getNkvServers()) {
+        if (registerInfo.getNumberOfServers() < registerInfo.getNServers()) {
             Throwable th = new StatusException(Status.UNAVAILABLE);
             result.onError(th);
         }
         else {
             //Dar a volta à lista
-            if (counter == registerInfo.getNkvServers()) counter = 0;
+            if (counter == registerInfo.getNServers()) counter = 0;
 
             String[] server = registerInfo.getListOfServers().get(counter).split(":");
 

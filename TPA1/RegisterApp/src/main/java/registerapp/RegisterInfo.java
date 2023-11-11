@@ -25,7 +25,7 @@ public class RegisterInfo {
         return ServersList;
     }
 
-    public int getnServers() {
+    public int getNServers() {
         return nServers;
     }
 
