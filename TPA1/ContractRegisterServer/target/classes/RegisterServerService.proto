@@ -13,9 +13,6 @@ service RegisterServerService {
   // como serviço de registo dos N servidores de processamento de imagens.
   rpc registServer(ServerInfo) returns (ServerResponse);
 
-  // Obter o próximo servidor a ser contactado
-  rpc getNextServer (ServerInfo) returns (ServerInfo);
-
 }
 
 message ServerInfo {

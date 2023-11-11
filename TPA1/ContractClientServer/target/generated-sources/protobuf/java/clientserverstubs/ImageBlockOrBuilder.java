@@ -26,24 +26,48 @@ public interface ImageBlockOrBuilder extends
   com.google.protobuf.ByteString getData();
 
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>string image_pathname = 3;</code>
+   * @return The imagePathname.
+   */
+  java.lang.String getImagePathname();
+  /**
+   * <code>string image_pathname = 3;</code>
+   * @return The bytes for imagePathname.
+   */
+  com.google.protobuf.ByteString
+      getImagePathnameBytes();
+
+  /**
+   * <code>string image_result_pathname = 4;</code>
+   * @return The imageResultPathname.
+   */
+  java.lang.String getImageResultPathname();
+  /**
+   * <code>string image_result_pathname = 4;</code>
+   * @return The bytes for imageResultPathname.
+   */
+  com.google.protobuf.ByteString
+      getImageResultPathnameBytes();
+
+  /**
+   * <code>repeated string keywords = 5;</code>
    * @return A list containing the keywords.
    */
   java.util.List<java.lang.String>
       getKeywordsList();
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @return The count of keywords.
    */
   int getKeywordsCount();
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @param index The index of the element to return.
    * @return The keywords at the given index.
    */
   java.lang.String getKeywords(int index);
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @param index The index of the value to return.
    * @return The bytes of the keywords at the given index.
    */
