@@ -68,8 +68,8 @@ public class ClientRegisterServiceImpl extends ClientRegisterServiceGrpc.ClientR
                 result.onCompleted();
 
                 ServersList.removeLast();
-                registerInfo.decrementNkvServer();
-                System.out.println("> updated KvServer list: " + ServersList);
+                registerInfo.decrementServer();
+                System.out.println("> updated Server list: " + ServersList);
             } else {
                 int index = ServersList.indexOf(offlineServer);
                 String[] nextServer = ServersList.get(++index).split(":");
@@ -86,6 +86,36 @@ public class ClientRegisterServiceImpl extends ClientRegisterServiceGrpc.ClientR
                 registerInfo.decrementNServer();
                 System.out.println("> updated KvServer list: " + ServersList);
             }
+        }
+    }
+
+    public synchronized void getNextServer(ServerInfo serverInfo, StreamObserver<ServerInfo> result) {
+        String requestServer = serverInfo.getServerIP() + ':' + serverInfo.getServerPort();
+        LinkedList<String> ServersList = registerInfo.getListOfServers();
+
+        // se o servidor que faz o pedido  do próximo servidor for o último da lista, retornar o primeiro da lista
+        if (ServersList.getLast().equals(requestServer)) {
+            String[] nextServer = ServersList.getFirst().split(":");
+
+            ServerInfo response = ServerInfo.newBuilder()
+                    .setServerInfoIP(nextServer[0])
+                    .setServerInfoPort(Integer.parseInt(nextServer[1]))
+                    .build();
+
+            result.onNext(response);
+            result.onCompleted();
+        } else {
+            // apenas retornar o próximo elemento da lista
+            int index = ServersList.indexOf(requestServer);
+            String[] nextServer = ServersList.get(++index).split(":");
+
+            ServerInfo response = ServerInfo.newBuilder()
+                    .setServerInfoIP(nextServer[0])
+                    .setServerInfoPort(Integer.parseInt(nextServer[1]))
+                    .build();
+
+            result.onNext(response);
+            result.onCompleted();
         }
     }
 

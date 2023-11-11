@@ -14,7 +14,7 @@ service RegisterServerService {
   rpc registServer(ServerInfo) returns (ServerResponse);
 
   // Obter o próximo servidor a ser contactado
-  rpc getNextServer (Empty) returns (ServerInfo);
+  rpc getNextServer (ServerInfo) returns (ServerInfo);
 
 }
 
