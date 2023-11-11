@@ -1,31 +1,47 @@
 # Computação Distribuída 2324 Noturno - TPA1 - Grupo 06
 
-Este documento tem como objetivo explicar as decisões de arquitetura 
- do sistema, bem como os passos necessários para executar as várias aplicações. 
+Este README tem como objetivo explicar as decisões de arquitetura 
+ do sistema ImageMarks, bem como os passos necessários para executar as várias aplicações. 
 
-Na implementação entregue é pressuposto que existem apenas três 
-Servers, sem a possibilidade de incremento, mas com a possibilidade de 
+Na implementação entregue é pressuposto que o Register regista todos os Servers
+no ínicio, sem a possibilidade de incremento, mas com a possibilidade de 
 decrimento, caso exista a informação de que um dos Servers falhou.
 
 ## RegisterApp:
 
 A aplicação do Register inicia-se sempre no porto 8000 num determinado endereço IP,
-que depende da VM no qual corre a aplicação) e implementa dois serviços: o `RegistServerServiceImpl` e o `GetServerServiceImpl`.
+que depende da VM no qual corre a aplicação) e implementa dois serviços: 
+o `RegistServerServiceImpl` e o `GetServerServiceImpl`.
 
-O serviço `RegisterServiceImpl` diz respeito à comunicação entre o kvServer e o ring manager, ou seja, implementa o contrato que possui a operação de registo do kvServer no ring manager, a operação para o kvServer obter o seu sucessor e a operação para informar a falha do sucessor do kvServer ao ring manager. Todas estas operações necessitam de aceder à informação do anel e para tal existe a classe `RingInfo` que guarda uma lista com os kvServers bem como o número de kvServers que o anel suporta (na nossa implementação N = 3).
+O serviço `RegisterServiceImpl` implementa o contrato entre o Server e o Register. Implementa duas operações: 
+- O registo de um Server no Register (`registServer`); 
+- A operação para o Register obter o Server seguinte (`getNextServer`).
 
-As operações em si têm que garantir que não existem problemas de concorrência, por exemplo quando adicionamos servidores à lista. Para tal, as operações possuem a keyword `synchronized` que garante que apenas uma thread do gRPC altera em determinado momento a lista dos servidores.
+Todas estas operações necessitam de aceder à informação do Register e para tal existe a classe `RegisterInfo` 
+que guarda uma lista com os Servers.
 
-O serviço `GetServerServiceImpl` implementa o contrato relativo ao cliente e o ring manager. Apenas possui uma operação, a obtenção de um kvServer. Tal como pedido no enunciado, o ring manager usa uma distribuição Round Robin para responder ao cliente que pretende obter um kvServer. Como foi dito anteriormente, existe uma lista que é populada no momento do registo dos kvServers e cada vez que um cliente faz um pedido ao ring manager é devolvido um servidor que se encontra num índice que o ring manager vai mantendo.
+As operações possuem a keyword `synchronized` para garantir que apenas uma thread do gRPC altera, em determinado momento,
+a lista dos servidores.
 
-**Uso:** `java -jar RingManagerApp-1.0-SNAPSHOT-jar-with-dependencies.jar`
+O serviço `GetServerServiceImpl` implementa o contrato relativo ao Client e o Register. 
+Possui duas operações: 
+- A obtenção de um Server para o Client (`getServerEndpoint`);
+- A informação por parte do Client que um Server falhou (`failInform`);
 
-## kvServer:
+Como referido nas FAQs do TPA1, o Register utiliza uma distribuição Round Robin para 
+responder ao Client que pretende obter um Server. 
+A lista é populada no momento do registo dos Servers e cada vez que um Client faz um pedido ao 
+Register é devolvido um Server que se encontra num índice que o Register vai mantendo.
 
-Ao executar a aplicação kvServer, é feito um pedido de registo ao ring manager sendo recebido como resposta uma confirmação. Após isso é feito um novo pedido para obter um sucessor. Se o anel ainda não estiver formado (menos de 3 kvServers registados) reenvia esse mesmo pedido de 10 em 10 segundos até receber uma resposta (significando que o anel se formou).
-Esta não é a melhor forma de cumprir o requisito de o manager só enviar o sucessor ao kvServer registado após a formação do anel, pois recorre a muitos pedidos desnecessários não sendo uma solução com escalabilidade. Uma forma mais elegante de cumprir este requisito seria através do uso de java futures.
+**Uso:** `java -jar RegisterApp-1.0-jar-with-dependencies.jar`
 
-A aplicação kvServer à semelhança do ring manager implementa dois serviços, o `BaseServiceImpl` e o `RingServiceImpl`. O primeiro diz respeito ao contrato entre o cliente e o kvServer, implementando as operações de writeUpdate e read que podem ser invocadas pelo cliente. Já o segundo serviço é relativo à comunicação entre os kvServers que constituem o anel, sendo implementadas as operações writeNext e readNext.
+
+
+## ServerApp:
+
+Ao executar a aplicação Server, é feito um pedido de registo ao Register sendo recebido como resposta uma confirmação. 
+
+A aplicação Server (à semelhança do Register) implementa dois serviços, o `BaseServiceImpl` e o `RingServiceImpl`. O primeiro diz respeito ao contrato entre o cliente e o kvServer, implementando as operações de writeUpdate e read que podem ser invocadas pelo cliente. Já o segundo serviço é relativo à comunicação entre os kvServers que constituem o anel, sendo implementadas as operações writeNext e readNext.
 O código relativo a estas operações é extenso e poderia ser fatorizado numa implementação futura. Existem bastantes comentários, mas de forma resumida, o writeUpdate escreve localmente o par KeyValue e posteriormente tenta propagar o pedido para o seu sucessor. O sucessor fará o mesmo. Caso não consiga obter resposta do sucessor o kvServer informa o ring manager e obtém como resposta um novo sucessor. É então feita a propagação do write para o novo sucessor.
 A operação read segue a mesma lógica, mas em vez de escrever o par KeyValue, apenas tentar ler o valor correspondente à key recebida no request.
 
@@ -34,18 +50,20 @@ A falha do sucessor é detetada ao tentar criar um canal entre um kvServer e o s
 
 **Nota:** Ao executar a aplicação do kvServer é pressuposto que existe um contentor Docker a correr uma imagem [REDIS](https://redis.io/) na mesma máquina que o kvServer.
 
-**Uso:** `java -jar KvServerApp-1.0-SNAPSHOT-jar-with-dependencies.jar <kvServer IP> <kvServer Port>  <ring manager IP> <REDIS Port>`
+**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port>  <Register IP> <Volume Port>??`
 
-## Cliente:
+## Client:
 
-A aplicação cliente é muito simples, ao ser executada liga-se ao ring manager e caso o anel estiver formado, faz um pedido para obter um kvServer. Seguindo a lógica do registo do kvServer no ring manager, se o anel não estiver formado o cliente faz um pedido de 10 em 10 segundos para obter o kvServer. Com uma resposta ao pedido anterior, o cliente liga-se ao kvServer e é apresentado um menu com opções para fazer uma escrita de um par KeyValue, para fazer uma leitura de um valor ou para terminar a aplicação.
-A operação de escrita pede ao utilizador que insira um valor no formato JSON e como chave é gerado um hash aleatório. Este valor pode ser consultado posteriormente através da operação de leitura que recebe como parâmetro o hash gerado anteriormente.
+A aplicação Client, ao ser executada conecta-se ao Register e faz um pedido para obter um Server. 
+Com uma resposta ao pedido anterior, o Client liga-se ao Server e é apresentado um menu com opções para fazer 
+- Processar uma imagem para ser marcada (`ProcessImageToServer`);
+- Ver estado da imagem (`CheckImageStatus`);
+- Procurar uma imagem pelo seu Id(`DownloadMarkedImageById`);
+- Procurar uma imagem pelas suas keywords(`DownloadMarkedImageByKeywords`);
+- Terminar a aplicação;
 
-Na nossa implementação é feito o pressuposto que cada cliente apenas comunica com um e só um kvServer, sendo impossível comutar para outro servidor sem reiniciar a aplicação cliente.
+Na nossa implementação é feito o pressuposto que cada Client apenas comunica com um e só um Server, sendo impossível 
+comutar para outro servidor sem reiniciar a aplicação Client.
 
-**Uso:** `java -jar ClientApp-1.0-SNAPSHOT-jar-with-dependencies.jar <ring manager IP>`
+**Uso:** `java -jar ClientApp-1.0-jar-with-dependencies.jar <Register IP>`
 
-## Introdução de novos kvServers no anel:
-
-De forma a adicionar novos servidores ao anel, uma abordagem seria criar um quinto contrato, entre os kvServers e o ring manager, que possua uma operação que ao receber um novo pedido de registo verifica se o número de kvServers definido inicialmente foi alcançado e caso aconteça, envia uma mensagem contendo um novo servidor sucessor para todos os kvServers, incluindo o do novo registo.
-Esta solução pressupõe que não existem pedidos a circular no anel no momento do novo registo, pois isso levaria a inconsistências. Em caso de falha de um servidor, acreditamos que a implementação entregue consegue lidar com este tipo de ocorrências.

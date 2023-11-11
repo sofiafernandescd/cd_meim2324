@@ -22,7 +22,7 @@ public final class ClientServerServiceGrpc {
       clientserverstubs.ImageStatusResponse> getProcessImageToServerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ProcessImageToServer",
+      fullMethodName = SERVICE_NAME + '/' + "processImageToServer",
       requestType = clientserverstubs.ImageBlock.class,
       responseType = clientserverstubs.ImageStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
@@ -35,13 +35,13 @@ public final class ClientServerServiceGrpc {
           ClientServerServiceGrpc.getProcessImageToServerMethod = getProcessImageToServerMethod =
               io.grpc.MethodDescriptor.<clientserverstubs.ImageBlock, clientserverstubs.ImageStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessImageToServer"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "processImageToServer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientserverstubs.ImageBlock.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientserverstubs.ImageStatusResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("ProcessImageToServer"))
+              .setSchemaDescriptor(new ClientServerServiceMethodDescriptorSupplier("processImageToServer"))
               .build();
         }
       }

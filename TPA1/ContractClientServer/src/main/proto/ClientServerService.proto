@@ -16,7 +16,7 @@ service ClientServerService {
   // 2. Uma aplicação Cliente usa  operações que permitem realizar upload de imagens para um servidor, uma lista de keywords
   // a serem marcadas na imagem inicial e a obtenção posterior da correspondente imagem marcada;
   // Enviar uma imagem para processamento a um servidor específico
-  rpc ProcessImageToServer(stream ImageBlock) returns (ImageStatusResponse);
+  rpc processImageToServer(stream ImageBlock) returns (ImageStatusResponse);
 
   // 3. Um Cliente pode submeter um conjunto de imagens e só posteriormente pedir ao servidor para obter
   // (download) uma imagem marcada específica. Assim o servidor após receber uma imagem a processar

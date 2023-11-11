@@ -56,7 +56,7 @@ public final class ClientServerServiceOuterClass {
       "rds\030\003 \003(\t\"*\n\026ImageDownloadRequestId\022\020\n\010i" +
       "mage_id\030\001 \001(\t\"0\n\034ImageDownloadRequestKey" +
       "words\022\020\n\010keywords\030\001 \003(\t2\305\003\n\023ClientServer" +
-      "Service\022c\n\024ProcessImageToServer\022\037.client" +
+      "Service\022c\n\024processImageToServer\022\037.client" +
       "serverservice.ImageBlock\032(.clientservers" +
       "ervice.ImageStatusResponse(\001\022e\n\020CheckIma" +
       "geStatus\022\'.clientserverservice.ImageStat" +

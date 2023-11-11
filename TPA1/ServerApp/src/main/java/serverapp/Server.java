@@ -16,7 +16,6 @@ public class Server extends RegisterServerServiceGrpc.RegisterServerServiceImplB
 
     private static RegisterServerServiceGrpc.RegisterServiceBlockingStub registerServiceBlockingStub;
 
-    MarkApp marcador = DockerAPI.main("");
 
     public static void main(String[] args) {
         try {
