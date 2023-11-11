@@ -41,13 +41,11 @@ public final class RegisterServerServiceOuterClass {
       "\n\033RegisterServerService.proto\022\025registers" +
       "erverservice\"&\n\nServerInfo\022\n\n\002ip\030\001 \001(\t\022\014" +
       "\n\004port\030\002 \001(\005\"\"\n\016ServerResponse\022\020\n\010respon" +
-      "se\030\001 \001(\t\"\007\n\005Empty2\303\001\n\025RegisterServerServ" +
-      "ice\022X\n\014registServer\022!.registerserverserv" +
-      "ice.ServerInfo\032%.registerserverservice.S" +
-      "erverResponse\022P\n\rgetNextServer\022\034.registe" +
-      "rserverservice.Empty\032!.registerserverser" +
-      "vice.ServerInfoB\027\n\023registerserverstubsP\001" +
-      "b\006proto3"
+      "se\030\001 \001(\t\"\007\n\005Empty2q\n\025RegisterServerServi" +
+      "ce\022X\n\014registServer\022!.registerserverservi" +
+      "ce.ServerInfo\032%.registerserverservice.Se" +
+      "rverResponseB\027\n\023registerserverstubsP\001b\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

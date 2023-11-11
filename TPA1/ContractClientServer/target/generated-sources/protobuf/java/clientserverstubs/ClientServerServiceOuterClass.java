@@ -51,23 +51,25 @@ public final class ClientServerServiceOuterClass {
       "\n\031ClientServerService.proto\022\023clientserve" +
       "rservice\"&\n\022ImageStatusRequest\022\020\n\010image_" +
       "id\030\001 \001(\t\"7\n\023ImageStatusResponse\022\020\n\010image" +
-      "_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\010\">\n\nImageBlock\022" +
-      "\020\n\010image_id\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022\020\n\010keywo" +
-      "rds\030\003 \003(\t\"*\n\026ImageDownloadRequestId\022\020\n\010i" +
-      "mage_id\030\001 \001(\t\"0\n\034ImageDownloadRequestKey" +
-      "words\022\020\n\010keywords\030\001 \003(\t2\305\003\n\023ClientServer" +
-      "Service\022c\n\024processImageToServer\022\037.client" +
-      "serverservice.ImageBlock\032(.clientservers" +
-      "ervice.ImageStatusResponse(\001\022e\n\020CheckIma" +
-      "geStatus\022\'.clientserverservice.ImageStat" +
-      "usRequest\032(.clientserverservice.ImageSta" +
-      "tusResponse\022i\n\027DownloadMarkedImageById\022+" +
-      ".clientserverservice.ImageDownloadReques" +
-      "tId\032\037.clientserverservice.ImageBlock0\001\022w" +
-      "\n\035DownloadMarkedImageByKeywords\0221.client" +
-      "serverservice.ImageDownloadRequestKeywor" +
-      "ds\032\037.clientserverservice.ImageBlock(\0010\001B" +
-      "\025\n\021clientserverstubsP\001b\006proto3"
+      "_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\010\"u\n\nImageBlock\022" +
+      "\020\n\010image_id\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022\026\n\016image" +
+      "_pathname\030\003 \001(\t\022\035\n\025image_result_pathname" +
+      "\030\004 \001(\t\022\020\n\010keywords\030\005 \003(\t\"*\n\026ImageDownloa" +
+      "dRequestId\022\020\n\010image_id\030\001 \001(\t\"0\n\034ImageDow" +
+      "nloadRequestKeywords\022\020\n\010keywords\030\001 \003(\t2\305" +
+      "\003\n\023ClientServerService\022c\n\024processImageTo" +
+      "Server\022\037.clientserverservice.ImageBlock\032" +
+      "(.clientserverservice.ImageStatusRespons" +
+      "e(\001\022e\n\020CheckImageStatus\022\'.clientserverse" +
+      "rvice.ImageStatusRequest\032(.clientservers" +
+      "ervice.ImageStatusResponse\022i\n\027DownloadMa" +
+      "rkedImageById\022+.clientserverservice.Imag" +
+      "eDownloadRequestId\032\037.clientserverservice" +
+      ".ImageBlock0\001\022w\n\035DownloadMarkedImageByKe" +
+      "ywords\0221.clientserverservice.ImageDownlo" +
+      "adRequestKeywords\032\037.clientserverservice." +
+      "ImageBlock(\0010\001B\025\n\021clientserverstubsP\001b\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -90,7 +92,7 @@ public final class ClientServerServiceOuterClass {
     internal_static_clientserverservice_ImageBlock_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_clientserverservice_ImageBlock_descriptor,
-        new java.lang.String[] { "ImageId", "Data", "Keywords", });
+        new java.lang.String[] { "ImageId", "Data", "ImagePathname", "ImageResultPathname", "Keywords", });
     internal_static_clientserverservice_ImageDownloadRequestId_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_clientserverservice_ImageDownloadRequestId_fieldAccessorTable = new

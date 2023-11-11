@@ -9,28 +9,39 @@ import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
 import io.grpc.stub.StreamObserver;
-import clientserverservice.ImageBlock;
-import clientserverservice.ImageProcessingServiceGrpc;
-import clientserverservice.ImageStatusResponse;
+import clientserverstubs.*;
+import clientserverstubs.ImageBlock;
+import clientserverstubs.ImageStatusResponse;
+import clientserverstubs.ImageStatusResponse;
 import serverapp.DockerAPI.*;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
-public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ImageProcessingServiceImplBase {
+public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServerServiceImplBase{
+    public ProcessImageServiceImpl(){}
 
     @Override
-    public void processImageToServer(StreamObserver<ImageStatusResponse> responseObserver) {
-        // List to store image chunks received from the client
-        List<byte[]> imageChunks = new ArrayList<>();
+    public StreamObserver<ImageBlock> processImageToServer(StreamObserver<ImageStatusResponse> responseObserver){
 
-        // Receive image chunks from the client
-        StreamObserver<ImageBlock> imageBlockObserver = new StreamObserver<ImageBlock>() {
+       return new StreamObserver<ImageBlock>() {
+           // List to store image chunks received from the client
+           private List<byte[]> imageChunks = new ArrayList<>();
+           ImageBlock imageBlock;
+
+           List<String> keywords = new ArrayList<>();
+
             @Override
             public void onNext(ImageBlock imageBlock) {
                 // Collect image chunks
                 imageChunks.add(imageBlock.getData().toByteArray());
+                this.imageBlock = imageBlock;
             }
 
             @Override
@@ -44,31 +55,25 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ImageProces
                 // Concatenate image chunks into a single byte array
                 byte[] imageData = concatenateChunks(imageChunks);
 
-                // Process the image using MarkImages and DockerAPI
-                processImageWithDocker(imageData);
 
-                // Notify the gRPC client about the image processing status
+                // Process the image using MarkImages and DockerAPI
+                processImageWithDocker(imageData, imageBlock.getKeywordsList(), imageBlock.getImagePathname(), imageBlock.getImageResultPathname());
+
                 ImageStatusResponse response = ImageStatusResponse.newBuilder()
-                        .setStatus("Image processing completed")
+                        .setImageId(UUID.randomUUID().toString())
+                        .setStatus(false)
                         .build();
 
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             }
         };
-
-        // Set up the image block observer
-        responseObserver.onNext(ImageBlock.newBuilder().build());
-        responseObserver.onCompleted();
-
-        // Return the observer to receive image chunks from the client
-        return imageBlockObserver;
     }
 
 
     // Utility method to concatenate a list of byte arrays into a single byte array
     private byte[] concatenateChunks(List<byte[]> chunks) {
-        int totalSize = chunks.stream().mapToInt(byte[]::length).sum();
+        int totalSize = chunks.stream().mapToInt(chunk -> chunk.length).sum();
         byte[] result = new byte[totalSize];
 
         int offset = 0;
@@ -81,8 +86,9 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ImageProces
     }
 
     // Method to process the image using DockerAPI
-    private void processImageWithDocker(byte[] imageData) {
+    private void processImageWithDocker(byte[] imageData, List<String> keywords, String image_pathname, String image_result_pathname) {
         try {
+
             // Convert byte array to BufferedImage
             ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
             BufferedImage img = ImageIO.read(inputStream);
@@ -95,8 +101,14 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ImageProces
             String HOST_URI = "tcp://localhost:2375"; // Docker daemon URI, TODO
             String containerName = "mark-app-container";
             String pathVolDir = "/path/to/volume"; // Host volume directory, TODO
-            String imageName = "Dockerfile";
-            List<String> command = List.of(tempImagePath);
+            String imageName = "DockerFile";
+
+
+            String command= "docker run -d -v" + "/usr/images:" + "/usr/datafiles" + "–name" + containerName + " " + imageName + " " + image_pathname + " " + image_result_pathname;
+
+            for(int i= 0; i < keywords.size(); i++){
+                command = command + " " + keywords.get(i);
+            }
 
             // Create Docker client
             DockerClient dockerClient = DockerClientBuilder
@@ -133,14 +145,14 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ImageProces
             // Clean up: Kill and remove the container
             dockerClient.killContainerCmd(containerName).exec();
             dockerClient.removeContainerCmd(containerName).exec();
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
 
-    @Override
+/*    @Override
     public void processImageToServer(StreamObserver<ImageStatusResponse> responseObserver) {
         // Implement the logic to process images using Docker here
 
@@ -192,5 +204,5 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ImageProces
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();
-    }
+    }*/
 }

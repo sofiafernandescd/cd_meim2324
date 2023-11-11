@@ -46,7 +46,9 @@ message ImageStatusResponse {
 message ImageBlock {
   string image_id = 1;
   bytes data = 2;
-  repeated string keywords = 3;
+  string image_pathname = 3;
+  string image_result_pathname = 4;
+  repeated string keywords = 5;
 }
 
 message ImageDownloadRequestId {
