@@ -6,6 +6,8 @@ import registerserverstubs.*;
 import clientserverstubs.*;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import serverapp.DockerAPI;
+import serverapp.MarkApp;
 
 
 public class Server extends RegisterServerServiceGrpc.RegisterServerServiceImplBase {
@@ -13,6 +15,8 @@ public class Server extends RegisterServerServiceGrpc.RegisterServerServiceImplB
     private static int svcPort = 8500;
 
     private static RegisterServerServiceGrpc.RegisterServiceBlockingStub registerServiceBlockingStub;
+
+    MarkApp marcador = DockerAPI.main("");
 
     public static void main(String[] args) {
         try {
@@ -30,6 +34,13 @@ public class Server extends RegisterServerServiceGrpc.RegisterServerServiceImplB
 
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+
+        @Override
+        public void RegistServer(ServerInfo request, StreamObserver<Empty> responseObserver) {
+            registedServers.add(request);
+            responseObserver.onNext(Empty.getDefaultInstance());
+            responseObserver.onCompleted();
         }
     }
 

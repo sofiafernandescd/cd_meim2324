@@ -18,6 +18,9 @@ public class DockerAPI {
         // arg0 windows: tcp://localhost:2375 // arg0 linux: unix:///var/run/docker.sock
         // arg1 : container name
         // arg2 : volume name or filesystem directory
+        // arg3: image pathname
+        // arg4: image result pathname (volume)
+        // arg5 - arginf: image keywords
         try {
             String HOST_URI = args[0]; String containerName = args[1];
             String pathVolDir = args[2]; String imageName = args[3];
@@ -32,7 +35,7 @@ public class DockerAPI {
                                                 .build();
             HostConfig hostConfig = HostConfig.newHostConfig()
                                                 .withBinds(new Bind(pathVolDir, new Volume("/usr/datafiles")));
-                                                CreateContainerResponse containerResponse = dockerclient
+            CreateContainerResponse containerResponse = dockerclient
                                                 .createContainerCmd(imageName)
                                                 .withName(containerName)
                                                 .withHostConfig(hostConfig)

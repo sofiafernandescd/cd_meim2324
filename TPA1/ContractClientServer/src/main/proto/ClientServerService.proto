@@ -8,14 +8,13 @@ package clientserverservice; // package do proto
 // serviço com operações sobre números
 service ClientServerService {
 
-  // 2. Uma aplicação Cliente usa dois contratos: 
-  // i) operação de acesso ao servidor Register para obter a localização de um dos servidores registados; 
-  // ii) (este) operações que permitem realizar upload de imagens para um servidor, uma lista de keywords 
-  // a serem marcadas na imagem inicial e a obtenção posterior da correspondente imagem marcada;
+
  
   // 4. A transferência dos ficheiros imagem (upload e download) entre os clientes e os servidores deve ser
   // realizada por streaming de blocos, por exemplo, de 32 Kbyte;
 
+  // 2. Uma aplicação Cliente usa  operações que permitem realizar upload de imagens para um servidor, uma lista de keywords
+  // a serem marcadas na imagem inicial e a obtenção posterior da correspondente imagem marcada;
   // Enviar uma imagem para processamento a um servidor específico
   rpc ProcessImageToServer(stream ImageBlock) returns (ImageStatusResponse);
 
@@ -24,14 +23,13 @@ service ClientServerService {
   // deve retornar um identificador único que identifique a imagem. Através desse identificador o Cliente
   // pode também interrogar o servidor se a imagem correspondente já foi processada, isto é, se já pode
   // fazer o download da imagem marcada;
-
   // Verificar o status de processamento de uma imagem
   rpc CheckImageStatus(ImageStatusRequest) returns (ImageStatusResponse);
 
   // Fazer o download de uma imagem marcada, pelo Id
   rpc DownloadMarkedImageById(ImageDownloadRequestId) returns (stream ImageBlock);
 
-  // Fazer o download de uma imagem marcada
+  // Fazer o download de uma imagem marcada, pelas keywords
   rpc DownloadMarkedImageByKeywords(stream ImageDownloadRequestKeywords) returns (stream ImageBlock);
 }
 
@@ -46,7 +44,9 @@ message ImageStatusResponse {
 }
 
 message ImageBlock {
-  bytes data = 1;
+  string image_id = 1;
+  bytes data = 2;
+  repeated string keywords = 3;
 }
 
 message ImageDownloadRequestId {
@@ -54,5 +54,6 @@ message ImageDownloadRequestId {
 }
 
 message ImageDownloadRequestKeywords {
-  string keywords = 1;
+  repeated string keywords = 1;
+
 }

@@ -2,6 +2,9 @@ package clientapp;
 
 import clientregisterstubs.*;
 import clientserverstubs.*;
+import clientserverstubs.ClientServerServiceGrpc.ClientServerServiceBlockingStub;
+
+import com.google.protobuf.ByteString;
 // Importar as classes do pacote clientserverstubs e clientregisterstubs
 // import calcstubs.Number;
 import com.google.protobuf.Message;
@@ -51,8 +54,56 @@ public class Client {
                         
                         break;
                     case 2: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
+
+                        // Crie um objeto StreamObserver para receber as respostas do servidor.
+                        StreamObserver<ImageBlock> responseObserver = new StreamObserver<ImageBlock>() {
+                            @Override
+                            public void onNext(ImageBlock response) {
+                                // Trate a resposta do servidor (opcional).
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                // Trate erros.
+                            }
+
+                            @Override
+                            public void onCompleted() {
+                                // Trate a conclusão do streaming.
+                            }
+                        };
+
+
+                        StreamObserver<ImageBlock> imageStreamObserver = noBlockStub1.ProcessImageToServer(new StreamObserver<ImageStatusResponse>() {
+                        @Override
+                        public void onNext(ImageStatusResponse response) {
+                            // Trate a resposta do servidor (opcional).
+                        }
+
+                        @Override
+                        public void onError(Throwable t) {
+                            // Trate erros.
+                        }
+
+                        @Override
+                        public void onCompleted() {
+                            // Trate a conclusão do streaming.
+                        }
+                    });
+
+                    byte[] buffer = new byte[32 * 1024]; // 32 Kbytes buffer
+                    int bytesRead;
+                    while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                        ImagemChunk chunk = ImagemChunk.newBuilder()
+                            .setChunkData(ByteString.copyFrom(buffer, 0, bytesRead))
+                            .build();
+                        imagemStreamObserver.onNext(chunk);
+                    }
+
+                    imagemStreamObserver.onCompleted();
+
                         
-                        break;
+                  
                     case 3: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
                         
                         break;
