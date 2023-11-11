@@ -18,6 +18,8 @@ private static final long serialVersionUID = 0L;
   private ImageBlock() {
     imageId_ = "";
     data_ = com.google.protobuf.ByteString.EMPTY;
+    imagePathname_ = "";
+    imageResultPathname_ = "";
     keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
@@ -95,10 +97,86 @@ private static final long serialVersionUID = 0L;
     return data_;
   }
 
-  public static final int KEYWORDS_FIELD_NUMBER = 3;
+  public static final int IMAGE_PATHNAME_FIELD_NUMBER = 3;
+  private volatile java.lang.Object imagePathname_;
+  /**
+   * <code>string image_pathname = 3;</code>
+   * @return The imagePathname.
+   */
+  @java.lang.Override
+  public java.lang.String getImagePathname() {
+    java.lang.Object ref = imagePathname_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      imagePathname_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string image_pathname = 3;</code>
+   * @return The bytes for imagePathname.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImagePathnameBytes() {
+    java.lang.Object ref = imagePathname_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      imagePathname_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int IMAGE_RESULT_PATHNAME_FIELD_NUMBER = 4;
+  private volatile java.lang.Object imageResultPathname_;
+  /**
+   * <code>string image_result_pathname = 4;</code>
+   * @return The imageResultPathname.
+   */
+  @java.lang.Override
+  public java.lang.String getImageResultPathname() {
+    java.lang.Object ref = imageResultPathname_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      imageResultPathname_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string image_result_pathname = 4;</code>
+   * @return The bytes for imageResultPathname.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getImageResultPathnameBytes() {
+    java.lang.Object ref = imageResultPathname_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      imageResultPathname_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int KEYWORDS_FIELD_NUMBER = 5;
   private com.google.protobuf.LazyStringList keywords_;
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @return A list containing the keywords.
    */
   public com.google.protobuf.ProtocolStringList
@@ -106,14 +184,14 @@ private static final long serialVersionUID = 0L;
     return keywords_;
   }
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @return The count of keywords.
    */
   public int getKeywordsCount() {
     return keywords_.size();
   }
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @param index The index of the element to return.
    * @return The keywords at the given index.
    */
@@ -121,7 +199,7 @@ private static final long serialVersionUID = 0L;
     return keywords_.get(index);
   }
   /**
-   * <code>repeated string keywords = 3;</code>
+   * <code>repeated string keywords = 5;</code>
    * @param index The index of the value to return.
    * @return The bytes of the keywords at the given index.
    */
@@ -150,8 +228,14 @@ private static final long serialVersionUID = 0L;
     if (!data_.isEmpty()) {
       output.writeBytes(2, data_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePathname_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, imagePathname_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imageResultPathname_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, imageResultPathname_);
+    }
     for (int i = 0; i < keywords_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, keywords_.getRaw(i));
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, keywords_.getRaw(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -168,6 +252,12 @@ private static final long serialVersionUID = 0L;
     if (!data_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
         .computeBytesSize(2, data_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePathname_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, imagePathname_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imageResultPathname_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, imageResultPathname_);
     }
     {
       int dataSize = 0;
@@ -196,6 +286,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getImageId())) return false;
     if (!getData()
         .equals(other.getData())) return false;
+    if (!getImagePathname()
+        .equals(other.getImagePathname())) return false;
+    if (!getImageResultPathname()
+        .equals(other.getImageResultPathname())) return false;
     if (!getKeywordsList()
         .equals(other.getKeywordsList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -213,6 +307,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getImageId().hashCode();
     hash = (37 * hash) + DATA_FIELD_NUMBER;
     hash = (53 * hash) + getData().hashCode();
+    hash = (37 * hash) + IMAGE_PATHNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getImagePathname().hashCode();
+    hash = (37 * hash) + IMAGE_RESULT_PATHNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getImageResultPathname().hashCode();
     if (getKeywordsCount() > 0) {
       hash = (37 * hash) + KEYWORDS_FIELD_NUMBER;
       hash = (53 * hash) + getKeywordsList().hashCode();
@@ -349,6 +447,10 @@ private static final long serialVersionUID = 0L;
 
       data_ = com.google.protobuf.ByteString.EMPTY;
 
+      imagePathname_ = "";
+
+      imageResultPathname_ = "";
+
       keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000001);
       return this;
@@ -380,6 +482,8 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       result.imageId_ = imageId_;
       result.data_ = data_;
+      result.imagePathname_ = imagePathname_;
+      result.imageResultPathname_ = imageResultPathname_;
       if (((bitField0_ & 0x00000001) != 0)) {
         keywords_ = keywords_.getUnmodifiableView();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -440,6 +544,14 @@ private static final long serialVersionUID = 0L;
       if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
         setData(other.getData());
       }
+      if (!other.getImagePathname().isEmpty()) {
+        imagePathname_ = other.imagePathname_;
+        onChanged();
+      }
+      if (!other.getImageResultPathname().isEmpty()) {
+        imageResultPathname_ = other.imageResultPathname_;
+        onChanged();
+      }
       if (!other.keywords_.isEmpty()) {
         if (keywords_.isEmpty()) {
           keywords_ = other.keywords_;
@@ -487,11 +599,21 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 18
             case 26: {
+              imagePathname_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 26
+            case 34: {
+              imageResultPathname_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 34
+            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
               ensureKeywordsIsMutable();
               keywords_.add(s);
               break;
-            } // case 26
+            } // case 42
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -619,6 +741,158 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object imagePathname_ = "";
+    /**
+     * <code>string image_pathname = 3;</code>
+     * @return The imagePathname.
+     */
+    public java.lang.String getImagePathname() {
+      java.lang.Object ref = imagePathname_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imagePathname_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string image_pathname = 3;</code>
+     * @return The bytes for imagePathname.
+     */
+    public com.google.protobuf.ByteString
+        getImagePathnameBytes() {
+      java.lang.Object ref = imagePathname_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imagePathname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string image_pathname = 3;</code>
+     * @param value The imagePathname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImagePathname(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      imagePathname_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image_pathname = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearImagePathname() {
+      
+      imagePathname_ = getDefaultInstance().getImagePathname();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image_pathname = 3;</code>
+     * @param value The bytes for imagePathname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImagePathnameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      imagePathname_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object imageResultPathname_ = "";
+    /**
+     * <code>string image_result_pathname = 4;</code>
+     * @return The imageResultPathname.
+     */
+    public java.lang.String getImageResultPathname() {
+      java.lang.Object ref = imageResultPathname_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imageResultPathname_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string image_result_pathname = 4;</code>
+     * @return The bytes for imageResultPathname.
+     */
+    public com.google.protobuf.ByteString
+        getImageResultPathnameBytes() {
+      java.lang.Object ref = imageResultPathname_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imageResultPathname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string image_result_pathname = 4;</code>
+     * @param value The imageResultPathname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageResultPathname(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      imageResultPathname_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image_result_pathname = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearImageResultPathname() {
+      
+      imageResultPathname_ = getDefaultInstance().getImageResultPathname();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string image_result_pathname = 4;</code>
+     * @param value The bytes for imageResultPathname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setImageResultPathnameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      imageResultPathname_ = value;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.LazyStringList keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureKeywordsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
@@ -627,7 +901,7 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @return A list containing the keywords.
      */
     public com.google.protobuf.ProtocolStringList
@@ -635,14 +909,14 @@ private static final long serialVersionUID = 0L;
       return keywords_.getUnmodifiableView();
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @return The count of keywords.
      */
     public int getKeywordsCount() {
       return keywords_.size();
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @param index The index of the element to return.
      * @return The keywords at the given index.
      */
@@ -650,7 +924,7 @@ private static final long serialVersionUID = 0L;
       return keywords_.get(index);
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @param index The index of the value to return.
      * @return The bytes of the keywords at the given index.
      */
@@ -659,7 +933,7 @@ private static final long serialVersionUID = 0L;
       return keywords_.getByteString(index);
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @param index The index to set the value at.
      * @param value The keywords to set.
      * @return This builder for chaining.
@@ -675,7 +949,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @param value The keywords to add.
      * @return This builder for chaining.
      */
@@ -690,7 +964,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @param values The keywords to add.
      * @return This builder for chaining.
      */
@@ -703,7 +977,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearKeywords() {
@@ -713,7 +987,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string keywords = 3;</code>
+     * <code>repeated string keywords = 5;</code>
      * @param value The bytes of the keywords to add.
      * @return This builder for chaining.
      */
