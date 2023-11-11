@@ -1,14 +1,14 @@
-package registmanager;
+package registerapp;
 
 import java.util.LinkedList;
 
 public class RegisterInfo {
 
-    private int nServers;
+    private int nServers = 0;
 
     private LinkedList<String> ServersList;
 
-    public RegisterInfo(int nServers) {
+    public RegisterInfo() {
         this.nServers = RegisterInfo.this.nServers;
         this.ServersList = new LinkedList<>();
     }

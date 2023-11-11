@@ -1,59 +1,40 @@
 package registerapp;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import registerserverstubs.Empty;
+import registerserverstubs.ServerInfo;
+import registerserverstubs.ServerList;
 
-import clientregisterstubs.RegisterServiceGrpc;
-import registerserverstubs.*;
+import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.Status;
+import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 
 
 public class Register {
 
-    private static int svcPort = 8500;
+    private static final String REGISTER_IP = "localhost";
+    private static final int REGISTER_PORT = 8001;
+
 
     public static void main(String[] args) {
+
+        RegisterInfo registerInfo = new RegisterInfo();
+
         try {
-            if (args.length > 0) svcPort = Integer.parseInt(args[0]);
-            io.grpc.Server svc = ServerBuilder
-                .forPort(svcPort)
-                .addService(new Register())
-                .build();
-            svc.start();
-            System.out.println("Server started, listening on " + svcPort);
-            //Scanner scan = new Scanner(System.in);
-            //scan.nextLine();
-            svc.awaitTermination();
-            svc.shutdown();
+            io.grpc.Server server = ServerBuilder.forPort(REGISTER_PORT)
+                    .addService(new RegisterServerServiceImpl(registerInfo))
+                    .addService(new ClientRegisterServiceImpl(registerInfo))
+                    .build();
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            server.start();
+            System.out.println("> Register running on IP: " + REGISTER_IP);
+            System.out.println("> Register running on port: " + REGISTER_PORT);
+            server.awaitTermination();
+        }
+        catch (Exception e) {
+            System.out.println("> " + e);
         }
     }
 
-    private List<ServerInfo> registedServers = new ArrayList<>();
-
-
-
-    @Override
-    public void GetNextServer(Empty request, StreamObserver<ServerInfo> responseObserver) {
-        if (registedServers.isEmpty()) {
-            responseObserver.onError(new StatusException(Status.NOT_FOUND.withDescription("No server available.")));
-        } else {
-            SeverInfo nextServer = registedServers.get(0);
-            responseObserver.onNext(nextServer);
-            responseObserver.onCompleted();
-        }
-    }
-
-    
-
-    ServerList myServerList = ServerList.newBuilder()
-    .addServers(ServerInfo.newBuilder().setServerId("1").setIp("192.168.1.1").setPort(8080).build())
-    .addServers(ServerInfo.newBuilder().setServerId("2").setIp("192.168.1.2").setPort(8081).build())
-    .build();
-
-    
 }
