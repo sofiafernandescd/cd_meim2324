@@ -11,6 +11,8 @@ import io.grpc.Status;
 import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 
+import java.util.Scanner;
+
 
 public class Register {
 
@@ -31,12 +33,38 @@ public class Register {
             server.start();
             System.out.println("> Register running on IP: " + REGISTER_IP);
             System.out.println("> Register running on port: " + REGISTER_PORT);
+
+            // Separate thread to handle the termination logic
+            Thread terminationThread = new Thread(() -> {
+                waitForTerminationSignal(server);
+            });
+            terminationThread.start();
+
+            // Wait for the server to terminate
             server.awaitTermination();
-            server.shutdown();
         }
+
         catch (Exception e) {
             System.out.println("> " + e);
         }
     }
 
+    private static void waitForTerminationSignal(Server server) {
+        System.out.println("Press 'q' and Enter to gracefully shut down the server.");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String input = scanner.nextLine();
+            if ("q".equalsIgnoreCase(input.trim())) {
+                System.out.println("Terminating the server...");
+                try {
+                    server.shutdown();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Error shutting down the server: " + e.getMessage());
+                }
+            }
+        }
+    }
 }
+
+

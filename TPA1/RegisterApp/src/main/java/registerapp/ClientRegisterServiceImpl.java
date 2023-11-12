@@ -1,9 +1,6 @@
 package registerapp;
 
-import clientregisterstubs.ClientRegisterServiceGrpc;
-import clientregisterstubs.ServerInfo;
-import clientregisterstubs.Empty;
-import clientregisterstubs.ServerResponse;
+import clientregisterstubs.*;
 import io.grpc.Status;
 import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
@@ -19,7 +16,7 @@ public class ClientRegisterServiceImpl extends ClientRegisterServiceGrpc.ClientR
         this.registerInfo = registerInfo;
     }
 
-    public synchronized void getServerEndpoint(Empty request, StreamObserver<ServerInfo> result) {
+    public synchronized void getServerEndpoint(ClientRequest request, StreamObserver<ServerInfo> result) {
         // se o anel ainda não estiver formado
         if (registerInfo.getNumberOfServers() < registerInfo.getNServers()) {
             Throwable th = new StatusException(Status.UNAVAILABLE);

@@ -2,23 +2,23 @@ package clientapp;
 
 import clientregisterstubs.*;
 import clientserverstubs.*;
-import clientserverstubs.ClientServerServiceGrpc.ClientServerServiceBlockingStub;
 
 import com.google.protobuf.ByteString;
-// Importar as classes do pacote clientserverstubs e clientregisterstubs
-// import calcstubs.Number;
 import com.google.protobuf.Message;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Server;
 import io.grpc.stub.StreamObserver;
 import java.util.*;
 import java.util.Scanner;
 
 public class Client {
 
-    private static String svcIP = "localhost";
-    //private static String svcIP = "35.246.73.129";
-    private static int svcPort = 8500;
+    private static String REGISTER_IP = "localhost";
+    //private static String REGISTER_IP = "35.246.73.129";
+    private static int REGISTER_PORT = 8500;
+    private static String SERVER_IP = "localhost";
+    private static int SERVER_PORT = 8100;
     private static ManagedChannel channel;
     private static ClientRegisterServiceGrpc.ClientRegisterServiceBlockingStub blockingStub1;
     private static ClientRegisterServiceGrpc.ClientRegisterServiceStub noBlockStub1;
@@ -27,14 +27,26 @@ public class Client {
     private static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
 
-
         try {
             if (args.length == 2) {
-                svcIP = args[0];
-                svcPort = Integer.parseInt(args[1]);
+                REGISTER_IP = args[0];
+                REGISTER_PORT = Integer.parseInt(args[1]);
+
+                // Connect to the Register Server
+                System.out.println("> Connecting to Register: " + REGISTER_IP + ":" + REGISTER_PORT);
+                channel = ManagedChannelBuilder.forAddress(REGISTER_IP, REGISTER_PORT)
+                        .usePlaintext()
+                        .build();
+
+                blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel);
+
+                // Call getServerEndpoint
+                ServerInfo serverInfo = blockingStub1.getServerEndpoint(ClientRequest.newBuilder().build());
+
+
             }
-            System.out.println("connect to "+svcIP+":"+svcPort);
-            channel = ManagedChannelBuilder.forAddress(svcIP, svcPort)
+            System.out.println("Connecting to Server: " + SERVER_IP+":" + SERVER_PORT);
+            channel = ManagedChannelBuilder.forAddress(SERVER_IP, SERVER_PORT)
                 // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
                 // needing certificates.
                 .usePlaintext()
@@ -132,7 +144,7 @@ public class Client {
                             keywordsList.addAll(Arrays.asList(keywordsArray));
 
                             // Crie um StreamObserver para receber os blocos da imagem do servidor
-                            StreamObserver<ImageBlock> imageStreamObserver = new StreamObserver<ImageBlock>() {
+                            StreamObserver<ImageBlock> imageDownloadStreamObserver = new StreamObserver<ImageBlock>() {
                                 @Override
                                 public void onNext(ImageBlock imageBlock) {
                                     // Processar o bloco da imagem recebido
@@ -156,7 +168,7 @@ public class Client {
                                     .build();
 
                             // Faça a chamada assíncrona para iniciar o download com streaming de cliente e servidor
-                            StreamObserver<ImageDownloadRequestKeywords> requestObserver = noBlockStub2.downloadMarkedImageByKeywords(imageStreamObserver);
+                            StreamObserver<ImageDownloadRequestKeywords> requestObserver = noBlockStub2.downloadMarkedImageByKeywords(imageDownloadStreamObserver);
                             requestObserver.onNext(downloadRequestKeywords);
                             requestObserver.onCompleted();
                         } catch (Exception ex) {
@@ -169,7 +181,12 @@ public class Client {
 
                         break;
                     case 0:
-                        System.exit(0);
+                        // Gracefully terminate the client
+                        System.out.println("Exiting the client gracefully.");
+                        // Add any cleanup logic here
+                        channel.shutdown();
+                        return; // Exit the while loop and end the main method
+
                     default:
                         break;
                 }
