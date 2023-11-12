@@ -19,15 +19,15 @@ public class RegisterServerServiceImpl extends RegisterServerServiceGrpc.Registe
         this.registerInfo = registerInfo;
     }
 
-    public synchronized void registServer(ServerInfo serverInfo, StreamObserver<ServerResponse> response) {
+    public synchronized void registServer(ServerInfo serverInfo, StreamObserver<ServerResponse> result) {
 
         // adicionar à lista de servidores
-        String newServer = serverInfo.getServerIP() + ':' + serverInfo.getServerPort();
+        String newServer = serverInfo.getIp() + ':' + serverInfo.getPort();
         registerInfo.addServerToList(newServer); //Formato: IP:PORT
 
-        ServerResponse response = ServerResponse.newBuilder().setServerResponse("You have been registered!").build();
-        response.onNext(response);
-        response.onCompleted();
+        ServerResponse response = ServerResponse.newBuilder().setResponse("You have been registered!").build();
+        result.onNext(response);
+        result.onCompleted();
 
         System.out.println("> Server " + newServer + " has been registered");
 

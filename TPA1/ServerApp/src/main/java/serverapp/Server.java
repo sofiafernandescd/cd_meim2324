@@ -15,7 +15,7 @@ public class Server{
 
     //params do Register
     private static String REGISTER_IP;
-    private static final int REGISTER_PORT = 8000;
+    private static final int REGISTER_PORT = 8002;
 
     private static ManagedChannel channel;
     private static RegisterServerServiceGrpc.RegisterServerServiceBlockingStub registerServiceBlockingStub;

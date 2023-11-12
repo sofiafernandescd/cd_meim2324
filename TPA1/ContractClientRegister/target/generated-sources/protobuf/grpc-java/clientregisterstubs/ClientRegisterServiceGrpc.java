@@ -47,28 +47,28 @@ public final class ClientRegisterServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo,
-      clientregisterstubs.ServerResponse> getFailInformMethod;
+      clientregisterstubs.ServerInfo> getFailInformMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "failInform",
       requestType = clientregisterstubs.ServerInfo.class,
-      responseType = clientregisterstubs.ServerResponse.class,
+      responseType = clientregisterstubs.ServerInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo,
-      clientregisterstubs.ServerResponse> getFailInformMethod() {
-    io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo, clientregisterstubs.ServerResponse> getFailInformMethod;
+      clientregisterstubs.ServerInfo> getFailInformMethod() {
+    io.grpc.MethodDescriptor<clientregisterstubs.ServerInfo, clientregisterstubs.ServerInfo> getFailInformMethod;
     if ((getFailInformMethod = ClientRegisterServiceGrpc.getFailInformMethod) == null) {
       synchronized (ClientRegisterServiceGrpc.class) {
         if ((getFailInformMethod = ClientRegisterServiceGrpc.getFailInformMethod) == null) {
           ClientRegisterServiceGrpc.getFailInformMethod = getFailInformMethod =
-              io.grpc.MethodDescriptor.<clientregisterstubs.ServerInfo, clientregisterstubs.ServerResponse>newBuilder()
+              io.grpc.MethodDescriptor.<clientregisterstubs.ServerInfo, clientregisterstubs.ServerInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "failInform"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   clientregisterstubs.ServerInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  clientregisterstubs.ServerResponse.getDefaultInstance()))
+                  clientregisterstubs.ServerInfo.getDefaultInstance()))
               .setSchemaDescriptor(new ClientRegisterServiceMethodDescriptorSupplier("failInform"))
               .build();
         }
@@ -143,7 +143,7 @@ public final class ClientRegisterServiceGrpc {
      * </pre>
      */
     default void failInform(clientregisterstubs.ServerInfo request,
-        io.grpc.stub.StreamObserver<clientregisterstubs.ServerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFailInformMethod(), responseObserver);
     }
   }
@@ -194,7 +194,7 @@ public final class ClientRegisterServiceGrpc {
      * </pre>
      */
     public void failInform(clientregisterstubs.ServerInfo request,
-        io.grpc.stub.StreamObserver<clientregisterstubs.ServerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getFailInformMethod(), getCallOptions()), request, responseObserver);
     }
@@ -233,7 +233,7 @@ public final class ClientRegisterServiceGrpc {
      * Informar o servidor Register que um servidor morreu
      * </pre>
      */
-    public clientregisterstubs.ServerResponse failInform(clientregisterstubs.ServerInfo request) {
+    public clientregisterstubs.ServerInfo failInform(clientregisterstubs.ServerInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getFailInformMethod(), getCallOptions(), request);
     }
@@ -273,7 +273,7 @@ public final class ClientRegisterServiceGrpc {
      * Informar o servidor Register que um servidor morreu
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<clientregisterstubs.ServerResponse> failInform(
+    public com.google.common.util.concurrent.ListenableFuture<clientregisterstubs.ServerInfo> failInform(
         clientregisterstubs.ServerInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getFailInformMethod(), getCallOptions()), request);
@@ -306,7 +306,7 @@ public final class ClientRegisterServiceGrpc {
           break;
         case METHODID_FAIL_INFORM:
           serviceImpl.failInform((clientregisterstubs.ServerInfo) request,
-              (io.grpc.stub.StreamObserver<clientregisterstubs.ServerResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<clientregisterstubs.ServerInfo>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -338,7 +338,7 @@ public final class ClientRegisterServiceGrpc {
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               clientregisterstubs.ServerInfo,
-              clientregisterstubs.ServerResponse>(
+              clientregisterstubs.ServerInfo>(
                 service, METHODID_FAIL_INFORM)))
         .build();
   }

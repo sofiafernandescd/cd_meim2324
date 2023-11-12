@@ -29,6 +29,11 @@ public final class ClientRegisterServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_clientregisterservice_ServerResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_clientregisterservice_Empty_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_clientregisterservice_Empty_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -42,13 +47,13 @@ public final class ClientRegisterServiceOuterClass {
       "isterservice\"\"\n\rClientRequest\022\021\n\tclient_" +
       "id\030\001 \001(\t\"&\n\nServerInfo\022\n\n\002ip\030\001 \001(\t\022\014\n\004po" +
       "rt\030\002 \001(\005\"\"\n\016ServerResponse\022\020\n\010response\030\001" +
-      " \001(\t2\315\001\n\025ClientRegisterService\022\\\n\021getSer" +
-      "verEndpoint\022$.clientregisterservice.Clie" +
-      "ntRequest\032!.clientregisterservice.Server" +
-      "Info\022V\n\nfailInform\022!.clientregisterservi" +
-      "ce.ServerInfo\032%.clientregisterservice.Se" +
-      "rverResponseB\027\n\023clientregisterstubsP\001b\006p" +
-      "roto3"
+      " \001(\t\"\007\n\005Empty2\311\001\n\025ClientRegisterService\022" +
+      "\\\n\021getServerEndpoint\022$.clientregisterser" +
+      "vice.ClientRequest\032!.clientregisterservi" +
+      "ce.ServerInfo\022R\n\nfailInform\022!.clientregi" +
+      "sterservice.ServerInfo\032!.clientregisters" +
+      "ervice.ServerInfoB\027\n\023clientregisterstubs" +
+      "P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -72,6 +77,12 @@ public final class ClientRegisterServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_clientregisterservice_ServerResponse_descriptor,
         new java.lang.String[] { "Response", });
+    internal_static_clientregisterservice_Empty_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_clientregisterservice_Empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_clientregisterservice_Empty_descriptor,
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
