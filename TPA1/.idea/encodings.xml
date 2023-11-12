@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ClientApp/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ClientApp/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientRegister/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientRegister/src/main/proto" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientRegister/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientRegister/target/generated-sources/protobuf/grpc-java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientRegister/target/generated-sources/protobuf/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientServer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientServer/src/main/proto" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientServer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractClientServer/target/generated-sources/protobuf/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractRegisterServer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractRegisterServer/src/main/proto" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractRegisterServer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractRegisterServer/target/generated-sources/protobuf/grpc-java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ContractRegisterServer/target/generated-sources/protobuf/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RegisterApp/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RegisterApp/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ServerApp/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ServerApp/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/old/ClientApp/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/old/ClientApp/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/old/ContractClientRegister/src/main/java" charset="UTF-8" />
