@@ -15,15 +15,13 @@ import java.util.Scanner;
 
 
 public class Register {
-
-    private static final String REGISTER_IP = "localhost";
+    private static String REGISTER_IP = "localhost";
     private static final int REGISTER_PORT = 8005;
-
 
     public static void main(String[] args) {
 
         RegisterInfo registerInfo = new RegisterInfo();
-
+        REGISTER_IP = args[0];
         try {
             io.grpc.Server server = ServerBuilder.forPort(REGISTER_PORT)
                     .addService(new RegisterServerServiceImpl(registerInfo))

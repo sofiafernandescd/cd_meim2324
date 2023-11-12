@@ -9,7 +9,6 @@ public class RegisterInfo {
     private LinkedList<String> ServersList;
 
     public RegisterInfo() {
-        this.nServers = RegisterInfo.this.nServers;
         this.ServersList = new LinkedList<>();
     }
 
@@ -24,12 +23,12 @@ public class RegisterInfo {
     public LinkedList<String> getListOfServers() {
         return ServersList;
     }
-
+    public int addNServers(){ return ++nServers; }
     public int getNServers() {
         return nServers;
     }
 
-    public void decrementNkvServer() {
+    public void decrementNServers() {
         --nServers;
     }
 

@@ -24,6 +24,7 @@ public class RegisterServerServiceImpl extends RegisterServerServiceGrpc.Registe
         // adicionar à lista de servidores
         String newServer = serverInfo.getIp() + ':' + serverInfo.getPort();
         registerInfo.addServerToList(newServer); //Formato: IP:PORT
+        registerInfo.addNServers();
 
         ServerResponse response = ServerResponse.newBuilder().setResponse("You have been registered!").build();
         result.onNext(response);

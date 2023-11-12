@@ -16,11 +16,11 @@ import java.util.Scanner;
 
 public class Client {
 
-    private static String REGISTER_IP = "localhost";
-    //private static String REGISTER_IP = "35.246.73.129";
-    private static int REGISTER_PORT = 8500;
-    private static String SERVER_IP = "localhost";
-    private static int SERVER_PORT = 8100;
+    // private static String REGISTER_IP = "localhost";
+    private static String REGISTER_IP;
+    private static int REGISTER_PORT;
+    private static String SERVER_IP;
+    private static int SERVER_PORT;
     private static ManagedChannel channel;
     private static ClientRegisterServiceGrpc.ClientRegisterServiceBlockingStub blockingStub1;
     private static ClientRegisterServiceGrpc.ClientRegisterServiceStub noBlockStub1;
@@ -41,24 +41,24 @@ public class Client {
                         .build();
 
                 blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel);
+                noBlockStub1 = ClientRegisterServiceGrpc.newStub(channel); // stub assíncrono
 
+                System.out.println(blockingStub1.getChannel().toString());
                 // Call getServerEndpoint
                 ServerInfo serverInfo = blockingStub1.getServerEndpoint(
                         ClientRequest.newBuilder()
-                                .setClientId(UUID.randomUUID().toString()).build());
+                                .setClientId("1").build());
 
-
+                SERVER_IP = serverInfo.getIp();
+                SERVER_PORT = serverInfo.getPort();
             }
-            System.out.println("Connecting to Server: " + SERVER_IP+":" + SERVER_PORT);
+            System.out.println("Connecting to Server: " + SERVER_IP +":" + SERVER_PORT);
             channel = ManagedChannelBuilder.forAddress(SERVER_IP, SERVER_PORT)
                 // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
                 // needing certificates.
                 .usePlaintext()
                 .build();
 
-
-            blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel); // stub síncrono
-            noBlockStub1 = ClientRegisterServiceGrpc.newStub(channel); // stub assíncrono
             blockingStub2 = ClientServerServiceGrpc.newBlockingStub(channel); // stub síncrono
             noBlockStub2 = ClientServerServiceGrpc.newStub(channel); // stub assíncrono
 
@@ -80,6 +80,10 @@ public class Client {
                         @Override
                         public void onError(Throwable t) {
                             System.err.println("Erro no servidor: " + t.getMessage());
+                            /*ServerInfo s = blockingStub1.failInform(ServerInfo.newBuilder().setIp(SERVER_IP).setPort(SERVER_PORT).build());
+                            SERVER_IP = s.getIp();
+                            SERVER_PORT = s.getPort();
+                            System.out.println("Informando que um servidor está como inativo \nLigando a um novo servidor\n" + s.toString());*/
                         }
 
                         @Override
@@ -87,6 +91,7 @@ public class Client {
                             System.out.println("Comunicação com o servidor concluída.");
                         }
                     });
+                        break;
 
                     case 3: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
                         try {
@@ -109,6 +114,10 @@ public class Client {
                             }
                         } catch (Exception ex) {
                             ex.printStackTrace();
+                           /* ServerInfo s = blockingStub1.failInform(ServerInfo.newBuilder().setIp(SERVER_IP).setPort(SERVER_PORT).build());
+                            SERVER_IP = s.getIp();
+                            SERVER_PORT = s.getPort();
+                            System.out.println("Informando que um servidor está como inativo \n Ligando a um novo servidor" + s.toString());*/
                         }
                         break;
 
@@ -135,6 +144,10 @@ public class Client {
                             System.out.println("Download completed for Image ID: " + imageId);
                         } catch (Exception ex) {
                             ex.printStackTrace();
+                           /* ServerInfo s = blockingStub1.failInform(ServerInfo.newBuilder().setIp(SERVER_IP).setPort(SERVER_PORT).build());
+                            SERVER_IP = s.getIp();
+                            SERVER_PORT = s.getPort();
+                            System.out.println("Informando que um servidor está como inativo \n Ligando a um novo servidor" + s.toString());*/
                         }
                         break;
 
@@ -177,12 +190,11 @@ public class Client {
                             requestObserver.onCompleted();
                         } catch (Exception ex) {
                             ex.printStackTrace();
+                           /* ServerInfo s = blockingStub1.failInform(ServerInfo.newBuilder().setIp(SERVER_IP).setPort(SERVER_PORT).build());
+                            SERVER_IP = s.getIp();
+                            SERVER_PORT = s.getPort();
+                            System.out.println("Informando que um servidor está como inativo \n Ligando a um novo servidor" + s.toString());*/
                         }
-                        break;
-
-                    case 6: // CR: Informar um servidor como inativo (chamada unária - síncrona)
-
-
                         break;
                     case 0:
                         // Gracefully terminate the client
@@ -205,17 +217,15 @@ public class Client {
         do {
             System.out.println();
             System.out.println("    MENU");
-            System.out.println(" 1 - Case 1 - CR: Obter localização de um servidor (chamada unária - síncrona)");
-            System.out.println(" 2 - Case 2 - CS: Enviar uma imagem para processamento (chamada com stream de cliente)");
-            System.out.println(" 3 - Case 3 - CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)");
-            System.out.println(" 4 - Case 4 - CS: (ID) Fazer download de uma imagem marcada (stream de servidor)");
-            System.out.println(" 5 - Case 5 - CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)");
-            System.out.println(" 6 - Case 6 - CR: Informar um servidor como inativo (chamada unária - síncrona)");
+            System.out.println(" 1 - Case 1 - Enviar uma imagem para processamento (chamada com stream de cliente)");
+            System.out.println(" 2 - Case 2 - Verificar o status de processamento de uma imagem (chamada unária - síncrona)");
+            System.out.println(" 3 - Case 3 - (ID) Fazer download de uma imagem marcada (stream de servidor)");
+            System.out.println(" 4 - Case 4 - (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)");
             System.out.println("0 - Exit");
             System.out.println();
             System.out.println("Choose an Option?");
             op = scan.nextInt();
-        } while (!(op >= 0 && op <= 6));
+        } while (!(op >= 0 && op <= 4));
         return op;
     }
 
