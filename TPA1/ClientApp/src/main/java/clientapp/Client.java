@@ -1,6 +1,8 @@
 package clientapp;
 
-import clientregisterstubs.*;
+import clientregisterstubs.ClientRegisterServiceGrpc;
+import clientregisterstubs.ClientRequest;
+import clientregisterstubs.ServerInfo;
 import clientserverstubs.*;
 
 import com.google.protobuf.ByteString;
@@ -41,7 +43,9 @@ public class Client {
                 blockingStub1 = ClientRegisterServiceGrpc.newBlockingStub(channel);
 
                 // Call getServerEndpoint
-                ServerInfo serverInfo = blockingStub1.getServerEndpoint(ClientRequest.newBuilder().build());
+                ServerInfo serverInfo = blockingStub1.getServerEndpoint(
+                        ClientRequest.newBuilder()
+                                .setClientId(UUID.randomUUID().toString()).build());
 
 
             }
