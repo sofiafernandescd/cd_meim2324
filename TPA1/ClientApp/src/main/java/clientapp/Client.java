@@ -11,8 +11,17 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.stub.StreamObserver;
+
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.Scanner;
+
+import static java.nio.file.Path.of;
 
 public class Client {
 
@@ -70,8 +79,10 @@ public class Client {
                         // Crie um objeto StreamObserver para receber as respostas do servidor.
                         StreamObserver<ImageBlock> imageStreamObserver = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
                         @Override
-                        public void onNext(ImageStatusResponse response) {
+                        public void onNext(ImageStatusResponse response, StreamObserver<ImageBlock> imageStreamObserver) {
                             System.out.println("Server response: " + response.toString());
+                            // Send the image data in chunks
+                            sendImageChunks(imageStreamObserver);
                         }
 
                         @Override
@@ -88,33 +99,32 @@ public class Client {
                             System.out.println("Comunicação com o servidor concluída.");
                         }
                     });
+
                         break;
 
-                    case 2: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
+                    case 2: // CS: check image status
                         try {
-                            System.out.println("Enter the image ID to check status:");
-                            String imageId = scan.next();
+                            // Create a StreamObserver to send image data to the server
+                            StreamObserver<ImageBlock> imageStreamObserver_2 = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
+                                @Override
+                                public void onNext(ImageStatusResponse response) {
+                                    System.out.println("Server response: " + response.toString());
+                                }
 
-                            // Crie uma instância da mensagem de solicitação
-                            ImageStatusRequest imageStatusRequest = ImageStatusRequest.newBuilder()
-                                    .setImageId(imageId)
-                                    .build();
+                                @Override
+                                public void onError(Throwable t) {
+                                    System.err.println("Error on server: " + t.getMessage());
+                                }
 
-                            // Faça a chamada síncrona para verificar o status
-                            ImageStatusResponse imageStatusResponse = blockingStub2.checkImageStatus(imageStatusRequest);
+                                @Override
+                                public void onCompleted() {
+                                    System.out.println("Communication with the server completed.");
+                                }
+                            });
 
-                            // Exiba o resultado
-                            if (imageStatusResponse.getStatus()) {
-                                System.out.println("Image with ID " + imageId + " has been processed.");
-                            } else {
-                                System.out.println("Image with ID " + imageId + " is still pending processing.");
-                            }
                         } catch (Exception ex) {
                             ex.printStackTrace();
-                           /* ServerInfo s = blockingStub1.failInform(ServerInfo.newBuilder().setIp(SERVER_IP).setPort(SERVER_PORT).build());
-                            SERVER_IP = s.getIp();
-                            SERVER_PORT = s.getPort();
-                            System.out.println("Informando que um servidor está como inativo \n Ligando a um novo servidor" + s.toString());*/
+                            // Handle exception if needed
                         }
                         break;
 
@@ -213,17 +223,61 @@ public class Client {
         int op;
         do {
             System.out.println();
-            System.out.println("    MENU");
-            System.out.println(" 1 - Case 1 - Enviar uma imagem para processamento (chamada com stream de cliente)");
-            System.out.println(" 2 - Case 2 - Verificar o status de processamento de uma imagem (chamada unária - síncrona)");
-            System.out.println(" 3 - Case 3 - (ID) Fazer download de uma imagem marcada (stream de servidor)");
-            System.out.println(" 4 - Case 4 - (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)");
-            System.out.println("0 - Exit");
+            System.out.println("     MENU");
+            System.out.println(" 1 - Enviar uma imagem para processamento (chamada com stream de cliente)");
+            System.out.println(" 2 - Verificar o status de processamento de uma imagem (chamada unária - síncrona)");
+            System.out.println(" 3 - (ID) Fazer download de uma imagem marcada (stream de servidor)");
+            System.out.println(" 4 - (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)");
+            System.out.println(" 0 - Exit");
             System.out.println();
             System.out.println("Choose an Option?");
             op = scan.nextInt();
         } while (!(op >= 0 && op <= 4));
         return op;
+    }
+
+    private static <BufferedImage> void sendImageChunks(StreamObserver<ImageBlock> imageStreamObserver) {
+        try {
+            System.out.println("Enter the image path to upload:");
+            String imagePath = scan.next();
+            List<String> keywordsList = new ArrayList<>();
+            scan.nextLine(); // Consumir a quebra de linha pendente
+            System.out.println("Insere as Keywords:");
+            String keywordsInput = scan.nextLine();
+            String[] keywordsArray = keywordsInput.split(" ");
+            keywordsList.addAll(Arrays.asList(keywordsArray));
+            File imageFile = new File(imagePath);
+
+            BufferedImage img = (BufferedImage) ImageIO.read(imageFile);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write((RenderedImage) img, "jpg", byteArrayOutputStream);
+
+            // Convert the image to byte array chunks (adjust chunk size as needed)
+            byte[] imageData = byteArrayOutputStream.toByteArray();
+            int chunkSize = 32 * 1024;  // 32 KB chunks (adjust as needed)
+
+            for (int i = 0; i < imageData.length; i += chunkSize) {
+                int end = Math.min(imageData.length, i + chunkSize);
+                byte[] chunk = Arrays.copyOfRange(imageData, i, end);
+
+                // Create an ImageBlock and send it to the server
+                ImageBlock imageBlock = ImageBlock.newBuilder()
+                        .setImageId(UUID.randomUUID().toString())
+                        .setData(ByteString.copyFrom(chunk))
+                        .setImagePathname(imagePath)
+                        .setImageResultPathname("marked.jpg")  // Adjust the path as needed
+                        .addAllKeywords(keywordsList)
+                        .build();
+
+                imageStreamObserver.onNext(imageBlock);
+            }
+
+            // Signal completion to the server
+            imageStreamObserver.onCompleted();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            // Handle exception if needed
+        }
     }
 
 

@@ -59,6 +59,7 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
                 // Process the image using MarkImages and DockerAPI
                 processImageWithDocker(imageData, imageBlock.getKeywordsList(), imageBlock.getImagePathname(), imageBlock.getImageResultPathname());
 
+
                 ImageStatusResponse response = ImageStatusResponse.newBuilder()
                         .setImageId(UUID.randomUUID().toString())
                         .setStatus(false)
@@ -88,7 +89,6 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
     // Method to process the image using DockerAPI
     private void processImageWithDocker(byte[] imageData, List<String> keywords, String image_pathname, String image_result_pathname) {
         try {
-
             // Convert byte array to BufferedImage
             ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
             BufferedImage img = ImageIO.read(inputStream);
@@ -99,12 +99,12 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
 
             // Run DockerAPI to process the image
             String HOST_URI = "tcp://localhost:2375"; // Docker daemon URI, TODO
-            String containerName = "mark-app-container";
-            String pathVolDir = "/path/to/volume"; // Host volume directory, TODO
-            String imageName = "DockerFile";
+            String containerName = "countMarkimage";
+            String pathVolDir = "/usr/datafiles"; // Host volume directory, TODO
+            String imageName = "Dockerfile";
 
 
-            String command= "docker run -d -v" + "/usr/images:" + "/usr/datafiles" + "–name" + containerName + " " + imageName + " " + image_pathname + " " + image_result_pathname;
+            String command= "docker run -d -v" + "/usr/images:" + pathVolDir + " –name " + containerName + " " + imageName + " " + image_pathname + " " + image_result_pathname;
 
             for(int i= 0; i < keywords.size(); i++){
                 command = command + " " + keywords.get(i);
