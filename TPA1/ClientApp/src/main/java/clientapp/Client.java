@@ -26,7 +26,7 @@ public class Client {
     private static ClientServerServiceGrpc.ClientServerServiceStub noBlockStub2;
     private static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
-       
+
 
         try {
             if (args.length == 2) {
@@ -51,7 +51,7 @@ public class Client {
             while (true) {
                 switch (Menu()) {
                     case 1:  // CR: Obter localização de um servidor (chamada unária - síncrona)
-                        
+
                         break;
                     case 2: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
                         // Crie um objeto StreamObserver para receber as respostas do servidor.
@@ -71,7 +71,7 @@ public class Client {
                             System.out.println("Comunicação com o servidor concluída.");
                         }
                     });
-                  
+
                     case 3: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
                         try {
                             System.out.println("Enter the image ID to check status:");
@@ -123,13 +123,52 @@ public class Client {
                         break;
 
                     case 5: // CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)
-                            
+                        try {
+                            System.out.println("Enter keywords for the image download:");
+                            List<String> keywordsList = new ArrayList<>();
+                            scan.nextLine(); // Consumir a quebra de linha pendente
+                            String keywordsInput = scan.nextLine();
+                            String[] keywordsArray = keywordsInput.split("\\s+");
+                            keywordsList.addAll(Arrays.asList(keywordsArray));
+
+                            // Crie um StreamObserver para receber os blocos da imagem do servidor
+                            StreamObserver<ImageBlock> imageStreamObserver = new StreamObserver<ImageBlock>() {
+                                @Override
+                                public void onNext(ImageBlock imageBlock) {
+                                    // Processar o bloco da imagem recebido
+                                    System.out.println("Received Image Block for Image ID: " + imageBlock.getImageId());
+                                }
+
+                                @Override
+                                public void onError(Throwable t) {
+                                    System.err.println("Erro no servidor: " + t.getMessage());
+                                }
+
+                                @Override
+                                public void onCompleted() {
+                                    System.out.println("Download completed for the specified keywords.");
+                                }
+                            };
+
+                            // Crie uma instância da mensagem de solicitação
+                            ImageDownloadRequestKeywords downloadRequestKeywords = ImageDownloadRequestKeywords.newBuilder()
+                                    .addAllKeywords(keywordsList)
+                                    .build();
+
+                            // Faça a chamada assíncrona para iniciar o download com streaming de cliente e servidor
+                            StreamObserver<ImageDownloadRequestKeywords> requestObserver = noBlockStub2.downloadMarkedImageByKeywords(imageStreamObserver);
+                            requestObserver.onNext(downloadRequestKeywords);
+                            requestObserver.onCompleted();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         break;
+
                     case 6: // CR: Informar um servidor como inativo (chamada unária - síncrona)
 
-                                
+
                         break;
-                    case 99:
+                    case 0:
                         System.exit(0);
                     default:
                         break;
