@@ -66,10 +66,7 @@ public class Client {
 
             while (true) {
                 switch (Menu()) {
-                    case 1:  // CR: Obter localização de um servidor (chamada unária - síncrona)
-
-                        break;
-                    case 2: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
+                    case 1: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
                         // Crie um objeto StreamObserver para receber as respostas do servidor.
                         StreamObserver<ImageBlock> imageStreamObserver = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
                         @Override
@@ -93,7 +90,7 @@ public class Client {
                     });
                         break;
 
-                    case 3: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
+                    case 2: // CS: Verificar o status de processamento de uma imagem (chamada unária - síncrona)
                         try {
                             System.out.println("Enter the image ID to check status:");
                             String imageId = scan.next();
@@ -121,7 +118,7 @@ public class Client {
                         }
                         break;
 
-                    case 4: // CS: (ID) Fazer download de uma imagem marcada (stream de servidor)
+                    case 3: // CS: (ID) Fazer download de uma imagem marcada (stream de servidor)
                         try {
                             System.out.println("Enter the image ID to download:");
                             String imageId = scan.next();
@@ -151,7 +148,7 @@ public class Client {
                         }
                         break;
 
-                    case 5: // CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)
+                    case 4: // CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)
                         try {
                             System.out.println("Enter keywords for the image download:");
                             List<String> keywordsList = new ArrayList<>();
