@@ -79,10 +79,8 @@ public class Client {
                         // Crie um objeto StreamObserver para receber as respostas do servidor.
                         StreamObserver<ImageBlock> imageStreamObserver = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
                         @Override
-                        public void onNext(ImageStatusResponse response, StreamObserver<ImageBlock> imageStreamObserver) {
+                        public void onNext(ImageStatusResponse response) {
                             System.out.println("Server response: " + response.toString());
-                            // Send the image data in chunks
-                            sendImageChunks(imageStreamObserver);
                         }
 
                         @Override
@@ -100,6 +98,8 @@ public class Client {
                         }
                     });
 
+                        // Send the image data in chunks
+                        sendImageChunks(imageStreamObserver);
                         break;
 
                     case 2: // CS: check image status

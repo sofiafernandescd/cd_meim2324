@@ -94,22 +94,25 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
             BufferedImage img = ImageIO.read(inputStream);
 
             // Save the image to a temporary file (you might want to use a unique file name)
-            String tempImagePath = "/tmp/input_image.jpg";
+            String tempImagePath = "temp_input_image.jpg";
             ImageIO.write(img, "jpg", new java.io.File(tempImagePath));
 
             // Run DockerAPI to process the image
-            String HOST_URI = "tcp://localhost:2375"; // Docker daemon URI, TODO
+            String HOST_URI = "unix:///var/run/docker.sock";// Docker daemon URI, TODO
             String containerName = "countMarkimage";
             String pathVolDir = "/usr/datafiles"; // Host volume directory, TODO
             String imageName = "Dockerfile";
 
 
-            String command= "docker run -d -v" + "/usr/images:" + pathVolDir + " –name " + containerName + " " + imageName + " " + image_pathname + " " + image_result_pathname;
+            String command= "docker run -d -v " + "/usr/images:" + pathVolDir + " –name " + containerName + " " + imageName + " " + image_pathname + " " + "/home/CD2324-G06/" + image_result_pathname;
+
+            System.out.println(command);
 
             for(int i= 0; i < keywords.size(); i++){
                 command = command + " " + keywords.get(i);
             }
 
+            System.out.println(command);
             // Create Docker client
             DockerClient dockerClient = DockerClientBuilder
                     .getInstance()
@@ -119,10 +122,12 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
                                     .build())
                     .build();
 
+            System.out.println("Hello");
             // Configure host options for the container
             HostConfig hostConfig = HostConfig.newHostConfig()
                     .withBinds(new Bind(pathVolDir, new Volume("/usr/datafiles")));
 
+            System.out.println("Hello");
             // Create a Docker container
             CreateContainerResponse containerResponse = dockerClient
                     .createContainerCmd(imageName)
