@@ -17,9 +17,7 @@ service ClientRegisterService {
   // Informar o servidor Register que um servidor morreu
   rpc failInform (ServerInfo) returns (ServerInfo);
 
-  //rpc getNextServer (ClientRequest) returns (NextServer);
-
-
+  
 }
 
 

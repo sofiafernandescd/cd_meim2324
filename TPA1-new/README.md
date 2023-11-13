@@ -1,62 +1,47 @@
 # Bem-vindo
 
-##### In this quick guide you will find all the necessary information to run and test the project.
-
-This is the repo were  the [project](https://github.com/Wario-Antunes/AMD) is located.
-
 # Computação Distribuída 2324 Noturno - TPA1 - Grupo 06
 
-Este README tem como objetivo explicar as decisões de arquitetura 
- do sistema ImageMarks, bem como os passos necessários para executar as várias aplicações. 
+##### Este README tem como objetivo explicar as decisões de arquitetura do sistema ImageMarks, bem como os passos necessários para executar as várias aplicações.
+##### Na implementação entregue é pressuposto que os Servers se registem no Register, existindo a possibilidade de incremento do número de Servers que o Register tem registados e a possibilidade de decrimento, caso exista a informação de que um dos Servers falhou.
 
-Na implementação entregue é pressuposto que o Register regista todos os Servers
-no ínicio, sem a possibilidade de incremento, mas com a possibilidade de 
-decrimento, caso exista a informação de que um dos Servers falhou.
+Este é o  repositório onde o projeto está alocado [project](https://github.com/sofiafernandescd/cd_meim2324)
 
 ## RegisterApp:
 
-A aplicação do Register inicia-se sempre no porto 8000 num determinado endereço IP,
-que depende da VM no qual corre a aplicação) e implementa dois serviços: 
-o `RegisterServerServiceImpl` e o `ClientRegisterServiceImpl`.
+A aplicação do Register inicia-se sempre no porto 8005 num determinado endereço IP que, depende da VM no qual corre a aplicação, e implementa dois serviços: 
+- `RegisterServerServiceImpl`
+- `ClientRegisterServiceImpl`
 
-O serviço `RegisterServerServiceImpl` implementa o contrato entre o Server e o Register. Implementa duas operações: 
-- O registo de um Server no Register (`registServer`); 
-- A operação para o Register obter o Server seguinte (`getNextServer`).
+O serviço `RegisterServerServiceImpl` implementa o contrato entre o Server e o Register. A implementação do registo de um Server no Register é feita com a operação:
+- `registServer` 
 
-Todas estas operações necessitam de aceder à informação do Register e para tal existe a classe `RegisterInfo` 
-que guarda uma lista com os Servers.
-
-As operações possuem a keyword `synchronized` para garantir que apenas uma thread do gRPC altera, em determinado momento,
-a lista dos servidores.
+Esta operação e todas as operações feitas dentro do `Register`necessitam de aceder à informação do Register e para tal existe a classe `RegisterInfo` que guarda uma lista com os Servers.
 
 O serviço `ClientRegisterServiceImpl` implementa o contrato relativo ao Client e o Register. 
 Possui duas operações: 
 - A obtenção de um Server para o Client (`getServerEndpoint`);
 - A informação por parte do Client que um Server falhou (`failInform`);
 
-Como referido nas FAQs do TPA1, o Register utiliza uma distribuição Round Robin para 
-responder ao Client que pretende obter um Server. 
-A lista é populada no momento do registo dos Servers e cada vez que um Client faz um pedido ao 
-Register é devolvido um Server que se encontra num índice que o Register vai mantendo.
+Como referido nas FAQs do TPA1, o Register utiliza uma distribuição Round Robin para responder ao Client que pretende obter um Server. 
+A lista é populada no momento do registo dos Servers e cada vez que um Client faz um pedido ao Register é devolvido um Server que se encontra num índice que o Register vai mantendo.
 
 **Uso:** `java -jar RegisterApp-1.0-jar-with-dependencies.jar <IP do Register>`
 
+**Para sair:** `q`
 
 
 ## ServerApp:
 
-Ao executar a aplicação Server, é feito um pedido de registo ao Register sendo recebido como resposta uma confirmação. 
+Ao executar a aplicação Server, é feito um pedido de registo ao Register sendo recebido como resposta uma confirmação. O Server fica depois na lista de servidores disponíveis guardada em `RegisterInfo`.
 
-A aplicação Server (à semelhança do Register) implementa dois serviços, o `BaseServiceImpl` e o `RingServiceImpl`. O primeiro diz respeito ao contrato entre o cliente e o kvServer, implementando as operações de writeUpdate e read que podem ser invocadas pelo cliente. Já o segundo serviço é relativo à comunicação entre os kvServers que constituem o anel, sendo implementadas as operações writeNext e readNext.
-O código relativo a estas operações é extenso e poderia ser fatorizado numa implementação futura. Existem bastantes comentários, mas de forma resumida, o writeUpdate escreve localmente o par KeyValue e posteriormente tenta propagar o pedido para o seu sucessor. O sucessor fará o mesmo. Caso não consiga obter resposta do sucessor o kvServer informa o ring manager e obtém como resposta um novo sucessor. É então feita a propagação do write para o novo sucessor.
-A operação read segue a mesma lógica, mas em vez de escrever o par KeyValue, apenas tentar ler o valor correspondente à key recebida no request.
+A aplicação Server implementa um serviço, `ProcessImageServiceImpl` que, diz respeito ao contrato entre o Client e o Server e implementa as operações de upload, check status e download (por id ou keywords).
 
-A propagação do read e write mencionada anteriormente é implementada no `RingServiceImpl` pelas operações readNext e writeNext. O servidor que recebe um pedido de um cliente cria um request no qual coloca a sua informação (endereço IP e porto) e envia este pedido para o seu sucessor. O sucessor verifica se a informação do servidor que iniciou o pedido é a dele e caso não seja propaga o pedido para a frente. A razão pela qual fazemos a verificação ao receber o pedido em vez de antes de enviar para o sucessor relaciona-se com a necessidade de verificar se o sucessor está ativo ou não.
-A falha do sucessor é detetada ao tentar criar um canal entre um kvServer e o seu sucessor. Caso seja lançada uma exceção recorremos à operação failInform mencionada no ring manager.
+Cada Server possui um atributo `ImagesInfo` que guarda um `HashMap<String, ImageBlock>`, onde a `String` é o ID da imagem e o `ÌmageBlock` é a imagem guardada para download posterior.
 
-**Nota:** Ao executar a aplicação do kvServer é pressuposto que existe um contentor Docker a correr uma imagem [REDIS](https://redis.io/) na mesma máquina que o kvServer.
+**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port> <Register IP>`
 
-**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port>  <Register IP>`
+**Para sair:** `q`
 
 ## Client:
 
@@ -73,3 +58,30 @@ comutar para outro servidor sem reiniciar a aplicação Client.
 
 **Uso:** `java -jar ClientApp-1.0-jar-with-dependencies.jar <Register IP> <RegisterPort>`
 
+Quando o Client se liga a um Server através do Register, aparece-lhe um menu com as seguintes opções: 
+
+**Caso 1** - Processar uma imagem para ser marcada:<br>
+`Nome do ficheiro da imagem:` <br>
+`lena.jpg` <br>
+`Insere as Keywords:` <br>
+`lena girl` <br>
+
+**Caso 2** - Ver estado da imagem:<br>
+`Inserir ID da imagem para ver o estado:` <br>
+`<ID da Imagem>` <br>
+
+**Caso 3** - Procurar uma imagem pelo seu Id:<br>
+`Inserir o ID da imagem para fazer download:` <br>
+`<ID da Imagem>` <br>
+
+**Caso 4** - Procurar uma imagem pelas suas keywords:<br>
+`Inserir keywords para fazer download de imagem:` <br>
+`<Keywords separadas por espaço>` <br>
+
+**Caso 0** - Termina o Cliente.
+
+## Pressupostos:
+Para obter os ficheiros `.jar` do `ClientApp`, `ServerApp` e o `RegisterApp` usando o Maven, tem que fazer "Package" e de seguida "Install".
+
+## Nota:
+Nesta versão de implementação não foi utilizado Docker para lançar os servidores gRPC.

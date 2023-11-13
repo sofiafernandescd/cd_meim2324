@@ -138,15 +138,15 @@ public class Client {
 
                     case 2: // CS: check image status
                         try {
-                            System.out.println("Enter Image Id of the Image you want to check:");
+                            System.out.println("Inserir ID da imagem para ver o estado:");
                             String imageId2 = scan.next();
                             
                             // Check Image Mark Status
                             ImageStatusResponse response = blockingStub2.checkImageStatus(ImageStatusRequest.newBuilder().setImageId(imageId2).build());
                             if(!response.getStatus()) {
-                                System.out.println("Image Still being marked");
+                                System.out.println("Imagem ainda não marcada");
                             }else {
-                                System.out.println("Image marked");
+                                System.out.println("Imagem marcada");
                             }
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -156,7 +156,7 @@ public class Client {
 
                     case 3: // CS: (ID) Fazer download de uma imagem marcada (stream de servidor)
                         try {
-                            System.out.println("Enter the image ID to download:");
+                            System.out.println("Inserir o ID da imagem para fazer download:");
                             String imageId3 = scan.next();
 
                             // Crie uma instância da mensagem de solicitação
@@ -186,7 +186,7 @@ public class Client {
 
                     case 4: // CS: (Keywords) Fazer download de uma imagem marcada (stream de cliente e servidor)
                         try {
-                            System.out.println("Enter keywords for the image download:");
+                            System.out.println("Inserir keywords para fazer download de imagem:");
                             List<String> keywordsList4 = new ArrayList<>();
                             scan.nextLine(); // Consumir a quebra de linha pendente
                             String keywordsInput4 = scan.nextLine();
@@ -264,7 +264,7 @@ public class Client {
 
     private static <BufferedImage> void sendImageChunks(StreamObserver<ImageBlock> imageStreamObserver) {
         try {
-            System.out.println("Enter the image path to upload:");
+            System.out.println("Nome do ficheiro da imagem:");
             String imagePath = scan.next();
             String resultImagePath = imagePath.substring(0, imagePath.lastIndexOf('.')) + "-marked.jpg";
 
