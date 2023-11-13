@@ -20,6 +20,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 import static java.nio.file.Path.of;
 
@@ -104,24 +105,15 @@ public class Client {
 
                     case 2: // CS: check image status
                         try {
-                            // Create a StreamObserver to send image data to the server
-                            StreamObserver<ImageBlock> imageStreamObserver_2 = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
-                                @Override
-                                public void onNext(ImageStatusResponse response) {
-                                    System.out.println("Server response: " + response.toString());
-                                }
-
-                                @Override
-                                public void onError(Throwable t) {
-                                    System.err.println("Error on server: " + t.getMessage());
-                                }
-
-                                @Override
-                                public void onCompleted() {
-                                    System.out.println("Communication with the server completed.");
-                                }
-                            });
-
+                            System.out.println("Enter Image Id of the Image you want to check:");
+                            String imageId = scan.next();
+                            // Check Image Mark Status
+                            ImageStatusResponse response = blockingStub2.checkImageStatus(ImageStatusRequest.newBuilder().setImageId(imageId).build());
+                            if(!response.getStatus()) {
+                                System.out.println("Image Still being marked");
+                            }else {
+                                System.out.println("Image marked");
+                            }
                         } catch (Exception ex) {
                             ex.printStackTrace();
                             // Handle exception if needed
@@ -164,7 +156,7 @@ public class Client {
                             List<String> keywordsList = new ArrayList<>();
                             scan.nextLine(); // Consumir a quebra de linha pendente
                             String keywordsInput = scan.nextLine();
-                            String[] keywordsArray = keywordsInput.split("\\s+");
+                            String[] keywordsArray = keywordsInput.split(" ");
                             keywordsList.addAll(Arrays.asList(keywordsArray));
 
                             // Crie um StreamObserver para receber os blocos da imagem do servidor

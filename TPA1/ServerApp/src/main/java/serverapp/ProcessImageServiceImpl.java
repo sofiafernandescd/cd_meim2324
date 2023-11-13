@@ -8,20 +8,23 @@ import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
+import com.google.protobuf.ByteString;
 import io.grpc.stub.StreamObserver;
 import clientserverstubs.*;
 import clientserverstubs.ImageBlock;
 import clientserverstubs.ImageStatusResponse;
-import clientserverstubs.ImageStatusResponse;
-import serverapp.DockerAPI.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServerServiceImplBase{
@@ -71,6 +74,54 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
         };
     }
 
+    @Override
+    public void checkImageStatus(ImageStatusRequest request, StreamObserver<ImageStatusResponse> responseObserver) {
+        // boolean status = getImageStatus(request.getImageId());
+        boolean status = true;
+        ImageStatusResponse response = ImageStatusResponse.newBuilder().setImageId(request.getImageId()).setStatus(status).build();
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void downloadMarkedImageById(ImageDownloadRequestId request, StreamObserver<ImageBlock> responseObserver){
+        getImageBlocksFromVolume(request.getImageId(), responseObserver);
+    }
+
+    // Method to retrieve image blocks from the volume
+    private void getImageBlocksFromVolume(String imageId,StreamObserver<ImageBlock> response){
+       try {
+           // Define the path to the volume directory where image blocks are stored
+           String volumePath = "/usr/datafiles/" + imageId;
+
+           File imageFile = new File(volumePath);
+           BufferedImage img = (BufferedImage) ImageIO.read(imageFile);
+           ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+           ImageIO.write((RenderedImage) img, "jpg", byteArrayOutputStream);
+
+           // Convert the image to byte array chunks (adjust chunk size as needed)
+           byte[] imageData = byteArrayOutputStream.toByteArray();
+           int chunkSize = 32 * 1024;  // 32 KB chunks (adjust as needed)
+
+           for (int i = 0; i < imageData.length; i += chunkSize) {
+               int end = Math.min(imageData.length, i + chunkSize);
+               byte[] chunk = Arrays.copyOfRange(imageData, i, end);
+
+               // Create an ImageBlock and send it to the server
+               ImageBlock imageBlock = ImageBlock.newBuilder()
+                       .setImageId(UUID.randomUUID().toString())
+                       .setData(ByteString.copyFrom(chunk))
+                       .build();
+
+               response.onNext(imageBlock);
+           }
+
+           // Signal completion to the server
+           response.onCompleted();
+       }catch(Exception ex){
+           ex.printStackTrace();
+       }
+    }
 
     // Utility method to concatenate a list of byte arrays into a single byte array
     private byte[] concatenateChunks(List<byte[]> chunks) {
