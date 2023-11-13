@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class MarkApp {
 
     public static void main(String[] args) {
-        // args[0] - image pathname; args[1] - image result pathname
+        // args[0] - image pathname; 
+        // args[1] - image result pathname
         // args[2]...args[n] keywords to mark image
         String inputPath=args[0];
         String outputPath=args[1];

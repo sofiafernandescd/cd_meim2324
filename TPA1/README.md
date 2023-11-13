@@ -33,7 +33,7 @@ responder ao Client que pretende obter um Server.
 A lista é populada no momento do registo dos Servers e cada vez que um Client faz um pedido ao 
 Register é devolvido um Server que se encontra num índice que o Register vai mantendo.
 
-**Uso:** `java -jar RegisterApp-1.0-jar-with-dependencies.jar`
+**Uso:** `java -jar RegisterApp-1.0-jar-with-dependencies.jar <Register IP>`
 
 
 
@@ -50,7 +50,7 @@ A falha do sucessor é detetada ao tentar criar um canal entre um kvServer e o s
 
 **Nota:** Ao executar a aplicação do kvServer é pressuposto que existe um contentor Docker a correr uma imagem [REDIS](https://redis.io/) na mesma máquina que o kvServer.
 
-**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port>  <Register IP> <Volume Port>??`
+**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port> <Register IP> <Volume Port>??`
 
 ## Client:
 
@@ -65,5 +65,5 @@ Com uma resposta ao pedido anterior, o Client liga-se ao Server e é apresentado
 Na nossa implementação é feito o pressuposto que cada Client apenas comunica com um e só um Server, sendo impossível 
 comutar para outro servidor sem reiniciar a aplicação Client.
 
-**Uso:** `java -jar ClientApp-1.0-jar-with-dependencies.jar <Register IP>`
+**Uso:** `java -jar ClientApp-1.0-jar-with-dependencies.jar <Register IP> <Register Port>`
 

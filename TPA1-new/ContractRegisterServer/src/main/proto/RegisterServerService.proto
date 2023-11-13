@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "registerserverstubs";
+
+package registerserverservice; // package do proto
+
+
+
+// Serviço de registo de servidores
+service RegisterServerService {
+  // 1. Existe um servidor Register com localização (IP, porto) bem conhecida que funciona
+  // como serviço de registo dos N servidores de processamento de imagens.
+  rpc registServer(ServerInfo) returns (ServerResponse);
+
+}
+
+message ServerInfo {
+  string ip = 1;
+  int32 port = 2;
+}
+
+message ServerResponse {
+  string response = 1;
+}
+
+message Empty {
+
+}
+
+
+
+
+
+
+
+

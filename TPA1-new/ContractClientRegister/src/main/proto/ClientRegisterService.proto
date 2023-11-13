@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "clientregisterstubs";
+
+package clientregisterservice; // package do proto
+
+
+service ClientRegisterService {
+
+
+  // Os clientes recorrem a este servidor para obterem a localização (IP, porto)
+  // de um servidor (Server#N) de processamento de imagens, ao qual irão submeter pedidos;
+  // Operação de acesso ao servidor Register para obter a localização de um dos servidores registados;
+  rpc getServerEndpoint(ClientRequest) returns (ServerInfo);
+
+  // Informar o servidor Register que um servidor morreu
+  rpc failInform (ServerInfo) returns (ServerInfo);
+
+  //rpc getNextServer (ClientRequest) returns (NextServer);
+
+
+}
+
+
+message ClientRequest {
+  string client_id = 1;
+}
+
+message ServerInfo {
+  string ip = 1;
+  int32 port = 2;
+}
+
+message ServerResponse {
+  string response = 1;
+}
+
+message Empty {
+
+}
+
