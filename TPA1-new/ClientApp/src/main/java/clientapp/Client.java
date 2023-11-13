@@ -80,9 +80,10 @@ public class Client {
                 switch (Menu()) {
                     case 1: // CS: Enviar uma imagem para processamento (chamada com stream de cliente)
 
-                        // Pedir ao utilizador o caminho da imagem
+                        /*// Pedir ao utilizador o caminho da imagem
                         System.out.println("Enter the image path to upload:");
                         String imagePath = scan.next();
+                        String resultImagePath = imagePath.substring(0, imagePath.lastIndexOf('.')) + "-marked.jpg";
                         // Pedir ao utilizador as keywords
                         List<String> keywordsList = new ArrayList<>();
                         scan.nextLine(); // Consumir a quebra de linha pendente
@@ -93,46 +94,22 @@ public class Client {
                         // Pedir ao utilizador o ID da imagem
                         System.out.println("Insere o ID da imagem:");
                         String imageId = scan.next();
-                        // Pedir ao utilizador o caminho da imagem resultante
-                        System.out.println("Insere o caminho da imagem resultante:");
-                        String imageResultPathname = scan.next();
+
 
                         // Get data in ByteString format from the image file
                         File imageFile = new File(imagePath);
                         ByteString imageData = ByteString.copyFrom(Files.toByteArray(imageFile));
-                        
+
 
                         // contruir o imageBlock
                         ImageBlock imageBlock = ImageBlock.newBuilder()
                                 .setImageId(imageId)
                                 .setData(imageData)
                                 .setImagePathname(imagePath)
-                                .setImageResultPathname(imageResultPathname)
+                                .setImageResultPathname(resultImagePath)
                                 .addAllKeywords(keywordsList)
-                                .build();
+                                .build();*/
 
-                        // Crie um objeto StreamObserver para enviar ImageBlock e receber ImageStatusResponse do servidor.
-                        StreamObserver <ImageBlock> imageStreamObserver = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
-                            @Override
-                            public void onNext(ImageStatusResponse response) {
-                                System.out.println("Server response: " + response.toString());
-                            }
-
-                            @Override
-                            public void onError(Throwable t) {
-                                System.err.println("Erro no servidor: " + t.getMessage());
-                                /*ServerInfo s = blockingStub1.failInform(ServerInfo.newBuilder().setIp(SERVER_IP).setPort(SERVER_PORT).build());
-                                SERVER_IP = s.getIp();
-                                SERVER_PORT = s.getPort();
-                                System.out.println("Informando que um servidor está como inativo \nLigando a um novo servidor\n" + s.toString());*/
-                            }
-
-                            @Override
-                            public void onCompleted() {
-                                System.out.println("Comunicação com o servidor concluída.");
-                            }
-                        });
-                        
                         // Crie um objeto StreamObserver para receber as respostas do servidor.
                         StreamObserver<ImageBlock> imageStreamObserver1 = noBlockStub2.processImageToServer(new StreamObserver<ImageStatusResponse>() {
                         @Override
@@ -289,6 +266,8 @@ public class Client {
         try {
             System.out.println("Enter the image path to upload:");
             String imagePath = scan.next();
+            String resultImagePath = imagePath.substring(0, imagePath.lastIndexOf('.')) + "-marked.jpg";
+
             List<String> keywordsList = new ArrayList<>();
             scan.nextLine(); // Consumir a quebra de linha pendente
             System.out.println("Insere as Keywords:");
@@ -314,7 +293,7 @@ public class Client {
                         .setImageId(UUID.randomUUID().toString())
                         .setData(ByteString.copyFrom(chunk))
                         .setImagePathname(imagePath)
-                        .setImageResultPathname("marked.jpg")  // Adjust the path as needed
+                        .setImageResultPathname(resultImagePath)  // Adjust the path as needed
                         .addAllKeywords(keywordsList)
                         .build();
 

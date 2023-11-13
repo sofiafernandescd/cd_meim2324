@@ -48,17 +48,6 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
             // List to store image chunks received from the client
             private List<byte[]> imageChunks = new ArrayList<>();
             ImageBlock imageBlock;
-            
-            // Get the image keywords from the client
-            List<String> keywordsList = imageBlock.getKeywordsList();
-            // Cast keywords to ArrayList<String>
-            ArrayList<String> keywords = new ArrayList<String>(keywordsList);
-            // Get the image pathname from the client
-            String imagePath = imageBlock.getImagePathname();
-            // Get the image result pathname by adding "-marked" to the image pathname
-            String resultImagePath = imagePath.substring(0, imagePath.lastIndexOf('.')) + "-marked.jpg";
-            // Get the image ID from the client
-            String imageId = imageBlock.getImageId();
 
 
             @Override
@@ -66,6 +55,7 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
                 // Collect image chunks
                 imageChunks.add(imageBlock.getData().toByteArray());
                 this.imageBlock = imageBlock;
+
             }
 
             @Override
@@ -80,6 +70,16 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
                 try {
                     // Concatenate image chunks into a single byte array
                     byte[] imageData = concatenateChunks(imageChunks);
+
+                    // Get the image keywords from the client
+                    List<String> keywordsList = imageBlock.getKeywordsList();
+                    // Cast keywords to ArrayList<String>
+                    ArrayList<String> keywords = new ArrayList<String>(keywordsList);
+                    // Get the image pathname from the client
+                    String imagePath = imageBlock.getImagePathname();
+                    // Get the image ID from the client
+                    String imageId = imageBlock.getImageId();
+
                     // Convert to buffered image
                     ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
                     BufferedImage img = ImageIO.read(inputStream);
@@ -90,24 +90,26 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
                     // Save the processed image to a file
                     String resultImagePath = imageBlock.getImageResultPathname();
                     ImageIO.write(outputImg, "jpg", new File(resultImagePath));
+
+                    // Add the image block to ImagesList of ImagesInfo class
+                    imagesInfo.addImageToList(imageBlock);
+
+                    ImageStatusResponse response = ImageStatusResponse.newBuilder()
+                            .setImageId(imageId)
+                            .setStatus(true)
+                            .build();
+
+                    // Print the image processing status with ID
+                    System.out.println("Image processing completed for image ID: " + imageId);
+
+                    responseObserver.onNext(response);
+                    responseObserver.onCompleted();
             
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
        
-                // Add the image block to ImagesList of ImagesInfo class
-                imagesInfo.addImageToList(imageBlock);
-    
-                ImageStatusResponse response = ImageStatusResponse.newBuilder()
-                        .setImageId(imageId)
-                        .setStatus(true)
-                        .build();
 
-                // Print the image processing status with ID
-                System.out.println("Image processing completed for image ID: " + imageId);
-                
-                responseObserver.onNext(response);
-                responseObserver.onCompleted();
             }
 
         };
@@ -121,6 +123,14 @@ public class ProcessImageServiceImpl extends ClientServerServiceGrpc.ClientServe
 
         // get ImagesList
         Map<String, ImageBlock> ImagesList = imagesInfo.getListOfImages();
+        // print keys and values of ImagesList
+        for (Map.Entry<String, ImageBlock> entry : ImagesList.entrySet()) {
+            String key = entry.getKey();
+            ImageBlock value = entry.getValue();
+            System.out.println("Key = " + key + ", Value = " + value);
+        }
+
+        
 
         // get image ID
         String imageId = request.getImageId();

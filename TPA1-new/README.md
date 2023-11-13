@@ -1,3 +1,9 @@
+# Bem-vindo
+
+##### In this quick guide you will find all the necessary information to run and test the project.
+
+This is the repo were  the [project](https://github.com/Wario-Antunes/AMD) is located.
+
 # Computação Distribuída 2324 Noturno - TPA1 - Grupo 06
 
 Este README tem como objetivo explicar as decisões de arquitetura 
@@ -11,9 +17,9 @@ decrimento, caso exista a informação de que um dos Servers falhou.
 
 A aplicação do Register inicia-se sempre no porto 8000 num determinado endereço IP,
 que depende da VM no qual corre a aplicação) e implementa dois serviços: 
-o `RegistServerServiceImpl` e o `GetServerServiceImpl`.
+o `RegisterServerServiceImpl` e o `ClientRegisterServiceImpl`.
 
-O serviço `RegisterServiceImpl` implementa o contrato entre o Server e o Register. Implementa duas operações: 
+O serviço `RegisterServerServiceImpl` implementa o contrato entre o Server e o Register. Implementa duas operações: 
 - O registo de um Server no Register (`registServer`); 
 - A operação para o Register obter o Server seguinte (`getNextServer`).
 
@@ -23,7 +29,7 @@ que guarda uma lista com os Servers.
 As operações possuem a keyword `synchronized` para garantir que apenas uma thread do gRPC altera, em determinado momento,
 a lista dos servidores.
 
-O serviço `GetServerServiceImpl` implementa o contrato relativo ao Client e o Register. 
+O serviço `ClientRegisterServiceImpl` implementa o contrato relativo ao Client e o Register. 
 Possui duas operações: 
 - A obtenção de um Server para o Client (`getServerEndpoint`);
 - A informação por parte do Client que um Server falhou (`failInform`);
@@ -33,7 +39,7 @@ responder ao Client que pretende obter um Server.
 A lista é populada no momento do registo dos Servers e cada vez que um Client faz um pedido ao 
 Register é devolvido um Server que se encontra num índice que o Register vai mantendo.
 
-**Uso:** `java -jar RegisterApp-1.0-jar-with-dependencies.jar`
+**Uso:** `java -jar RegisterApp-1.0-jar-with-dependencies.jar <IP do Register>`
 
 
 
@@ -50,7 +56,7 @@ A falha do sucessor é detetada ao tentar criar um canal entre um kvServer e o s
 
 **Nota:** Ao executar a aplicação do kvServer é pressuposto que existe um contentor Docker a correr uma imagem [REDIS](https://redis.io/) na mesma máquina que o kvServer.
 
-**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port>  <Register IP> <Volume Port>??`
+**Uso:** `java -jar ServerApp-1.0-jar-with-dependencies.jar <Server IP> <Server Port>  <Register IP>`
 
 ## Client:
 
@@ -65,5 +71,5 @@ Com uma resposta ao pedido anterior, o Client liga-se ao Server e é apresentado
 Na nossa implementação é feito o pressuposto que cada Client apenas comunica com um e só um Server, sendo impossível 
 comutar para outro servidor sem reiniciar a aplicação Client.
 
-**Uso:** `java -jar ClientApp-1.0-jar-with-dependencies.jar <Register IP>`
+**Uso:** `java -jar ClientApp-1.0-jar-with-dependencies.jar <Register IP> <RegisterPort>`
 
