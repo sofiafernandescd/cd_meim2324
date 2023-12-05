@@ -13,18 +13,21 @@ import java.util.UUID;
 
 public class PointOfSale {
 
-    private static final String IP_BROKER = "localhost";
     private static final String EXCHANGE_NAME = "ExgSales";  // Nome do exchange global bem conhecido
     private static final String CASA_ROUTING_KEY = "CASA.#";
     private static final String ALIMENTAR_ROUTING_KEY = "ALIMENTAR.#";
 
+    private static String BROKER_IP = "localhost";
+    private static final int BROKER_PORT = 5672;
+
     static Logger logger = new SimpleLoggerFactory().getLogger("RabbitMQ-PointOfSale");
 
     public static void main(String[] args) {
+        BROKER_IP = args[0];
         try {
             ConnectionFactory factory = new ConnectionFactory();
-            factory.setHost(IP_BROKER);
-            factory.setPort(5672);
+            factory.setHost(BROKER_IP);
+            factory.setPort(BROKER_PORT);
 
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();

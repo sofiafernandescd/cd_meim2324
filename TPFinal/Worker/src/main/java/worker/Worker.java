@@ -55,7 +55,7 @@ public class Worker {
     }
 
     private void processarVenda(String mensagem) {
-        System.out.println(" [x] Recebido venda da categoria " + queueName + ": " + mensagem);
+        System.out.println(" [x] Recebida venda da categoria " + queueName + ": " + mensagem);
         // Lógica de processamento específica para a categoria
     }
 
