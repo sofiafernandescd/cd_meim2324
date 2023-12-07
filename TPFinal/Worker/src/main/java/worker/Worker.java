@@ -35,8 +35,6 @@ public class Worker {
             try (Connection connection = factory.newConnection();
                  Channel channel = connection.createChannel()) {
                 String queue = getQueueFromCategoria(queueName);
-                channel.queueDeclare(queue, false, false, false, null);
-                System.out.println(" [*] Aguardando mensagens para categoria " + queueName + ". Para sair, pressione CTRL+C");
 
                 DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                     String mensagem = new String(delivery.getBody(), "UTF-8");
@@ -45,6 +43,8 @@ public class Worker {
 
                 channel.basicConsume(queue, true, deliverCallback, consumerTag -> {
                 });
+
+                System.out.println(" [*] Aguardando mensagens para categoria " + queueName + ". Para sair, pressione CTRL+C");
 
                 // Mantenha a execução do worker...
                 Thread.currentThread().join();

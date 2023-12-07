@@ -86,7 +86,6 @@ public class RabbitConfigurator {
             connection.close();
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
     }
 
