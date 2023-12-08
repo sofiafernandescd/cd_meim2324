@@ -16,7 +16,7 @@ public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUs
 
     public static void main(String[] args) throws Exception {
         Server server = ServerBuilder.forPort(9090)
-                .addService(new ManagerGRPCServer())
+                .addService(new ManagerServerGrpc())
                 .build();
 
         System.out.println("Iniciando servidor gRPC na porta 9090");

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="User" />
+        <module name="Broker" />
+        <module name="Configurator" />
+        <module name="PointOfSale" />
+        <module name="Worker" />
+        <module name="Manager" />
+        <module name="Election" />
+        <module name="ContractManagerUser" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="contract" target="11" />
+      <module name="election" target="1.8" />
+      <module name="pointofsale" target="1.8" />
+      <module name="PointOfsale" target="11" />
+      <module name="user" target="1.8" />
+      <module name="worker" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -13,7 +13,7 @@ public class Broker {
 
     private static String BROKER_IP = "localhost";
     private static int BROKER_PORT = 5672;
-
+    private static final String EXCHANGE_NAME = "ExgSales";
     static Connection connection = null;
     static Channel channel = null;
     static Logger logger=new SimpleLoggerFactory().getLogger("RabbitMQ-configurator");
@@ -29,13 +29,15 @@ public class Broker {
             connection = factory.newConnection();
             channel = connection.createChannel();
 
-            channel.exchangeDeclare("ExgSales", BuiltinExchangeType.TOPIC, true);
-
+            // Declaração da exchange de vendas (ExgSales)
+            channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC, true);
+            // Declaração das filas e binds para categorias
             channel.queueDeclare("fila_alimentar", true, false, false, null);
-            channel.queueBind("fila_alimentar", "ExgSales", "ALIMENTAR.#");
-
+            channel.queueBind("fila_alimentar", EXCHANGE_NAME, "ALIMENTAR.#");
             channel.queueDeclare("fila_casa", true, false, false, null);
-            channel.queueBind("fila_casa", "ExgSales", "CASA.#");
+            channel.queueBind("fila_casa", EXCHANGE_NAME, "CASA.#");
+
+
 
             boolean end = false;
             while (!end)
@@ -54,4 +56,8 @@ public class Broker {
             ex.printStackTrace();
         }
     }
+
+
 }
+
+

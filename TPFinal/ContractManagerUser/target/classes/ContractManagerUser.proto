@@ -28,6 +28,7 @@ message Sale {
   double iva = 7;
 }
 
+
 message Void {}
 
 message Request {
