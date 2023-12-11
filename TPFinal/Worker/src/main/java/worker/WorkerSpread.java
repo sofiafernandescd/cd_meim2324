@@ -1,40 +1,49 @@
 package worker;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.*;
 import spread.*;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class WorkerSpread {
+
+    private static final String EXCHANGE_NAME = "ExgSales";
     private static final String QUEUE_ALIMENTAR = "fila_alimentar";
     private static final String QUEUE_CASA = "fila_casa";
-    // ... outras constantes e configurações ...
-
+    private final int workerId;
     private final String queueName;
+    String glusterFsPath;
     private final SpreadConnection spreadConnection;
     private final SpreadGroup spreadGroup;
 
-    public WorkerSpread(String queueName, String spreadGroupName) throws SpreadException {
+    public WorkerSpread(String queueName, int workerId, String spreadGroupName, String ipRabbitMQ, int portRabbitMQ, String ipInterno) throws SpreadException, UnknownHostException {
         this.queueName = queueName;
+        this.workerId = workerId;
+        this.glusterFsPath = "/var/sharedfiles/worker_" + workerId + "_sales_data.txt";
         this.spreadConnection = new SpreadConnection();
         this.spreadGroup = new SpreadGroup();
+        spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "Worker_id_" + workerId, false, true);
         this.spreadGroup.join(spreadConnection, spreadGroupName);
+        iniciarSpreadConnection("Worker_id_" + workerId, ipRabbitMQ, portRabbitMQ);
     }
 
-    public static void main(String[] args) throws SpreadException {
-        if (args.length != 4) {
-            System.out.println("Uso: Worker <ipRabbitMQ> <portRabbitMQ> <workerId> <categoria>");
+    public static void main(String[] args) throws SpreadException, UnknownHostException {
+        if (args.length != 5) {
+            System.out.println("Uso: Worker <ipRabbitMQ> <portRabbitMQ> <workerId> <categoria> <IPinternoVM>");
             System.exit(1);
         }
 
         String ipRabbitMQ = args[0];
         int portRabbitMQ = Integer.parseInt(args[1]);
-        String categoria = args[2];
+        int workerID= Integer.parseInt(args[2]);
+        String categoria = args[3];
+        String ipInterno = args[4];
         String spreadGroupName = "SpreadGroup" + categoria;
-        WorkerSpread worker = new WorkerSpread(categoria, spreadGroupName);
+        WorkerSpread worker = new WorkerSpread(categoria, workerID, spreadGroupName, ipRabbitMQ, portRabbitMQ, ipInterno);
         worker.iniciar(ipRabbitMQ, portRabbitMQ);
     }
 
@@ -48,6 +57,9 @@ public class WorkerSpread {
                  Channel channel = connection.createChannel()) {
                 String queue = getQueueFromCategoria(queueName);
 
+                // Declaração da exchange de vendas
+                channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC, true);
+                // Processamento da venda
                 DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                     String mensagem = new String(delivery.getBody(), "UTF-8");
                     processarVenda(mensagem);
@@ -69,10 +81,13 @@ public class WorkerSpread {
 
     public void iniciarSpreadConnection(String user, String address, int port) {
         // Establish the spread connection.
-        try  {
-            spreadConnection.connect(InetAddress.getByName(address), port, user, false, true);
+        try {
             SpreadMessage spreadMessage = new SpreadMessage();
+            spreadMessage.setSafe();
             spreadMessage.addGroup(spreadGroup);
+            System.out.println("Conexão de Spread iniciada");
+            String txtMessage = "Connection Started";
+            spreadMessage.setData(txtMessage.getBytes());
             spreadConnection.multicast(spreadMessage);
 
             //advancedMsgHandling=new AdvancedMessageHandling(connection); connection.add(advancedMsgHandling);
@@ -81,8 +96,6 @@ public class WorkerSpread {
             System.err.println("There was an error connecting to the daemon.");
             e.printStackTrace();
             System.exit(1);
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -101,8 +114,7 @@ public class WorkerSpread {
 
     private void processarVenda(String mensagem) {
         System.out.println(" [x] Recebida venda da categoria " + queueName + ": " + mensagem);
-        // Lógica de processamento específica para a categoria
-        // Adicionar ao TXT TODO
+        escreverEmArquivo(mensagem);
     }
 
     private String getQueueFromCategoria(String categoria) {
@@ -114,6 +126,15 @@ public class WorkerSpread {
             System.out.println("Categoria desconhecida: " + categoria);
             System.exit(1);
             return null;
+        }
+    }
+
+    private void escreverEmArquivo(String mensagem) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(glusterFsPath, true))) {
+            writer.println(mensagem);
+            System.out.println(" [x] Venda registada no ficheiro: " + glusterFsPath);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

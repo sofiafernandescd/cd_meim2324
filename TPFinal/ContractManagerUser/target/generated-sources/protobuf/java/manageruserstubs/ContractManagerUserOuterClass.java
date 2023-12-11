@@ -20,10 +20,10 @@ public final class ContractManagerUserOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_contractmanageruser_Category_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_contractmanageruser_Sale_descriptor;
+    internal_static_contractmanageruser_Resume_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_contractmanageruser_Sale_fieldAccessorTable;
+      internal_static_contractmanageruser_Resume_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_contractmanageruser_Void_descriptor;
   static final 
@@ -45,16 +45,13 @@ public final class ContractManagerUserOuterClass {
     java.lang.String[] descriptorData = {
       "\n\031ContractManagerUser.proto\022\023contractman" +
       "ageruser\032\037google/protobuf/timestamp.prot" +
-      "o\"\034\n\010Category\022\020\n\010category\030\001 \001(\t\"\243\001\n\004Sale" +
-      "\022(\n\004data\030\001 \001(\0132\032.google.protobuf.Timesta" +
-      "mp\022\025\n\rcodigoProduto\030\002 \001(\t\022\023\n\013nomeProduto" +
-      "\030\003 \001(\t\022\022\n\nquantidade\030\004 \001(\005\022\025\n\rprecoUnita" +
-      "rio\030\005 \001(\001\022\r\n\005total\030\006 \001(\001\022\013\n\003iva\030\007 \001(\001\"\006\n" +
-      "\004Void\"<\n\007Request\022\025\n\roriginAddress\030\002 \001(\t\022" +
-      "\032\n\022destinationAddress\030\003 \001(\t2^\n\023ContractM" +
-      "anagerUser\022G\n\tgetResume\022\035.contractmanage" +
-      "ruser.Category\032\031.contractmanageruser.Sal" +
-      "e0\001B\024\n\020manageruserstubsP\001b\006proto3"
+      "o\"\034\n\010Category\022\020\n\010category\030\001 \001(\t\"(\n\006Resum" +
+      "e\022\020\n\010category\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\"\006\n\004Voi" +
+      "d\"<\n\007Request\022\025\n\roriginAddress\030\002 \001(\t\022\032\n\022d" +
+      "estinationAddress\030\003 \001(\t2`\n\023ContractManag" +
+      "erUser\022I\n\tgetResume\022\035.contractmanageruse" +
+      "r.Category\032\033.contractmanageruser.Resume0" +
+      "\001B\024\n\020manageruserstubsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -67,12 +64,12 @@ public final class ContractManagerUserOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_contractmanageruser_Category_descriptor,
         new java.lang.String[] { "Category", });
-    internal_static_contractmanageruser_Sale_descriptor =
+    internal_static_contractmanageruser_Resume_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_contractmanageruser_Sale_fieldAccessorTable = new
+    internal_static_contractmanageruser_Resume_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_contractmanageruser_Sale_descriptor,
-        new java.lang.String[] { "Data", "CodigoProduto", "NomeProduto", "Quantidade", "PrecoUnitario", "Total", "Iva", });
+        internal_static_contractmanageruser_Resume_descriptor,
+        new java.lang.String[] { "Category", "Data", });
     internal_static_contractmanageruser_Void_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_contractmanageruser_Void_fieldAccessorTable = new

@@ -5,7 +5,7 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import manageruserstubs.Category;
 import manageruserstubs.ContractManagerUserGrpc;
-import manageruserstubs.Sale;
+import manageruserstubs.Resume;
 
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
@@ -62,9 +62,9 @@ public class UserApp {
         CompletableFuture<Void> future = new CompletableFuture<>();
 
         // Fazendo a chamada assíncrona
-        stub.getResume(category, new StreamObserver<Sale>() {
+        stub.getResume(category, new StreamObserver<Resume>() {
             @Override
-            public void onNext(Sale sale) {
+            public void onNext(Resume sale) {
                 // Processar cada venda (exibir ou salvar conforme necessário)
                 System.out.println("Venda recebida: " + sale);
             }

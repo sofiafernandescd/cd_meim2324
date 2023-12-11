@@ -7,27 +7,18 @@ option java_package = "manageruserstubs";
 package contractmanageruser; // package do proto
 
 service ContractManagerUser {
-  rpc getResume(Category) returns (stream Sale);
-
+  rpc getResume(Category) returns (stream Resume);
 }
-
 
 message Category {
   string category = 1;
 }
 
-// o conteúdo de uma venda (Sale) tem as seguintes informações
-// (Data, CodigoProduto, NomeProduto, Quant, PreçoUnitário, Total, Iva).
-message Sale {
-  google.protobuf.Timestamp data = 1;
-  string codigoProduto = 2;
-  string nomeProduto = 3;
-  int32 quantidade = 4;
-  double precoUnitario = 5;
-  double total = 6;
-  double iva = 7;
+// o conteúdo de um (Resumo)
+message Resume {
+  string category = 1;
+  bytes data = 2;
 }
-
 
 message Void {}
 

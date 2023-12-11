@@ -16,28 +16,28 @@ public final class ContractManagerUserGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<manageruserstubs.Category,
-      manageruserstubs.Sale> getGetResumeMethod;
+      manageruserstubs.Resume> getGetResumeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getResume",
       requestType = manageruserstubs.Category.class,
-      responseType = manageruserstubs.Sale.class,
+      responseType = manageruserstubs.Resume.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<manageruserstubs.Category,
-      manageruserstubs.Sale> getGetResumeMethod() {
-    io.grpc.MethodDescriptor<manageruserstubs.Category, manageruserstubs.Sale> getGetResumeMethod;
+      manageruserstubs.Resume> getGetResumeMethod() {
+    io.grpc.MethodDescriptor<manageruserstubs.Category, manageruserstubs.Resume> getGetResumeMethod;
     if ((getGetResumeMethod = ContractManagerUserGrpc.getGetResumeMethod) == null) {
       synchronized (ContractManagerUserGrpc.class) {
         if ((getGetResumeMethod = ContractManagerUserGrpc.getGetResumeMethod) == null) {
           ContractManagerUserGrpc.getGetResumeMethod = getGetResumeMethod =
-              io.grpc.MethodDescriptor.<manageruserstubs.Category, manageruserstubs.Sale>newBuilder()
+              io.grpc.MethodDescriptor.<manageruserstubs.Category, manageruserstubs.Resume>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getResume"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   manageruserstubs.Category.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  manageruserstubs.Sale.getDefaultInstance()))
+                  manageruserstubs.Resume.getDefaultInstance()))
               .setSchemaDescriptor(new ContractManagerUserMethodDescriptorSupplier("getResume"))
               .build();
         }
@@ -97,7 +97,7 @@ public final class ContractManagerUserGrpc {
     /**
      */
     default void getResume(manageruserstubs.Category request,
-        io.grpc.stub.StreamObserver<manageruserstubs.Sale> responseObserver) {
+        io.grpc.stub.StreamObserver<manageruserstubs.Resume> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetResumeMethod(), responseObserver);
     }
   }
@@ -132,7 +132,7 @@ public final class ContractManagerUserGrpc {
     /**
      */
     public void getResume(manageruserstubs.Category request,
-        io.grpc.stub.StreamObserver<manageruserstubs.Sale> responseObserver) {
+        io.grpc.stub.StreamObserver<manageruserstubs.Resume> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getGetResumeMethod(), getCallOptions()), request, responseObserver);
     }
@@ -156,7 +156,7 @@ public final class ContractManagerUserGrpc {
 
     /**
      */
-    public java.util.Iterator<manageruserstubs.Sale> getResume(
+    public java.util.Iterator<manageruserstubs.Resume> getResume(
         manageruserstubs.Category request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getGetResumeMethod(), getCallOptions(), request);
@@ -201,7 +201,7 @@ public final class ContractManagerUserGrpc {
       switch (methodId) {
         case METHODID_GET_RESUME:
           serviceImpl.getResume((manageruserstubs.Category) request,
-              (io.grpc.stub.StreamObserver<manageruserstubs.Sale>) responseObserver);
+              (io.grpc.stub.StreamObserver<manageruserstubs.Resume>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -226,7 +226,7 @@ public final class ContractManagerUserGrpc {
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
               manageruserstubs.Category,
-              manageruserstubs.Sale>(
+              manageruserstubs.Resume>(
                 service, METHODID_GET_RESUME)))
         .build();
   }
