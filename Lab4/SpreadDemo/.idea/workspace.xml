@@ -5,402 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98a7f391-6d6f-4ec1-a6b6-4782febac733" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../TPFinal/WorkerSpread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1-new/RegisterApp/target/classes/registerapp/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1-new/RegisterApp/target/classes/registerapp/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1-new/RegisterApp/target/classes/registerapp/RegisterServerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1-new/RegisterApp/target/classes/registerapp/RegisterServerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ClientApp/target/classes/clientapp/Client$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ClientApp/target/classes/clientapp/Client$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ClientApp/target/classes/clientapp/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1/ClientApp/target/classes/clientapp/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$AsyncService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceBaseDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceBlockingStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceFileDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceFutureStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceImplBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceMethodDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$ClientRegisterServiceStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc$MethodHandlers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceGrpc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRegisterServiceOuterClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRequest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRequest$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ClientRequestOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/Empty$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/Empty$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/Empty.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/EmptyOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerInfo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerInfo$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerInfoOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerResponse$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerResponse$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/classes/clientregisterstubs/ServerResponseOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/grpc-java/clientregisterstubs/ClientRegisterServiceGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ClientRegisterServiceOuterClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ClientRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ClientRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/Empty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/EmptyOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ServerInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ServerInfoOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ServerResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/generated-sources/protobuf/java/clientregisterstubs/ServerResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/any.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/api.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/descriptor.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/duration.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/empty.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/field_mask.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/source_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/struct.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/timestamp.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/type.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/wrappers.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/annotations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/auth.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/backend.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/billing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/client.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/config_change.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/consumer.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/control.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/distribution.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/documentation.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/endpoint.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/error_reason.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/field_behavior.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/http.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/httpbody.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/label.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/launch_stage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/logging.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/metric.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/monitored_resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/monitoring.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/quota.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/routing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/service.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/source_info.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/system_parameter.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/usage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/visibility.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/cloud/audit/audit_log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/cloud/extended_operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/geo/type/viewport.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/logging/type/http_request.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/logging/type/log_severity.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/longrunning/operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/code.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/context/attribute_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/context/audit_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/error_details.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/status.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/calendar_period.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/color.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/date.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/datetime.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/dayofweek.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/decimal.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/expr.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/fraction.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/interval.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/latlng.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/localized_text.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/money.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/month.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/phone_number.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/postal_address.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/quaternion.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientRegister/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/timeofday.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$AsyncService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceBaseDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceBlockingStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceFileDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceFutureStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceImplBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceMethodDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$ClientServerServiceStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc$MethodHandlers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceGrpc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ClientServerServiceOuterClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageBlock$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageBlock$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageBlock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageBlockOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestId$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestId$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestId.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestIdOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestKeywords$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestKeywords$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestKeywords.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageDownloadRequestKeywordsOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusRequest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusRequest$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusRequestOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusResponse$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusResponse$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/classes/clientserverstubs/ImageStatusResponseOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/grpc-java/clientserverstubs/ClientServerServiceGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ClientServerServiceOuterClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageBlock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageBlockOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageDownloadRequestId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageDownloadRequestIdOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageDownloadRequestKeywords.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageDownloadRequestKeywordsOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageStatusRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageStatusRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageStatusResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/generated-sources/protobuf/java/clientserverstubs/ImageStatusResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/any.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/api.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/descriptor.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/duration.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/empty.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/field_mask.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/source_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/struct.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/timestamp.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/type.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/wrappers.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/annotations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/auth.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/backend.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/billing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/client.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/config_change.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/consumer.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/control.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/distribution.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/documentation.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/endpoint.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/error_reason.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/field_behavior.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/http.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/httpbody.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/label.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/launch_stage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/logging.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/metric.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/monitored_resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/monitoring.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/quota.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/routing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/service.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/source_info.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/system_parameter.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/usage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/visibility.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/cloud/audit/audit_log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/cloud/extended_operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/geo/type/viewport.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/logging/type/http_request.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/logging/type/log_severity.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/longrunning/operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/code.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/context/attribute_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/context/audit_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/error_details.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/status.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/calendar_period.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/color.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/date.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/datetime.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/dayofweek.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/decimal.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/expr.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/fraction.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/interval.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/latlng.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/localized_text.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/money.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/month.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/phone_number.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/postal_address.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/quaternion.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractClientServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/timeofday.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/Empty$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/Empty$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/Empty.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/EmptyOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$AsyncService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$MethodHandlers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceBaseDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceBlockingStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceFileDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceFutureStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceImplBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceMethodDescriptorSupplier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc$RegisterServerServiceStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceGrpc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/RegisterServerServiceOuterClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerInfo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerInfo$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerInfoOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerResponse$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerResponse$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/classes/registerserverstubs/ServerResponseOrBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/grpc-java/registerserverstubs/RegisterServerServiceGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/Empty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/EmptyOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/RegisterServerServiceOuterClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/ServerInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/ServerInfoOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/ServerResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/generated-sources/protobuf/java/registerserverstubs/ServerResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/any.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/api.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/descriptor.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/duration.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/empty.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/field_mask.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/source_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/struct.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/timestamp.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/type.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/8eb81c72ae14b15409c83c41ab724114/google/protobuf/wrappers.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/annotations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/auth.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/backend.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/billing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/client.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/config_change.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/consumer.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/control.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/distribution.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/documentation.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/endpoint.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/error_reason.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/field_behavior.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/http.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/httpbody.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/label.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/launch_stage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/logging.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/metric.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/monitored_resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/monitoring.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/quota.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/routing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/service.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/source_info.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/system_parameter.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/usage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/api/visibility.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/cloud/audit/audit_log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/cloud/extended_operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/geo/type/viewport.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/logging/type/http_request.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/logging/type/log_severity.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/longrunning/operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/code.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/context/attribute_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/context/audit_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/error_details.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/rpc/status.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/calendar_period.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/color.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/date.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/datetime.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/dayofweek.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/decimal.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/expr.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/fraction.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/interval.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/latlng.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/localized_text.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/money.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/month.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/phone_number.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/postal_address.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/quaternion.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ContractRegisterServer/target/protoc-dependencies/9b620c8e480bb5c550808f86ee091034/google/type/timeofday.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/RegisterApp/target/classes/registerapp/ClientRegisterServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1/RegisterApp/target/classes/registerapp/ClientRegisterServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/RegisterApp/target/classes/registerapp/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1/RegisterApp/target/classes/registerapp/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/RegisterApp/target/classes/registerapp/RegisterServerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1/RegisterApp/target/classes/registerapp/RegisterServerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ServerApp/target/classes/serverapp/ProcessImageServiceImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ServerApp/target/classes/serverapp/ProcessImageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1/ServerApp/target/classes/serverapp/ProcessImageServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPA1/ServerApp/target/classes/serverapp/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPA1/ServerApp/target/classes/serverapp/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/src/main/java/broker/Broker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/src/main/java/broker/Broker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/cd_meim2324.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Lab3/RabbitMQ-Concepts/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/RabbitMQ-Concepts/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maven-install-lib.bat" beforeDir="false" afterPath="$PROJECT_DIR$/maven-install-lib.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spread-4.4.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/spread-4.4.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/classes/broker/Broker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Configurator/target/classes/rmqconfigurator/RabbitConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Configurator/target/classes/rmqconfigurator/RabbitConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/ContractManagerUser.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/ContractManagerUser.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Category$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Category$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Category$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Category$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/CategoryOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/CategoryOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$AsyncService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$AsyncService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserBaseDescriptorSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserBaseDescriptorSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserBlockingStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserBlockingStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserFileDescriptorSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserFileDescriptorSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserFutureStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserFutureStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserImplBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserImplBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserMethodDescriptorSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserMethodDescriptorSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$ContractManagerUserStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$MethodHandlers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc$MethodHandlers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserGrpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserOuterClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/ContractManagerUserOuterClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Request$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Request$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Request$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Request$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/RequestOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/RequestOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Sale$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Sale$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Sale$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Sale$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Sale.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Sale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/SaleOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/SaleOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Void$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Void$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Void$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Void$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Void.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/Void.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/VoidOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/ContractManagerUser/target/classes/manageruserstubs/VoidOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Manager/src/main/java/manager/ManagerServerGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Manager/src/main/java/manager/ManagerServerGrpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/classes/mqproducer/PointOfSale.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/classes/mqproducer/PointOfSale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/src/main/java/worker/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/src/main/java/worker/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/classes/worker/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/classes/worker/Worker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/src/main/java/worker/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0-jar-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/classes/worker/Worker.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TPFinal/WorkerSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/src/main/java/worker/WorkerSpread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -424,7 +62,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sofiafernandes/Documents/Repos/MEIM-ano1-sem2/cd_meim2324/Lab4/SpreadDemo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/narut/Desktop/1_year/CD/cd_meim2324/Lab4/SpreadDemo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -432,6 +70,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\narut\Desktop\1_year\CD\cd_meim2324\Lab4\SpreadDemo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\narut\Desktop\1_year\CD\cd_meim2324\Lab4\SpreadDemo\DemoSpreadMaven" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
