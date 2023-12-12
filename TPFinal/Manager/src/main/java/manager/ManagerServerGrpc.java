@@ -7,18 +7,27 @@ import io.grpc.stub.StreamObserver;
 import manageruserstubs.Category;
 import manageruserstubs.ContractManagerUserGrpc;
 import manageruserstubs.Resume;
-
-import com.google.protobuf.Timestamp;
+import spread.*;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 
 
-public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUserImplBase {
 
+
+public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUserImplBase {
+    public final String ipInterno;
+
+    public ManagerServerGrpc(String ipInterno) {
+        this.ipInterno = ipInterno;
+    }
+
+    //    private SpreadGroup spreadGroup;
     public static void main(String[] args) throws Exception {
+        String ipInterno = args[0];
         Server server = ServerBuilder.forPort(9090)
-                .addService(new ManagerServerGrpc())
+                .addService(new ManagerServerGrpc(ipInterno))
                 .build();
 
         System.out.println("Iniciando servidor gRPC na porta 9090");
@@ -28,37 +37,50 @@ public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUs
 
     @Override
     public void getResume(Category request, StreamObserver<Resume> responseObserver) {
+        final SpreadConnection spreadConnection;
+        spreadConnection = new SpreadConnection();
+        SpreadGroup spreadGroup = new SpreadGroup();
+        try {
+            spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "Manager", false, true);
+            spreadGroup.join(spreadConnection, "SpreadGroup" + request.getCategory());
+        } catch (SpreadException e) {
+            throw new RuntimeException(e);
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
         // Lógica para processar o pedido de resumo e enviar várias vendas
         String categoria = request.getCategory();
 
-        // Implemente a lógica para obter e enviar várias vendas aqui
-        for (int i = 0; i < 5; i++) {
-            Date data = new Date();
-            /*Timestamp timestamp = Timestamp.newBuilder()
-                    .setSeconds(data.getTime() / 1000)  // segundos desde o epoch
-                    .setNanos((int) ((data.getTime() % 1000) * 1000000))  // nanos
-                    .build();*/
+        // Sample data as a string (you should replace this with your actual data)
+        String resumeDataString = "This is a sample resume data.";
 
+        // Convert the string to bytes
+        byte[] resumeBlockFromExchange = resumeDataString.getBytes();
 
-            // Sample data as a string (you should replace this with your actual data)
-            String resumeDataString = "This is a sample resume data.";
+        // Now you can proceed with the rest of your code
+        byte[] resumeBlock = resumeBlockFromExchange;
 
-            // Convert the string to bytes
-            byte[] resumeBlockFromExchange = resumeDataString.getBytes();
-
-            // Now you can proceed with the rest of your code
-            byte[] resumeBlock = resumeBlockFromExchange;
-
-            Resume resume = Resume.newBuilder()
+        Resume resume = Resume.newBuilder()
                                   .setCategory(request.getCategory())
                                   .setData(ByteString.copyFrom(resumeBlock))
                                   .build();
+        // Envie cada venda para o cliente
+        responseObserver.onNext(resume);
 
-            // Envie cada venda para o cliente
-            responseObserver.onNext(resume);
-        }
 
         // Sinalize o término do fluxo
         responseObserver.onCompleted();
+
+        // Solicita que os Workers realizem o resumo
+        SpreadMessage spreadMessage = new SpreadMessage();
+        spreadMessage.setSafe();
+        spreadMessage.addGroup(spreadGroup);
+        spreadMessage.setData(("RESUME_REQUEST " + categoria + " " + "summary.txt").getBytes());
+        try {
+
+            spreadConnection.multicast(spreadMessage);
+        } catch (SpreadException e) {
+            e.printStackTrace();
+        }
     }
 }

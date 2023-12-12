@@ -5,40 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98a7f391-6d6f-4ec1-a6b6-4782febac733" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/cd_meim2324.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Lab3/RabbitMQ-Concepts/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Lab3/RabbitMQ-Concepts/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maven-install-lib.bat" beforeDir="false" afterPath="$PROJECT_DIR$/maven-install-lib.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spread-4.4.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/spread-4.4.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/Broker-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Broker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/PointOfSale-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/PointOfSale/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/src/main/java/worker/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/Worker-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/classes/worker/Worker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/Worker/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TPFinal/WorkerSpread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TPFinal/Worker/src/main/java/worker/WorkerSpread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -39,7 +39,7 @@ public class WorkerSpread {
 
         String ipRabbitMQ = args[0];
         int portRabbitMQ = Integer.parseInt(args[1]);
-        int workerID= Integer.parseInt(args[2]);
+        int workerID = Integer.parseInt(args[2]);
         String categoria = args[3];
         String ipInterno = args[4];
         String spreadGroupName = "SpreadGroup" + categoria;
@@ -47,11 +47,65 @@ public class WorkerSpread {
         worker.iniciar(ipRabbitMQ, portRabbitMQ);
     }
 
-    private void iniciar(String ipRabbitMQ, int portRabbit) {
+    private void iniciarSpreadConnection(String user, String address, int port) {
+        // Establish the spread connection.
+        try {
+            SpreadMessage spreadMessage = new SpreadMessage();
+            spreadMessage.setSafe();
+            spreadMessage.addGroup(spreadGroup);
+            System.out.println("Conexão de Spread iniciada");
+            String txtMessage = "Connection Started";
+            spreadMessage.setData(txtMessage.getBytes());
+            spreadConnection.multicast(spreadMessage);
+
+            // Listen for Spread messages
+            new Thread(() -> {
+                while (true) {
+                    try {
+                        SpreadMessage receivedMessage = spreadConnection.receive();
+                        byte[] data = receivedMessage.getData();
+                        String receivedText = new String(data);
+                        System.out.println("Received Spread message: " + receivedText);
+
+                        // Verifica se a mensagem é uma solicitação de resumo
+                        if (receivedText.startsWith("RESUME_REQUEST")) {
+                            // Extrai o nome do Exchange e do arquivo do qual o resumo deve ser enviado
+                            String[] parts = receivedText.split("\\s");
+                            if (parts.length == 3) {
+                                String exchangeName = parts[1];
+                                String summaryFileName = parts[2];
+                                // Processa o resumo
+                                processarResumo(exchangeName, summaryFileName);
+                            }
+                        }
+                    } catch (SpreadException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        } catch (SpreadException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+        private void processarResumo(String exchangeName, String summaryFileName) {
+            // Lógica para processar o resumo das vendas e escrever no arquivo
+            // Notifica o Manager que o resumo está pronto
+            SpreadMessage spreadMessage = new SpreadMessage();
+            spreadMessage.addGroup(spreadGroup);
+            spreadMessage.setData(("RESUME_COMPLETED " + exchangeName + " " + summaryFileName).getBytes());
+            try {
+                spreadConnection.multicast(spreadMessage);
+            } catch (SpreadException e) {
+                e.printStackTrace();
+            }
+        }
+
+    private void iniciar(String ipRabbitMQ, int portRabbitMQ) {
         try {
             ConnectionFactory factory = new ConnectionFactory();
             factory.setHost(ipRabbitMQ);
-            factory.setPort(portRabbit);
+            factory.setPort(portRabbitMQ);
 
             try (Connection connection = factory.newConnection();
                  Channel channel = connection.createChannel()) {
@@ -78,40 +132,6 @@ public class WorkerSpread {
         }
     }
 
-
-    public void iniciarSpreadConnection(String user, String address, int port) {
-        // Establish the spread connection.
-        try {
-            SpreadMessage spreadMessage = new SpreadMessage();
-            spreadMessage.setSafe();
-            spreadMessage.addGroup(spreadGroup);
-            System.out.println("Conexão de Spread iniciada");
-            String txtMessage = "Connection Started";
-            spreadMessage.setData(txtMessage.getBytes());
-            spreadConnection.multicast(spreadMessage);
-
-            //advancedMsgHandling=new AdvancedMessageHandling(connection); connection.add(advancedMsgHandling);
-        }
-        catch(SpreadException e)  {
-            System.err.println("There was an error connecting to the daemon.");
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
-
-    // Inicia a conexão Spread Toolkit
-//    private void iniciarSpreadConnection(String ipRabbitMQ, int portRabbit) {
-//        try {
-//            spreadConnection.connect(InetAddress.getByName(ipRabbitMQ), portRabbit, "worker", false, true);
-//
-//            SpreadMessage spreadMessage = new SpreadMessage();
-//            spreadMessage.addGroup(spreadGroup);
-//            spreadConnection.multicast(spreadMessage);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     private void processarVenda(String mensagem) {
         System.out.println(" [x] Recebida venda da categoria " + queueName + ": " + mensagem);
         escreverEmArquivo(mensagem);
@@ -137,32 +157,4 @@ public class WorkerSpread {
             e.printStackTrace();
         }
     }
-
-    private void fazerResumo(String categoria) {
-        System.out.println(" [x] Resumo da categoria " + categoria);
-        // Lógica de processamento específica para a categoria
-    }
-
-//    // Método para solicitar arquivos de uma categoria específica
-//    private void requestCategoryFiles(String categoria) {
-//        try {
-//            // Envia mensagem de solicitação ao grupo específico da categoria usando Spread Toolkit
-//            spreadConnection.multicast(spreadGroup, SpreadMessage.PRIORITY_NORMAL,
-//                    false, new MessagePayload("REQUEST_FILES " + categoria));
-//        } catch (SpreadException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    // Adiciona lógica para eleição Bully usando Spread Toolkit
-//    private void startElection() {
-//        try {
-//            // Envia mensagem de eleição ao grupo específico da categoria usando Spread Toolkit
-//            spreadConnection.multicast(spreadGroup, SpreadMessage.PRIORITY_NORMAL,
-//                    false, new MessagePayload("ELECTION " + queueName));
-//        } catch (SpreadException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
 }
