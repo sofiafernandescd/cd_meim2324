@@ -28,7 +28,10 @@ public class UserApp {
         // Criar um cliente gRPC usando o contrato gerado
         ContractManagerUserGrpc.ContractManagerUserStub stub = ContractManagerUserGrpc.newStub(channel);
 
+
         Scanner scanner = new Scanner(System.in);
+        String download_1 = "";
+        String download_2 = "";
         while (true) {
             exibirMenu();
             int escolha = scanner.nextInt();
@@ -37,17 +40,19 @@ public class UserApp {
                 case 1:
                     solicitarResumo(stub, "ALIMENTAR");
                     System.out.println("Quer fazer download:");
-                    String download_1 = readline("Yes     No");
-                    if (Objects.equals(download_1, "Yes")){
+                    do{download_1 = readline("1 - Yes     2 - No");}
+                    while (download_1 != "1" || download_1 != "2");
+                        if (Objects.equals(download_1, "1")){
                         downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt","ALIMENTAR_resumo.txt");
                     };
                     break;
                 case 2:
                     solicitarResumo(stub, "CASA");
                     System.out.println("Quer fazer download:");
-                    String download_2 = readline("Yes     No");
-                    if (Objects.equals(download_2, "Yes")) {
-                        downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt", "CASA_resumo.txt");
+                    do{download_1 = readline("1 - Yes     2 - No");}
+                    while (download_1 != "1" || download_1 != "2");
+                        if (Objects.equals(download_2, "1")) {
+                            downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt", "CASA_resumo.txt");
                     };
                     break;
                 case 3:
