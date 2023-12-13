@@ -113,7 +113,7 @@ public class WorkerSpread {
         // Notifica o Manager que o resumo está pronto
         SpreadMessage spreadMessage = new SpreadMessage();
         spreadMessage.addGroup(spreadGroup);
-        mergeFiles("/var/sharefiles/", "/var/sharefiles/RESUMO_" + queueName + ".txt", queueName);
+        mergeFiles("/var/sharedfiles/", "/var/sharedfiles/RESUMO_" + queueName + ".txt", queueName);
         spreadMessage.setData(("RESUME_COMPLETED " + exchangeName + " " + summaryFileName).getBytes());
         try {
             spreadConnection.multicast(spreadMessage);
@@ -229,6 +229,7 @@ public class WorkerSpread {
         try {
             File directory = new File(directoryPath);
             File[] files = directory.listFiles();
+            System.out.println(files);
 
             if (files != null) {
                 try (PrintWriter writer = new PrintWriter(new FileWriter(outputFileName))) {
