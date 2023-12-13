@@ -11,23 +11,27 @@ import spread.*;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Date;
-
-
 
 
 public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUserImplBase {
     public final String ipInterno;
 
-    public ManagerServerGrpc(String ipInterno) {
+    public final SpreadConnection spreadConnection;
+    public final SpreadGroup spreadGroup;
+    public ManagerServerGrpc(String ipInterno, SpreadConnection spreadConnection, SpreadGroup spreadGroup) throws Exception {
         this.ipInterno = ipInterno;
+        this.spreadConnection = spreadConnection;
+        this.spreadGroup = spreadGroup;
+        spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "Manager", false, true);
     }
 
     //    private SpreadGroup spreadGroup;
     public static void main(String[] args) throws Exception {
         String ipInterno = args[0];
+        SpreadConnection spreadConnection1 = new SpreadConnection();
+        SpreadGroup spreadGroup = new SpreadGroup();
         Server server = ServerBuilder.forPort(9090)
-                .addService(new ManagerServerGrpc(ipInterno))
+                .addService(new ManagerServerGrpc(ipInterno, spreadConnection1, spreadGroup))
                 .build();
 
         System.out.println("Iniciando servidor gRPC na porta 9090");
@@ -37,15 +41,9 @@ public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUs
 
     @Override
     public void getResume(Category request, StreamObserver<Resume> responseObserver) {
-        final SpreadConnection spreadConnection;
-        spreadConnection = new SpreadConnection();
-        SpreadGroup spreadGroup = new SpreadGroup();
         try {
-            spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "Manager", false, true);
             spreadGroup.join(spreadConnection, "SpreadGroup" + request.getCategory());
-        } catch (SpreadException e) {
-            throw new RuntimeException(e);
-        } catch (UnknownHostException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         // Lógica para processar o pedido de resumo e enviar várias vendas
@@ -77,8 +75,8 @@ public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUs
         spreadMessage.addGroup(spreadGroup);
         spreadMessage.setData(("RESUME_REQUEST " + categoria + " summary.txt").getBytes());
         try {
-
             spreadConnection.multicast(spreadMessage);
+            spreadGroup.leave();
         } catch (SpreadException e) {
             e.printStackTrace();
         }

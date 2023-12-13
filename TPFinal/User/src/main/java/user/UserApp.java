@@ -7,6 +7,7 @@ import manageruserstubs.Category;
 import manageruserstubs.ContractManagerUserGrpc;
 import manageruserstubs.Resume;
 
+import java.io.FileInputStream;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
@@ -30,7 +31,7 @@ public class UserApp {
 
 
         Scanner scanner = new Scanner(System.in);
-        String download_1 = "";
+        String download_1;
         String download_2 = "";
         while (true) {
             exibirMenu();
@@ -40,17 +41,19 @@ public class UserApp {
                 case 1:
                     solicitarResumo(stub, "ALIMENTAR");
                     System.out.println("Quer fazer download:");
-                    do{download_1 = readline("1 - Yes     2 - No");}
-                    while (download_1 != "1" || download_1 != "2");
-                        if (Objects.equals(download_1, "1")){
+                    download_1 = readline("1 - Yes     2 - No");
+                    //do{download_1 = readline("1 - Yes     2 - No");}
+                    //while (download_1 != "1" && download_1 != "2");
+                    if (Objects.equals(download_1, "1")){
                         downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt","ALIMENTAR_resumo.txt");
                     };
                     break;
                 case 2:
                     solicitarResumo(stub, "CASA");
                     System.out.println("Quer fazer download:");
-                    do{download_1 = readline("1 - Yes     2 - No");}
-                    while (download_1 != "1" || download_1 != "2");
+                    download_2 = readline("1 - Yes     2 - No");
+                    //do{download_2 = readline("1 - Yes     2 - No");}
+                    //while (download_2 != "1" && download_2 != "2");
                         if (Objects.equals(download_2, "1")) {
                             downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt", "CASA_resumo.txt");
                     };
@@ -80,10 +83,11 @@ public class UserApp {
 
     // Download do ficheiro
     private static void downloadFile(String fileUrl, String destinationPath) throws IOException {
-        URL url = new URL(fileUrl);
-        URLConnection connection = url.openConnection();
+        //URL url = new URL(fileUrl);
+        //URLConnection connection = url.openConnection();
 
-        try (InputStream in = connection.getInputStream();
+        // try (InputStream in = connection.getInputStream();
+        try (InputStream in = new FileInputStream(fileUrl);
              FileOutputStream out = new FileOutputStream(destinationPath)) {
 
             byte[] buffer = new byte[4096];
@@ -92,6 +96,8 @@ public class UserApp {
             while ((bytesRead = in.read(buffer)) != -1) {
                 out.write(buffer, 0, bytesRead);
             }
+
+            System.out.println("Download Feito com sucesso");
         }
     }
 
@@ -112,7 +118,7 @@ public class UserApp {
             @Override
             public void onError(Throwable throwable) {
                 System.out.println("Erro ao receber resumo: " + throwable.getMessage());
-                future.completeExceptionally(throwable);
+                future.complete(null);
             }
 
             @Override
