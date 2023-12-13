@@ -38,6 +38,7 @@ public class PointOfSale {
                 Date data = new Date();
                 UUID uuid = UUID.randomUUID();
                 String codigoProduto = uuid.toString().substring(0, 8);
+                int nSales = Integer.parseInt(readline("Número de Sales?"));
                 String categoria = readline("Product categoria (ALIMENTAR or CASA)?");
                 String nomeProduto = readline("Product name?");
                 int quantidade = Integer.parseInt(readline("Quantity?"));
@@ -50,14 +51,16 @@ public class PointOfSale {
                 }
                 double total = quantidade * (precoUnitario * (1+iva));
 
+                for (int j = 0; j < nSales; j++) {
+                    // Construir a mensagem de venda
+                    String message = createSaleMessage(data, codigoProduto, categoria, nomeProduto, quantidade, precoUnitario, total, iva);
 
-                // Construir a mensagem de venda
-                String message = createSaleMessage(data, codigoProduto, categoria, nomeProduto, quantidade, precoUnitario, total, iva);
+                    // Enviar a mensagem para o RabbitMQ com base na categoria
+                    String routingKey = getCategoryRoutingKey(categoria);
+                    channel.basicPublish(EXCHANGE_NAME, routingKey, true, null, message.getBytes());
+                    System.out.println("Sale Message Sent: " + message);
+                }
 
-                // Enviar a mensagem para o RabbitMQ com base na categoria
-                String routingKey = getCategoryRoutingKey(categoria);
-                channel.basicPublish(EXCHANGE_NAME, routingKey, true, null, message.getBytes());
-                System.out.println("Sale Message Sent: " + message);
             }
 
             readline("Press enter to finish");
@@ -79,6 +82,10 @@ public class PointOfSale {
         // Aqui, você pode formatar a mensagem de venda conforme necessário
         return String.format("Sale: data=%s, codigoProduto=%s, categoria=%s, nomeProduto=%s, quantidade=%d, precoUnitario=%.2f, total=%.2f, iva=%.2f",
                 data, codigoProduto, categoria, nomeProduto, quantidade, precoUnitario, total, iva);
+    }
+
+    private static String create10Sales() {
+
     }
 
     private static String getCategoryRoutingKey(String categoria) {
