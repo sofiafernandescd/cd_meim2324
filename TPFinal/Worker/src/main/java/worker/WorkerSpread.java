@@ -3,9 +3,7 @@ package worker;
 import com.rabbitmq.client.*;
 import spread.*;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -19,11 +17,18 @@ public class WorkerSpread {
     String glusterFsPath;
     private final SpreadConnection spreadConnection;
     private final SpreadGroup spreadGroup;
+    // Adicione estas variáveis para controlar o estado da eleição
+    private boolean electionInProgress = false;
+    private boolean electedLeader = false;
+    private String leaderSpreadGroupName = "";
+    private String SpreadGroupName = "";
+
 
     public WorkerSpread(String queueName, int workerId, String spreadGroupName, String ipRabbitMQ, int portRabbitMQ, String ipInterno) throws SpreadException, UnknownHostException {
         this.queueName = queueName;
         this.workerId = workerId;
-        this.glusterFsPath = "/var/sharedfiles/worker_" + workerId + "_sales_data.txt";
+        this.SpreadGroupName = spreadGroupName;
+        this.glusterFsPath = "/var/sharedfiles/worker_" + workerId + "_" + queueName + "_sales_data.txt";
         this.spreadConnection = new SpreadConnection();
         this.spreadGroup = new SpreadGroup();
         spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "Worker_id_" + workerId, false, true);
@@ -88,18 +93,83 @@ public class WorkerSpread {
         }
     }
 
-        private void processarResumo(String exchangeName, String summaryFileName) {
-            // Lógica para processar o resumo das vendas e escrever no arquivo
-            // Notifica o Manager que o resumo está pronto
-            SpreadMessage spreadMessage = new SpreadMessage();
-            spreadMessage.addGroup(spreadGroup);
-            spreadMessage.setData(("RESUME_COMPLETED " + exchangeName + " " + summaryFileName).getBytes());
-            try {
-                spreadConnection.multicast(spreadMessage);
-            } catch (SpreadException e) {
-                e.printStackTrace();
-            }
+
+    private void processarResumo(String exchangeName, String summaryFileName) {
+        // Inicia o processo de eleição
+        electionInProgress = true;
+
+        // Envia mensagem de eleição para o grupo
+        SpreadMessage electionMessage = new SpreadMessage();
+        electionMessage.addGroup(spreadGroup);
+        electionMessage.setData(("ELECTION_REQUEST " + workerId).getBytes());
+        try {
+            spreadConnection.multicast(electionMessage);
+        } catch (SpreadException e) {
+            e.printStackTrace();
         }
+
+        // Após ser eleito líder, realiza o processamento do resumo
+        // Lógica para processar o resumo das vendas e escrever no arquivo
+        // Notifica o Manager que o resumo está pronto
+        SpreadMessage spreadMessage = new SpreadMessage();
+        spreadMessage.addGroup(spreadGroup);
+        mergeFiles("/var/sharefiles/", "/var/sharefiles/RESUMO_" + queueName + ".txt", queueName);
+        spreadMessage.setData(("RESUME_COMPLETED " + exchangeName + " " + summaryFileName).getBytes());
+        try {
+            spreadConnection.multicast(spreadMessage);
+        } catch (SpreadException e) {
+            e.printStackTrace();
+        }
+
+        // Reinicia o processamento de mensagens
+        electionInProgress = false;
+        electedLeader = false;
+
+        // Restaura o grupo Spread original
+        try {
+            spreadGroup.leave();
+            spreadGroup.join(spreadConnection, SpreadGroupName);
+        } catch (SpreadException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Adicione este método para processar mensagens de eleição
+    private void processarEleicao(String mensagem) throws InterruptedException {
+        String[] parts = mensagem.split("\\s");
+        if (parts.length == 2) {
+            int candidatoId = Integer.parseInt(parts[1]);
+            if (candidatoId < workerId) {
+                // Se há um candidato com ID menor, renuncia à liderança
+                electedLeader = false;
+            } else if (candidatoId > workerId) {
+                // Se há um candidato com ID maior, torna-se líder
+                electedLeader = true;
+                leaderSpreadGroupName = spreadGroup.toString();
+            }
+            // Se o ID for igual, mantém a liderança
+            // Se houver empate, o Worker com o ID mais alto vence
+        }
+        // Libera o CountDownLatch quando a eleição for processada
+        Thread.sleep(10000);
+    }
+
+    // Modifique o método processarVenda para verificar se está em andamento uma eleição
+    private void processarVenda(String mensagem) {
+        if (electionInProgress) {
+            System.out.println(" [x] Eleição em andamento. Venda não processada: " + mensagem);
+        } else {
+            System.out.println(" [x] Recebida venda da categoria " + queueName + ": " + mensagem);
+            escreverEmArquivo(mensagem);
+        }
+    }
+
+    // Adicione este método para tratar a mensagem de eleição
+    private void tratarMensagem(String receivedText) throws InterruptedException {
+        if (receivedText.startsWith("ELECTION_REQUEST")) {
+            processarEleicao(receivedText);
+        }
+    }
 
     private void iniciar(String ipRabbitMQ, int portRabbitMQ) {
         try {
@@ -132,10 +202,6 @@ public class WorkerSpread {
         }
     }
 
-    private void processarVenda(String mensagem) {
-        System.out.println(" [x] Recebida venda da categoria " + queueName + ": " + mensagem);
-        escreverEmArquivo(mensagem);
-    }
 
     private String getQueueFromCategoria(String categoria) {
         if ("ALIMENTAR".equalsIgnoreCase(categoria)) {
@@ -155,6 +221,40 @@ public class WorkerSpread {
             System.out.println(" [x] Venda registada no ficheiro: " + glusterFsPath);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Juntar os arquivos num
+    public static void mergeFiles(String directoryPath, String outputFileName, String queueName) {
+        try {
+            File directory = new File(directoryPath);
+            File[] files = directory.listFiles();
+
+            if (files != null) {
+                try (PrintWriter writer = new PrintWriter(new FileWriter(outputFileName))) {
+                    for (File file : files) {
+                        if (file.isFile() && file.getName().contains(queueName)) {
+                            System.out.println("Processing file: " + file.getName());
+                            appendFileContents(file, writer);
+                        }
+                    }
+                }
+
+                System.out.println("Merge completed. Merged content saved to: " + outputFileName);
+            } else {
+                System.out.println("Invalid directory path.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void appendFileContents(File file, PrintWriter writer) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.println(line);
+            }
         }
     }
 }

@@ -75,7 +75,7 @@ public class ManagerServerGrpc extends ContractManagerUserGrpc.ContractManagerUs
         SpreadMessage spreadMessage = new SpreadMessage();
         spreadMessage.setSafe();
         spreadMessage.addGroup(spreadGroup);
-        spreadMessage.setData(("RESUME_REQUEST " + categoria + " " + "summary.txt").getBytes());
+        spreadMessage.setData(("RESUME_REQUEST " + categoria + " summary.txt").getBytes());
         try {
 
             spreadConnection.multicast(spreadMessage);

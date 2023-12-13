@@ -7,12 +7,19 @@ import manageruserstubs.Category;
 import manageruserstubs.ContractManagerUserGrpc;
 import manageruserstubs.Resume;
 
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+
 
 public class UserApp {
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Criar um canal gRPC para se comunicar com o Manager
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()
@@ -22,7 +29,6 @@ public class UserApp {
         ContractManagerUserGrpc.ContractManagerUserStub stub = ContractManagerUserGrpc.newStub(channel);
 
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
             exibirMenu();
             int escolha = scanner.nextInt();
@@ -30,14 +36,21 @@ public class UserApp {
             switch (escolha) {
                 case 1:
                     solicitarResumo(stub, "ALIMENTAR");
+                    System.out.println("Quer fazer download:");
+                    String download_1 = readline("Yes     No");
+                    if (Objects.equals(download_1, "Yes")){
+                        downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt","ALIMENTAR_resumo.txt");
+                    };
                     break;
                 case 2:
                     solicitarResumo(stub, "CASA");
+                    System.out.println("Quer fazer download:");
+                    String download_2 = readline("Yes     No");
+                    if (Objects.equals(download_2, "Yes")) {
+                        downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt", "CASA_resumo.txt");
+                    };
                     break;
                 case 3:
-                    solicitarResumo(stub, "AMBOS");
-                    break;
-                case 4:
                     System.out.println("Saindo do programa.");
                     channel.shutdown();
                     return;
@@ -47,12 +60,34 @@ public class UserApp {
         }
     }
 
+    private static String readline(String msg) {
+        Scanner scaninput = new Scanner(System.in);
+        System.out.println(msg);
+        return scaninput.nextLine();
+    }
+
     private static void exibirMenu() {
         System.out.println("Escolha uma opção:");
         System.out.println("1. Resumo para a categoria ALIMENTAR");
         System.out.println("2. Resumo para a categoria CASA");
-        System.out.println("3. Resumo para ambas as categorias");
-        System.out.println("4. Sair");
+        System.out.println("3. Sair");
+    }
+
+    // Download do ficheiro
+    private static void downloadFile(String fileUrl, String destinationPath) throws IOException {
+        URL url = new URL(fileUrl);
+        URLConnection connection = url.openConnection();
+
+        try (InputStream in = connection.getInputStream();
+             FileOutputStream out = new FileOutputStream(destinationPath)) {
+
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+
+            while ((bytesRead = in.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+        }
     }
 
     private static void solicitarResumo(ContractManagerUserGrpc.ContractManagerUserStub stub, String categoria) {
