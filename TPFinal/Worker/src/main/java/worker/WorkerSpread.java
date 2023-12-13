@@ -31,7 +31,7 @@ public class WorkerSpread {
         this.glusterFsPath = "/var/sharedfiles/worker_" + workerId + "_" + queueName + "_sales_data.txt";
         this.spreadConnection = new SpreadConnection();
         this.spreadGroup = new SpreadGroup();
-        spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "Worker_id_" + workerId, false, true);
+        spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, Integer.toString(workerId), false, true);
         this.spreadGroup.join(spreadConnection, spreadGroupName);
         iniciarSpreadConnection("Worker_id_" + workerId, ipRabbitMQ, portRabbitMQ);
     }

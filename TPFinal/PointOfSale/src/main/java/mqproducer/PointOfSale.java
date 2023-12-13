@@ -35,9 +35,9 @@ public class PointOfSale {
 
             // Gerar mensagens de venda
             for (int i = 0; i < 10; i++) {
-                Date data = new Date();
-                UUID uuid = UUID.randomUUID();
-                String codigoProduto = uuid.toString().substring(0, 8);
+                Date data;
+                UUID uuid;
+                String codigoProduto;
                 int nSales = Integer.parseInt(readline("Número de Sales?"));
                 String categoria = readline("Product categoria (ALIMENTAR or CASA)?");
                 String nomeProduto = readline("Product name?");
@@ -52,6 +52,9 @@ public class PointOfSale {
                 double total = quantidade * (precoUnitario * (1+iva));
 
                 for (int j = 0; j < nSales; j++) {
+                    data = new Date();
+                    uuid = UUID.randomUUID();
+                    codigoProduto = uuid.toString().substring(0, 8);
                     // Construir a mensagem de venda
                     String message = createSaleMessage(data, codigoProduto, categoria, nomeProduto, quantidade, precoUnitario, total, iva);
 
@@ -82,10 +85,6 @@ public class PointOfSale {
         // Aqui, você pode formatar a mensagem de venda conforme necessário
         return String.format("Sale: data=%s, codigoProduto=%s, categoria=%s, nomeProduto=%s, quantidade=%d, precoUnitario=%.2f, total=%.2f, iva=%.2f",
                 data, codigoProduto, categoria, nomeProduto, quantidade, precoUnitario, total, iva);
-    }
-
-    private static String create10Sales() {
-
     }
 
     private static String getCategoryRoutingKey(String categoria) {

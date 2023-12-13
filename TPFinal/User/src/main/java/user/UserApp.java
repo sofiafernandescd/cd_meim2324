@@ -42,8 +42,6 @@ public class UserApp {
                     solicitarResumo(stub, "ALIMENTAR");
                     System.out.println("Quer fazer download:");
                     download_1 = readline("1 - Yes     2 - No");
-                    //do{download_1 = readline("1 - Yes     2 - No");}
-                    //while (download_1 != "1" && download_1 != "2");
                     if (Objects.equals(download_1, "1")){
                         downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt","ALIMENTAR_resumo.txt");
                     };
@@ -52,8 +50,6 @@ public class UserApp {
                     solicitarResumo(stub, "CASA");
                     System.out.println("Quer fazer download:");
                     download_2 = readline("1 - Yes     2 - No");
-                    //do{download_2 = readline("1 - Yes     2 - No");}
-                    //while (download_2 != "1" && download_2 != "2");
                         if (Objects.equals(download_2, "1")) {
                             downloadFile("/var/sharedfiles/RESUMO_ALIMENTAR.txt", "CASA_resumo.txt");
                     };
