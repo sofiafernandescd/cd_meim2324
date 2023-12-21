@@ -1,0 +1,22 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "manageruserstubs";
+
+package contractmanageruser; // package do proto
+
+service ContractManagerUser {
+  rpc getResume(Category) returns (stream Resume);
+}
+
+message Category {
+  string category = 1;
+}
+
+// o conteúdo de um (Resumo)
+message Resume {
+  string category = 1;
+  bytes data = 2;
+}
+
