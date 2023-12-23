@@ -35,12 +35,12 @@ public final class ContractManagerUserOuterClass {
     java.lang.String[] descriptorData = {
       "\n\031ContractManagerUser.proto\022\023contractman" +
       "ageruser\032\037google/protobuf/timestamp.prot" +
-      "o\"\034\n\010Category\022\020\n\010category\030\001 \001(\t\"(\n\006Resum" +
-      "e\022\020\n\010category\030\001 \001(\t\022\014\n\004data\030\002 \001(\0142`\n\023Con" +
-      "tractManagerUser\022I\n\tgetResume\022\035.contract" +
-      "manageruser.Category\032\033.contractmanagerus" +
-      "er.Resume0\001B\024\n\020manageruserstubsP\001b\006proto" +
-      "3"
+      "o\",\n\010Category\022\016\n\006userID\030\001 \001(\t\022\020\n\010categor" +
+      "y\030\002 \001(\t\"(\n\006Resume\022\020\n\010category\030\001 \001(\t\022\014\n\004d" +
+      "ata\030\002 \001(\0142`\n\023ContractManagerUser\022I\n\tgetR" +
+      "esume\022\035.contractmanageruser.Category\032\033.c" +
+      "ontractmanageruser.Resume0\001B\024\n\020managerus" +
+      "erstubsP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -52,7 +52,7 @@ public final class ContractManagerUserOuterClass {
     internal_static_contractmanageruser_Category_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_contractmanageruser_Category_descriptor,
-        new java.lang.String[] { "Category", });
+        new java.lang.String[] { "UserID", "Category", });
     internal_static_contractmanageruser_Resume_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_contractmanageruser_Resume_fieldAccessorTable = new

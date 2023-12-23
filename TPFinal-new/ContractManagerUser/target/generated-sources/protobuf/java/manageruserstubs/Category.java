@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Category() {
+    userID_ = "";
     category_ = "";
   }
 
@@ -44,10 +45,48 @@ private static final long serialVersionUID = 0L;
             manageruserstubs.Category.class, manageruserstubs.Category.Builder.class);
   }
 
-  public static final int CATEGORY_FIELD_NUMBER = 1;
+  public static final int USERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object userID_;
+  /**
+   * <code>string userID = 1;</code>
+   * @return The userID.
+   */
+  @java.lang.Override
+  public java.lang.String getUserID() {
+    java.lang.Object ref = userID_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      userID_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string userID = 1;</code>
+   * @return The bytes for userID.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getUserIDBytes() {
+    java.lang.Object ref = userID_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      userID_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int CATEGORY_FIELD_NUMBER = 2;
   private volatile java.lang.Object category_;
   /**
-   * <code>string category = 1;</code>
+   * <code>string category = 2;</code>
    * @return The category.
    */
   @java.lang.Override
@@ -64,7 +103,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string category = 1;</code>
+   * <code>string category = 2;</code>
    * @return The bytes for category.
    */
   @java.lang.Override
@@ -96,8 +135,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userID_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userID_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, category_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, category_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -108,8 +150,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userID_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userID_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(category_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, category_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, category_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -126,6 +171,8 @@ private static final long serialVersionUID = 0L;
     }
     manageruserstubs.Category other = (manageruserstubs.Category) obj;
 
+    if (!getUserID()
+        .equals(other.getUserID())) return false;
     if (!getCategory()
         .equals(other.getCategory())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -139,6 +186,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + USERID_FIELD_NUMBER;
+    hash = (53 * hash) + getUserID().hashCode();
     hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
     hash = (53 * hash) + getCategory().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
@@ -269,6 +318,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      userID_ = "";
+
       category_ = "";
 
       return this;
@@ -297,6 +348,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public manageruserstubs.Category buildPartial() {
       manageruserstubs.Category result = new manageruserstubs.Category(this);
+      result.userID_ = userID_;
       result.category_ = category_;
       onBuilt();
       return result;
@@ -346,6 +398,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(manageruserstubs.Category other) {
       if (other == manageruserstubs.Category.getDefaultInstance()) return this;
+      if (!other.getUserID().isEmpty()) {
+        userID_ = other.userID_;
+        onChanged();
+      }
       if (!other.getCategory().isEmpty()) {
         category_ = other.category_;
         onChanged();
@@ -377,10 +433,15 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              category_ = input.readStringRequireUtf8();
+              userID_ = input.readStringRequireUtf8();
 
               break;
             } // case 10
+            case 18: {
+              category_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -397,9 +458,85 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object userID_ = "";
+    /**
+     * <code>string userID = 1;</code>
+     * @return The userID.
+     */
+    public java.lang.String getUserID() {
+      java.lang.Object ref = userID_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userID_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string userID = 1;</code>
+     * @return The bytes for userID.
+     */
+    public com.google.protobuf.ByteString
+        getUserIDBytes() {
+      java.lang.Object ref = userID_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string userID = 1;</code>
+     * @param value The userID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserID(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      userID_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userID = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUserID() {
+      
+      userID_ = getDefaultInstance().getUserID();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userID = 1;</code>
+     * @param value The bytes for userID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserIDBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      userID_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object category_ = "";
     /**
-     * <code>string category = 1;</code>
+     * <code>string category = 2;</code>
      * @return The category.
      */
     public java.lang.String getCategory() {
@@ -415,7 +552,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string category = 1;</code>
+     * <code>string category = 2;</code>
      * @return The bytes for category.
      */
     public com.google.protobuf.ByteString
@@ -432,7 +569,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string category = 1;</code>
+     * <code>string category = 2;</code>
      * @param value The category to set.
      * @return This builder for chaining.
      */
@@ -447,7 +584,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string category = 1;</code>
+     * <code>string category = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearCategory() {
@@ -457,7 +594,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string category = 1;</code>
+     * <code>string category = 2;</code>
      * @param value The bytes for category to set.
      * @return This builder for chaining.
      */

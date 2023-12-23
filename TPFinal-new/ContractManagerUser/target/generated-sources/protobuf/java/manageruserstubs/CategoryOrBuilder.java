@@ -8,12 +8,24 @@ public interface CategoryOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string category = 1;</code>
+   * <code>string userID = 1;</code>
+   * @return The userID.
+   */
+  java.lang.String getUserID();
+  /**
+   * <code>string userID = 1;</code>
+   * @return The bytes for userID.
+   */
+  com.google.protobuf.ByteString
+      getUserIDBytes();
+
+  /**
+   * <code>string category = 2;</code>
    * @return The category.
    */
   java.lang.String getCategory();
   /**
-   * <code>string category = 1;</code>
+   * <code>string category = 2;</code>
    * @return The bytes for category.
    */
   com.google.protobuf.ByteString

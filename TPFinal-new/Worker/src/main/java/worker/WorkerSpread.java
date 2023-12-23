@@ -31,7 +31,11 @@ public class WorkerSpread {
 
     private String ipRabbitMQ = "localhost";
 
+    private ConnectionFactory factory;
 
+    private Connection connection;
+
+    private Channel channel;
 
     public WorkerSpread(String queueName, int workerId, String spreadGroupName, String ipRabbitMQ, String ipInterno) throws SpreadException, IOException, TimeoutException {
         this.queueName = queueName;
@@ -67,10 +71,10 @@ public class WorkerSpread {
     }
 
     private void iniciarRabbitMQ(String ipRabbitMQ) throws IOException, TimeoutException {
-        ConnectionFactory factory = new ConnectionFactory();
+        factory = new ConnectionFactory();
         factory.setHost(ipRabbitMQ); factory.setPort(5672);
-        Connection connection = factory.newConnection();
-        Channel channel = connection.createChannel();
+        connection = factory.newConnection();
+        channel = connection.createChannel();
     }
 
     private void iniciarSpreadConnection() {
@@ -116,12 +120,13 @@ public class WorkerSpread {
 
     private void iniciarExchanges(String ipRabbitMQ) {
         try {
-            ConnectionFactory factory = new ConnectionFactory();
+
+/*          ConnectionFactory factory = new ConnectionFactory();
             factory.setHost(ipRabbitMQ);
-            factory.setPort(5672);
+            factory.setPort(5672);*/
 
             try (Connection connection = factory.newConnection();
-                 Channel channel = connection.createChannel()) {
+                Channel channel = connection.createChannel()) {
                 String queue = getQueueFromCategoria(queueName);
 
                 // Processamento da venda
@@ -139,6 +144,7 @@ public class WorkerSpread {
 
                 };
 
+                System.out.println("Hello cheguei aqui");
                 channel.basicConsume(queue, true, deliverCallback, consumerTag -> {
                 });
 
@@ -167,6 +173,7 @@ public class WorkerSpread {
     private void escreverEmArquivo(String mensagem) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(glusterFsPath, true))) {
             writer.println(mensagem);
+            System.out.println(mensagem);
             System.out.println(" [x] Venda registada no ficheiro: " + glusterFsPath);
         } catch (IOException e) {
             e.printStackTrace();

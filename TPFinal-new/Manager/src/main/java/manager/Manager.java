@@ -17,15 +17,24 @@ import spread.SpreadGroup;
 import spread.SpreadMessage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeoutException;
+
+import static com.google.protobuf.ByteString.copyFrom;
 
 
 public class Manager extends ContractManagerUserGrpc.ContractManagerUserImplBase {
 
     public final String ipInterno;
     private static final int BROKER_PORT = 5672;
+
+    private Channel channel;
+
     private static final String resumeQueue = "fila_resumo";
 
     //static Logger logger = new SimpleLoggerFactory().getLogger("RabbitMQ-Manager");
@@ -63,17 +72,17 @@ public class Manager extends ContractManagerUserGrpc.ContractManagerUserImplBase
             factory.setHost(ipRabbitMQ);
             factory.setPort(BROKER_PORT);
 
-            try (Connection connection = factory.newConnection();
-                 Channel channel = connection.createChannel()) {
+            Connection connection = factory.newConnection();
+            channel = connection.createChannel();
 
-                // Consumer handler to receive messages
-                DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-                    String recMessage = new String(delivery.getBody(), "UTF-8");
-                    System.out.println("Message Received:" +consumerTag+":"+recMessage);
-                };
-                channel.basicConsume("fila_resumo", true, deliverCallback, consumerTag -> {
-                });
-            }
+            // Consumer handler to receive messages
+            DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+                String recMessage = new String(delivery.getBody(), "UTF-8");
+                System.out.println("Message Received:" + consumerTag + ":" + recMessage);
+            };
+            channel.basicConsume("fila_resumo", true, deliverCallback, consumerTag -> {
+            });
+
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
@@ -81,15 +90,14 @@ public class Manager extends ContractManagerUserGrpc.ContractManagerUserImplBase
     }
 
     private void sendMulticastSpread(String category) {
-        // Lógica para enviar mensagens multicast usando Spread
+        //Enviar mensagens multicast usando Spread
         try {
             SpreadConnection spreadConnection = new SpreadConnection();
             spreadConnection.connect(InetAddress.getByName(ipInterno), 4803, "manager", false, true);
-            // Junta-se ao grupo da categoria do resumo
-
+            //O manager Server junta-se ao grupo da categoria do resumo
             SpreadGroup spreadGroup = new SpreadGroup();
-            spreadGroup.join(spreadConnection, "SpreadGroup"+category);
-            // Criar SpreadMessage
+            spreadGroup.join(spreadConnection, "SpreadGroup" + category);
+            //Criar SpreadMessage
             SpreadMessage spreadMessage = new SpreadMessage();
             spreadMessage.setSafe();
             String message = "Pedido de resumo";
@@ -103,31 +111,47 @@ public class Manager extends ContractManagerUserGrpc.ContractManagerUserImplBase
         }
     }
 
-
     @Override
     public void getResume(Category request, StreamObserver<Resume> responseObserver) {
-        // Mensagem multicast para os workers da categoria
+        //Envio de mensagem multicast para os workers da categoria
         String category = request.getCategory();
         sendMulticastSpread(category);
 
-        // Recebe notificação RabbitMQ com o nome do ficheiro
+        try {
+            String exchName = "ExgResumeOf-" + request.getUserID();
+            ReceiverNotification recMsg = new ReceiverNotification(channel, exchName);
+
+            String fileResume = recMsg.waitNotification();
+
+            // envio do ficheiro do Gluster para o cliente
+            Path downloadFrom = Paths.get(fileResume);
+            byte[] buffer = new byte[2 * 1024];  // blocos de 2kbyte
+            try (InputStream input = Files.newInputStream(downloadFrom)) {
+                while (input.read(buffer) >= 0) {
+                    Resume resumeBlock = Resume.newBuilder()
+                            .setData(copyFrom(buffer)).build();
+                    responseObserver.onNext(resumeBlock);
+                }
+                responseObserver.onCompleted();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+/*        //Receber notificação RabbitMQ com o nome do ficheiro
         String fileName = "asdf.txt";
 
-
-        // Aqui você geraria o resumo com base no UserRequest
+        //Criar o resumo com base no pedido do User
         String summaryText = "Este é um resumo para a categoria " + request.getCategory();
         byte[] resumeByte = summaryText.getBytes();
 
-        // Envie o resumo de volta para o usuário
+        //Enviar o resumo de volta para o User
         Resume response = Resume.newBuilder()
                 .setCategory(request.getCategory())
-                .setData(ByteString.copyFrom(resumeByte))
+                .setData(copyFrom(resumeByte))
                 .build();
 
         responseObserver.onNext(response);
-        responseObserver.onCompleted();
+        responseObserver.onCompleted();*/
     }
-
-
-
 }

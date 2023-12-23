@@ -11,7 +11,8 @@ service ContractManagerUser {
 }
 
 message Category {
-  string category = 1;
+  string userID=1;
+  string category = 2;
 }
 
 // o conteúdo de um (Resumo)

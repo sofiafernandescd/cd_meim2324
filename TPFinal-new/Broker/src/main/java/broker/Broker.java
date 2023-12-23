@@ -51,6 +51,7 @@ public class Broker {
             boolean end = false;
             while (!end)
             {
+                System.out.println("Coloque 99 para desligar o Broker:");
                 int option;
                 Scanner scan = new Scanner(System.in);
                 option = scan.nextInt();
