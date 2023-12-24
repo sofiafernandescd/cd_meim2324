@@ -134,17 +134,16 @@ public class WorkerSpread {
                     String mensagem = new String(delivery.getBody(), "UTF-8");
                     long deliverTag=delivery.getEnvelope().getDeliveryTag();
                     // se não estiver ocupado com resumo
-                    if (free){
-                        channel.basicAck(deliverTag,false);
+                    //if (free){
+                        // channel.basicAck(deliverTag,false);
                         processarVenda(mensagem);
 
-                    } else {
+                    /*} else {
                         channel.basicNack(deliverTag, false, true);
-                    }
+                    }*/
 
                 };
 
-                System.out.println("Hello cheguei aqui");
                 channel.basicConsume(queue, true, deliverCallback, consumerTag -> {
                 });
 
@@ -280,8 +279,6 @@ public class WorkerSpread {
             processarEleicao(receivedText);
         }
     }
-
-
 
 
     // Juntar os arquivos num

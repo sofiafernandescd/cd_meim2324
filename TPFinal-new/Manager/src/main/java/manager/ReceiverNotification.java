@@ -17,9 +17,11 @@ public class ReceiverNotification implements DeliverCallback, CancelCallback {
     public ReceiverNotification(Channel channel, String exchName) throws Exception {
         this.channel=channel; this.exchName=exchName; this.queueName=exchName+"-queue";
 
-        channel.exchangeDeclare(exchName, BuiltinExchangeType.FANOUT, true);
+        /* channel.exchangeDeclare(exchName, BuiltinExchangeType.FANOUT, true);
+        System.out.println("Exchange " + exchName);
         channel.queueDeclare(queueName, true, false, false, null);
-        channel.queueBind(queueName, exchName,"");
+        System.out.println("Queue " + queueName);
+        channel.queueBind(queueName, exchName,""); */
 
         sync=new Semaphore(0);  // semáforo com valor inicial 0
     }
@@ -33,9 +35,9 @@ public class ReceiverNotification implements DeliverCallback, CancelCallback {
     }
 
     public String waitNotification() throws Exception {
-        channel.basicConsume(queueName, false, this, this);
+        channel.basicConsume("fila_resumo", false, this, this);
         System.out.println("registou consumer");
-        sync.acquire();  // Thread bloqueada por semáforo estar aa 0 até receber sync.release no handle
+        sync.acquire();  // Thread bloqueada por semáforo estar a 0 até receber sync.release no handle
         return fileResume;
     }
 

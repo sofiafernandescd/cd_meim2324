@@ -100,8 +100,10 @@ public class Manager extends ContractManagerUserGrpc.ContractManagerUserImplBase
             //Criar SpreadMessage
             SpreadMessage spreadMessage = new SpreadMessage();
             spreadMessage.setSafe();
-            String message = "Pedido de resumo";
-            spreadMessage.setData(message.getBytes());
+            spreadMessage.addGroup(spreadGroup);
+            spreadMessage.setData(("RESUME_REQUEST " + category + " summary.txt").getBytes());
+            // String message = "Pedido de resumo";
+            // spreadMessage.setData(message.getBytes());
             spreadConnection.multicast(spreadMessage);
             spreadGroup.leave();
             spreadConnection.disconnect();
@@ -118,24 +120,27 @@ public class Manager extends ContractManagerUserGrpc.ContractManagerUserImplBase
         sendMulticastSpread(category);
 
         try {
-            String exchName = "ExgResumeOf-" + request.getUserID();
-            ReceiverNotification recMsg = new ReceiverNotification(channel, exchName);
+            //String exchName = "ExgResumeOf-" + request.getUserID();
+            ReceiverNotification recMsg = new ReceiverNotification(channel, "ExgResumo");
 
             String fileResume = recMsg.waitNotification();
+            System.out.println(fileResume);
 
             // envio do ficheiro do Gluster para o cliente
             Path downloadFrom = Paths.get(fileResume);
             byte[] buffer = new byte[2 * 1024];  // blocos de 2kbyte
             try (InputStream input = Files.newInputStream(downloadFrom)) {
-                while (input.read(buffer) >= 0) {
+                int bytesRead;
+                while ((bytesRead = input.read(buffer)) != -1) {
                     Resume resumeBlock = Resume.newBuilder()
-                            .setData(copyFrom(buffer)).build();
+                            .setData(copyFrom(buffer, 0, bytesRead)).build();
                     responseObserver.onNext(resumeBlock);
                 }
                 responseObserver.onCompleted();
             }
         } catch (Exception e) {
             e.printStackTrace();
+            responseObserver.onError(e);
         }
 
 /*        //Receber notificação RabbitMQ com o nome do ficheiro

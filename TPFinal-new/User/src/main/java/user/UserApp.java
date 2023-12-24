@@ -17,8 +17,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class UserApp {
 
+    private static String userId;
     public static void main(String[] args) throws Exception {
         String ipManager = args[0];
+        userId = args[1];
         // Criar um canal gRPC para se comunicar com o Manager
         ManagedChannel channel = ManagedChannelBuilder.forAddress(ipManager, 8080)
                 .usePlaintext()
@@ -95,7 +97,7 @@ public class UserApp {
 
     private static void solicitarResumo(ContractManagerUserGrpc.ContractManagerUserStub stub, String categoria) throws Exception {
         UserStreamObserver resultStreamObs = new UserStreamObserver();
-        stub.getResume(Category.newBuilder().setCategory(categoria).build(), resultStreamObs);
+        stub.getResume(Category.newBuilder().setCategory(categoria).setUserID(userId).build(), resultStreamObs);
 
         while (!resultStreamObs.isCompleted()) {
             System.out.println("À Espera que o ficheiro Resumo esteja carregado");

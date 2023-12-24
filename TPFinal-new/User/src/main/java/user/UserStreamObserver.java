@@ -37,7 +37,8 @@ public class UserStreamObserver implements StreamObserver<Resume>{
     @Override
     public void onCompleted() {
         byte[] resumo = agruparBlocos(results);
-        String downloadPath = "TPFinal-new/" + categoria + "_resumo.txt";
+        String path = System.getProperty("user.dir") + "resumo.txt";
+        String downloadPath = path.replaceAll("target", "");
         downloadFile(resumo, downloadPath);
         System.out.println("Resumo Completo");
         isCompleted = true;
