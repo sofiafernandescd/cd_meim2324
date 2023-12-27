@@ -18,6 +18,11 @@ public class UserStreamObserver implements StreamObserver<Resume>{
     List<byte[]> results = new ArrayList<>();
 
     String categoria;
+    String userId;
+
+    public UserStreamObserver(String userId){
+        this.userId = userId;
+    }
 
     @Override
     public void onNext(Resume resumeBlock) {
@@ -37,7 +42,7 @@ public class UserStreamObserver implements StreamObserver<Resume>{
     @Override
     public void onCompleted() {
         byte[] resumo = agruparBlocos(results);
-        String path = System.getProperty("user.dir") + "resumo.txt";
+        String path = System.getProperty("user.dir") + "resumo_" + categoria + "_UserN" + userId + ".txt";
         String downloadPath = path.replaceAll("target", "");
         downloadFile(resumo, downloadPath);
         System.out.println("Resumo Completo");

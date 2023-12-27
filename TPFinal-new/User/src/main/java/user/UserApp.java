@@ -96,7 +96,7 @@ public class UserApp {
     }*/
 
     private static void solicitarResumo(ContractManagerUserGrpc.ContractManagerUserStub stub, String categoria) throws Exception {
-        UserStreamObserver resultStreamObs = new UserStreamObserver();
+        UserStreamObserver resultStreamObs = new UserStreamObserver(userId);
         stub.getResume(Category.newBuilder().setCategory(categoria).setUserID(userId).build(), resultStreamObs);
 
         while (!resultStreamObs.isCompleted()) {
